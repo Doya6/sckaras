@@ -1,18 +1,19 @@
 <template>
     <div>
         <NavBar/>
-       <v-content>
-        Home Page
-       </v-content>
+        Prihlaseni
+        <Formular/>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import Formular from '@/components/Formular.vue'
 export default {
-  name: 'Home',
+  name: 'Prihlaseni',
   components: {
-    NavBar
+    NavBar,
+    Formular
   }
 }
 </script>
