@@ -14,8 +14,8 @@
         </div>
     </v-card>
     <v-card
-    class='px-auto mx-auto mt-15 text-center'
-        width='250px'>
+    class='mx-auto mt-5 text-center'
+        width='400px'>
         <div id="m" class="mapa">
             mapa
         </div>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    created() {
+    mounted() {
         this.loadMap();
     },
     methods: {
@@ -65,5 +65,8 @@ export default {
 .fa-facebook {
   background: #3b5998;
   color: white;
+}
+.mapa{
+    height: 400px;
 }
 </style>
