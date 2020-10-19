@@ -33,7 +33,11 @@ const routes = [
     path: '/prihlaseni',
     name: 'Prihlaseni',
     component: Prihlaseni
-  }
+  },
+  {
+  path: "/index.html",
+  redirect: "/" 
+}
 ]
 
 const router = new VueRouter({
