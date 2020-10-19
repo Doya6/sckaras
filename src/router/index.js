@@ -33,7 +33,12 @@ const routes = [
     path: '/prihlaseni',
     name: 'Prihlaseni',
     component: Prihlaseni
-  }
+  },
+  {
+    path: '*',
+    name: 'catchAll',
+    component: Home
+}
 ]
 
 const router = new VueRouter({
