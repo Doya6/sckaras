@@ -35,9 +35,8 @@ const routes = [
     component: Prihlaseni
   },
   {
-    path: '*',
-    name: 'catchAll',
-    component: Home
+  path: "/index.html",
+  redirect: "/" 
 }
 ]
 
