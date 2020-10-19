@@ -1,8 +1,8 @@
 <template>
     <v-container>
-        <v-row no-gutters>jsem formular</v-row>
-        <v-card min-height="150" min-width="150" class="pa-10">
-            <v-row no-gutters justify="center">
+        <v-row no-gutters>Login</v-row>
+        <v-card min-height="150" min-width="150" width="400" class="mt-15 pa-10">
+            <v-row no-gutters justify="center" class="height ">
                 <div class="input-wrapper">
                     <v-text-field outlined label="Jmeno"></v-text-field>
                 </div>

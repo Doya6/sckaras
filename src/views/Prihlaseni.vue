@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavBar/>
-        Prihlaseni
+        <!-- <h3 class='text-center light-blue lighten-3 white--text'>Přihlášení</h3> -->
         <Formular/>
     </div>
 </template>

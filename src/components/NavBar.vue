@@ -2,8 +2,11 @@
   <v-card class="mx-auto overflow-hidden">
     <v-app-bar color="light-blue lighten-3" dark>
       <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = true"></v-app-bar-nav-icon>
-      <v-img src='@/assets/LOGO-Karas.jpg' alt="logo" max-height="50" max-width="50"></v-img>
-      <v-toolbar-title class='ml-5'>Společenské Centrum Karas</v-toolbar-title>
+      <router-link to="/">
+        <v-img src='@/assets/LOGO-Karas.jpg' alt="logo" max-height="50" max-width="50"></v-img>
+      </router-link>
+      <v-toolbar-title class='ml-5 hidden-xs-only'>Společenské Centrum Karas</v-toolbar-title>
+      <v-toolbar-title class='ml-5 hidden-sm-and-up'>SC Karas</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="hidden-sm-and-down">
         <v-btn to="/" color="amber lighten-1" class="mx-1">Home</v-btn>
@@ -69,3 +72,7 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+ 
+</style>

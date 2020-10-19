@@ -1,9 +1,7 @@
 <template>
     <div>
         <NavBar/>
-       <v-content>
-        Home Page
-       </v-content>
+        <h3 class='text-center light-blue lighten-3 white--text'> Home Page</h3>
     </div>
 </template>
 

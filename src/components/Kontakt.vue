@@ -31,8 +31,8 @@ export default {
     },
     methods: {
         loadMap() {
-            var center = SMap.Coords.fromWGS84(16.6118572, 49.2003031);
-            var cameraPosition = SMap.Coords.fromWGS84(16.6148050, 49.2044978);
+            var center = SMap.Coords.fromWGS84(16.6403656, 49.1980339);
+            var cameraPosition = SMap.Coords.fromWGS84(16.6403656, 49.1980339);
             var m = new SMap(JAK.gel("m"), center, 14);
             m.addDefaultLayer(SMap.DEF_BASE).enable();
             m.addDefaultControls();
