@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    
     
        <v-form>
       <v-container fluid>
@@ -42,13 +42,13 @@
             </v-row>
             
         </v-card>  
-    </v-container>
+    
 </template>
 
 <script>
 export default {
     data(){
-        return{};
+        return{
       show1: false,
       password: 'Password',
       rules: {
@@ -57,7 +57,7 @@ export default {
         emailMatch: () => ('The email and password you entered don\'t match'),
       },
     }
-  },
+  }
 };
 </script>
 
