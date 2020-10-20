@@ -87,7 +87,7 @@
           this.$refs.form.resetValidation();
         }
       },
-      data () {
+      data: () => ({
         dialog: true,
         tab: 0,
         tabs: [
@@ -117,6 +117,6 @@
           required: value => !!value || "Required.",
           min: v => (v && v.length >= 8) || "Min 8 characters"
         }
-      }
-    }
+      })
+    };
   </script>
