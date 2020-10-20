@@ -69,9 +69,9 @@
 
 <script>
   export default{
-    computed() {
+    computed: {
         passwordMatch() {
-          return () => this.password === this.verify || "Password must match";
+          return () => this.password === this.verify || "Password must match"
         }
       },
       methods: {
