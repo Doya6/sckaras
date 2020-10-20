@@ -34,10 +34,10 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  {
-  path: "/index.html",
-  redirect: "/" 
-}
+//   {
+//   path: "/index.html",
+//   redirect: "/" 
+// }
 ]
 
 const router = new VueRouter({
