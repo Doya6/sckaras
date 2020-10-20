@@ -8,7 +8,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import Formular from '@/components/Login.vue'
+import Login from '@/components/Login.vue'
 export default {
   name: 'Login',
   components: {
