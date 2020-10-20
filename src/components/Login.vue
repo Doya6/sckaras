@@ -1,6 +1,6 @@
 <template>
-<div id="app">
-    <v-app>
+<div>
+
         <v-dialog v-model="dialog" persistent max-width="600px" min-width="360px">
             <div>
                 <v-tabs v-model="tab" show-arrows background-color="deep-purple accent-4" icons-and-text dark grow>
@@ -63,13 +63,13 @@
                 </v-tabs>
             </div>
         </v-dialog>
-    </v-app>
+
 </div>
 </template>
 
 <script>
   export default{
-    computed: {
+    computed() {
         passwordMatch() {
           return () => this.password === this.verify || "Password must match";
         }
@@ -87,7 +87,7 @@
           this.$refs.form.resetValidation();
         }
       },
-      data: () => ({
+      data () {
         dialog: true,
         tab: 0,
         tabs: [
@@ -117,6 +117,6 @@
           required: value => !!value || "Required.",
           min: v => (v && v.length >= 8) || "Min 8 characters"
         }
-      })
+      }
     }
   </script>
