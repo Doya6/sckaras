@@ -5,7 +5,6 @@
         width='250px'
     >
         <div>
-            <p>Kontakt:</p>
             <p>Společenské centrum Karas</p>
             <p>Vymazalova 2285/22 </br>
             615 00 Brno-Židenice</p>
