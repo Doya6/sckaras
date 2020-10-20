@@ -12,9 +12,9 @@
                 v-model="username"
                 <!--:append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                 :rules="[rules.required, rules.min]"
-                :type="show1 ? 'text' : 'username'"-->
+                :type="show1 ? 'text' : 'username'"
                 type="text"
-                name="input-10-1"
+                name="input-10-1"-->
                 label="Uživatel"
                 <!--hint="Alespoň 8 znaků"
                 counter
