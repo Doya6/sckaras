@@ -38,7 +38,7 @@
               cols="12"
               sm="6"
             >
-              <router-link to="/">
+              <router-link to="/Login">
                 Nová registrace
               </router-link>
             </v-col>
