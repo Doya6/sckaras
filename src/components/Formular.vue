@@ -10,14 +10,14 @@
             >
               <v-text-field
                 v-model="username"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                <!--:rules="[rules.required, rules.min]"-->
-                <!--:type="show1 ? 'text' : 'username'"-->
-                :type="text"
+                <!--:append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                :rules="[rules.required, rules.min]"
+                :type="show1 ? 'text' : 'username'"-->
+                type="text"
                 name="input-10-1"
                 label="Uživatel"
-                <!--hint="Alespoň 8 znaků"-->
-                <!--counter
+                <!--hint="Alespoň 8 znaků"
+                counter
                 @click:append="show1 = !show1"-->
               ></v-text-field>
             </v-col>
