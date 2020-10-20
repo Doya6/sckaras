@@ -19,7 +19,7 @@
                 <!--hint="Alespoň 8 znaků"
                 counter
                 @click:append="show1 = !show1"-->
-              ></v-text-field>
+              </v-text-field>
             </v-col>
           </v-row>
           <v-row>
