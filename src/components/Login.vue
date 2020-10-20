@@ -23,7 +23,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate"> Login </v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success lighten-2" @click="validate"> Login </v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -52,7 +52,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate">Register</v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success lighten-2" @click="validate">Register</v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
