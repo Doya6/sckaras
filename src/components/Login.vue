@@ -1,4 +1,5 @@
 <template>
+  <div>
         <v-dialog v-model="dialog" persistent max-width="600px" min-width="360px">
             <div>
                 <v-tabs v-model="tab" show-arrows background-color="deep-purple accent-4" icons-and-text dark grow>
@@ -61,10 +62,11 @@
                 </v-tabs>
             </div>
         </v-dialog>
+  </div>
 </template>
 
 <script>
-  export default{
+  export default {
     computed: {
         passwordMatch() {
           return () => this.password === this.verify || "Password must match"
