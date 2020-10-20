@@ -1,27 +1,45 @@
 <template>
     
     
-       <v-form>
-      <v-container fluid>
-        <v-row>
-          <v-col
-            cols="12"
-            sm="6"
-          >
-            <v-text-field
-              v-model="password"
-              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-              :rules="[rules.required, rules.min]"
-              :type="show1 ? 'text' : 'password'"
-              name="input-10-1"
-              label="Normal with hint text"
-              hint="At least 8 characters"
-              counter
-              @click:append="show1 = !show1"
-            ></v-text-field>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-form>
+        <v-container fluid>
+          <v-row>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-text-field
+                v-model="username"
+                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                <!--:rules="[rules.required, rules.min]"-->
+                :type="show1 ? 'text' : 'username'"
+                name="input-10-1"
+                label="Uživatel"
+                <!--hint="Alespoň 8 znaků"-->
+                counter
+                @click:append="show1 = !show1"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-text-field
+                v-model="password"
+                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                :rules="[rules.required, rules.min]"
+                :type="show1 ? 'text' : 'password'"
+                name="input-10-1"
+                label="Heslo"
+                hint="Alespoň 8 znaků"
+                counter
+                @click:append="show1 = !show1"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        </v-container>
     </v-form>
     
     
@@ -50,6 +68,7 @@ export default {
     data(){
         return{
       show1: false,
+      username: '',
       password: 'Password',
       rules: {
         required: value => !!value || 'Required.',
