@@ -1,7 +1,7 @@
 <template>
 <v-content>
     <v-card 
-        class='px-auto mx-auto mt-15 text-center'
+        class='pa-auto mx-auto mt-15 text-center'
         width='250px'
     >
         <div>
