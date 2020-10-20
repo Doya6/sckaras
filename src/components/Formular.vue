@@ -33,12 +33,18 @@
               ></v-text-field>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-router-link to="/">
+                Nová registrace
+              </v-router-link>
+            </v-col>
+          </v-row>
         </v-container>
     </v-form>
-    
-    <v-router-link to="/">
-      Registrace
-    </v-router-link>
     
     <!--
         <v-row no-gutters>Login</v-row>
