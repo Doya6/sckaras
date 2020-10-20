@@ -38,9 +38,9 @@
               cols="12"
               sm="6"
             >
-              <v-router-link to="/">
+              <router-link to="/">
                 Nová registrace
-              </v-router-link>
+              </router-link>
             </v-col>
           </v-row>
         </v-container>
