@@ -12,7 +12,7 @@
         <v-btn to="/" color="amber lighten-1" class="mx-1">Home</v-btn>
         <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1">Aktivity</v-btn>
         <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1">Fotogalerie</v-btn>
-        <v-btn to="/Prihlaseni" color="amber lighten-1" class="mx-1">Příhlášení</v-btn>
+        <v-btn to="/Login" color="amber lighten-1" class="mx-1">Příhlášení</v-btn>
         <v-btn to="/Kontakt"  color="amber lighten-1" class="mx-1">Kontakt</v-btn>
       </div>
     </v-app-bar>
@@ -44,11 +44,11 @@
             <v-list-item-title>Fotogalerie</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/Prihlaseni" >
+          <v-list-item to="/Login" >
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Prihlaseni</v-list-item-title>
+            <v-list-item-title>Přihlášení</v-list-item-title>
           </v-list-item>
           
           <v-list-item to="/Kontakt" >
