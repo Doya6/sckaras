@@ -1,20 +1,40 @@
 <template>
     <v-container>
+    
+       <v-form>
+      <v-container fluid>
+        <v-row>
+          <v-col
+            cols="12"
+            sm="6"
+          >
+            <v-text-field
+              v-model="password"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              :rules="[rules.required, rules.min]"
+              :type="show1 ? 'text' : 'password'"
+              name="input-10-1"
+              label="Normal with hint text"
+              hint="At least 8 characters"
+              counter
+              @click:append="show1 = !show1"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
+    
+    
         <v-row no-gutters>Login</v-row>
-        <v-card min-height="150" min-width="150" width="400" class="mt-15 pa-10">
+        <v-card min-height="150" min-width="150" width="400" class="mt-10 pa-6">
             <v-row no-gutters justify="center" class="height ">
                 <div class="input-wrapper">
-                    <v-text-field outlined label="Jmeno"></v-text-field>
+                    <v-text-field outlined label="Uživatelské jméno"></v-text-field>
                 </div>
             </v-row>
             <v-row no-gutters justify="center">
                 <div class="input-wrapper">
-                    <v-text-field outlined label="Prijmeni"></v-text-field>
-                </div>
-            </v-row>
-            <v-row no-gutters justify="center">
-                <div class="input-wrapper">
-                    <v-text-field outlined label="Adresa"></v-text-field>
+                    <v-text-field outlined label="Heslo"></v-text-field>
                 </div>
             </v-row>
             <v-row no-gutters justify="center" class="my-5">
@@ -29,7 +49,15 @@
 export default {
     data(){
         return{};
+      show1: false,
+      password: 'Password',
+      rules: {
+        required: value => !!value || 'Required.',
+        min: v => v.length >= 8 || 'Min 8 characters',
+        emailMatch: () => ('The email and password you entered don\'t match'),
+      },
     }
+  },
 };
 </script>
 
