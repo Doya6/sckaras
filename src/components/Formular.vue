@@ -36,7 +36,11 @@
         </v-container>
     </v-form>
     
+    <v-router-link to="/">
+      Registrace
+    </v-router-link>
     
+    <!--
         <v-row no-gutters>Login</v-row>
         <v-card min-height="150" min-width="150" width="400" class="mt-10 pa-6">
             <v-row no-gutters justify="center" class="height ">
@@ -53,7 +57,7 @@
                 <v-btn> Odeslat </v-btn>
             </v-row>
             
-        </v-card>  
+        </v-card>  -->
     
 </template>
 
@@ -63,7 +67,7 @@ export default {
         return{
       show1: false,
       username: '',
-      password: 'Password',
+      password: '',
       rules: {
         required: value => !!value || 'Required.',
         min: v => v.length >= 8 || 'Min 8 characters',
