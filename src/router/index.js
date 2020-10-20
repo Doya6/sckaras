@@ -5,6 +5,7 @@ import Kontakt from '../views/Kontakt.vue'
 import Fotogalerie from '../views/Fotogalerie.vue'
 import Aktivity from '../views/Aktivity.vue'
 import Prihlaseni from '../views/Prihlaseni.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/prihlaseni',
     name: 'Prihlaseni',
     component: Prihlaseni
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
   path: "/index.html",
