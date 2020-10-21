@@ -1,7 +1,7 @@
 module.exports = {
-  // lintOnSave: false,
-  // transpileDependencies: [
-  //   'vuetify'
-  // ]
-  publicPath:'/SCKaras/'
+  lintOnSave: false,
+  transpileDependencies: [
+    'vuetify'
+  ]
+  //publicPath:'/SCKaras/'
 }
