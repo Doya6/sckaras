@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Kontakt from '../views/Kontakt.vue'
+import Contact from '../views/Contact.vue'
 import Fotogalerie from '../views/Fotogalerie.vue'
 import Aktivity from '../views/Aktivity.vue'
 
@@ -14,9 +14,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/kontakt',
-    name: 'Kontakt',
-    component: Kontakt
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
   },
   {
     path: '/fotogalerie',

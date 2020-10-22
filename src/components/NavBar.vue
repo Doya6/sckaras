@@ -12,7 +12,7 @@
         <v-btn to="/" color="amber lighten-1" class="mx-1">Home</v-btn>
         <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1">Aktivity</v-btn>
         <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1">Fotogalerie</v-btn>
-        <v-btn to="/Kontakt"  color="amber lighten-1" class="mx-1">Kontakt</v-btn>
+        <v-btn to="/Contact"  color="amber lighten-1" class="mx-1">Kontakt</v-btn>
       </div>
       <v-spacer></v-spacer>
       
@@ -56,7 +56,7 @@
             <v-list-item-title>Fotogalerie</v-list-item-title>
           </v-list-item>
          
-          <v-list-item to="/Kontakt" >
+          <v-list-item to="/Contact" >
             <v-list-item-icon>
               <v-icon>mdi-phone</v-icon>
             </v-list-item-icon>
