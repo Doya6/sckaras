@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 import Kontakt from '../views/Kontakt.vue'
 import Fotogalerie from '../views/Fotogalerie.vue'
 import Aktivity from '../views/Aktivity.vue'
-import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -29,15 +28,13 @@ const routes = [
     name: 'Aktivity',
     component: Aktivity
   },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-  path: "/index.html",
-  redirect: "/" 
-}
+
+  //comment for build / uncoment for Netlify build
+   {
+   path: "/index.html",
+   redirect: "/" 
+ }
+  // comment for build / uncoment for Netlify build
 ]
 
 const router = new VueRouter({

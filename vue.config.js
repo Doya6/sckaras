@@ -2,6 +2,6 @@ module.exports = {
   lintOnSave: false,
   transpileDependencies: [
     'vuetify'
-  ]
-  //publicPath:'/SCKaras/'
+  ],
+  //publicPath:'/SCKaras/' //...uncomment for mytestwww server build
 }
