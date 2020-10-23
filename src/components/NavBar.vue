@@ -21,7 +21,7 @@
       max-width="344"
       disabled
       flat
-      dark
+      color="light-blue lighten-3" dark
     >
       <v-card-text>
         <div>Jste přihlášeni jako:</div>
