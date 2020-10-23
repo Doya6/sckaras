@@ -25,7 +25,7 @@
     >
       <v-card-text  class=" text--primary text-center">
         <div class="white--text">Uživatel:</div>
-        <div>userName</div>
+        <div>userNameNameName</div>
       </v-card-text>
     </v-card>
       
