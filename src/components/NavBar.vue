@@ -246,17 +246,18 @@ export default {
       }
       if (this.$refs.registerForm.validate()) {
         
-        if (testExistsInDB(users, this.userName)){
+        if (this.testExistsInDB(users, this.userName)){
           alert("user OK");
-        } else alert("user name olready used");
-                
-        alert("jakoze success");
-        this.userName = '';
-        this.phoneNumber = '';
-        this.email = '';
-        this.password = '';
-        this.verify = '';
-        this.loginShow = false;
+          alert("jakoze success");
+          this.userName = '';
+          this.phoneNumber = '';
+          this.email = '';
+          this.password = '';
+          this.verify = '';
+          this.loginShow = false;
+        } else {alert("user name olready used");
+          
+        }
       }
     },
     testExistsInDB(db_table, db_value){
