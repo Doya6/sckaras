@@ -238,7 +238,8 @@ export default {
     },
     validate() {
       if (this.$refs.loginForm.validate()) {
-        // submit form to server/API here...
+        this.dialog = false;
+        Alert("jakoze Odeslano");
       }
     },
     reset() {
