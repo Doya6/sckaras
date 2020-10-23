@@ -262,7 +262,7 @@ export default {
     },
     testExistsInDB(db_table, db_value){
       
-      return true;    
+      return false;    
     },
     reset() {
       this.$refs.form.reset();
