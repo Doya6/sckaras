@@ -23,8 +23,8 @@
       flat
       color="light-blue lighten-3" dark
     >
-      <v-card-text class="text--primary text-center">
-        <div>Uživatel:</div>
+      <v-card-text  class=" text--primary text-center">
+        <div class="white--text">Uživatel:</div>
         <div>userName</div>
       </v-card-text>
     </v-card>
