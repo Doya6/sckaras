@@ -238,8 +238,8 @@ export default {
     },
     validate() {
       if (this.$refs.loginForm.validate()) {
-        this.loginPassword: '';
-        this.loginEmail: '';
+        this.loginPassword = '';
+        this.loginEmail = '';
         this.loginShow = false;
         alert("jakoze Odeslano");
         
