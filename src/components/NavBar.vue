@@ -238,17 +238,21 @@ export default {
     },
     validate() {
       if (this.$refs.loginForm.validate()) {
+        this.loginPassword: '',
+        this.loginEmail: '',
         this.loginShow = false;
         alert("jakoze Odeslano");
+        
       }
       if (this.$refs.registerForm.validate()) {
-        this.loginShow = false;
-        alert("jakoze Odeslano");
         this.userName = '';
         this.phoneNumber = '';
         this.email = '';
         this.password = '';
         this.verify = '';
+        this.loginShow = false;
+        alert("jakoze Odeslano");
+        
       }
     },
     reset() {
