@@ -241,6 +241,7 @@ export default {
         this.loginPassword: '',
         this.loginEmail: '',
         this.loginShow = false;
+        this.dialog = false;
         alert("jakoze Odeslano");
         
       }
@@ -251,6 +252,7 @@ export default {
         this.password = '';
         this.verify = '';
         this.loginShow = false;
+        this.dialog = false;
         alert("jakoze Odeslano");
         
       }
