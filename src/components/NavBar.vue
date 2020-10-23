@@ -248,9 +248,8 @@ export default {
         
         if (testExistsInDB(users, this.userName)){
           alert("user OK");
-        else alert("user name olready used");
-        };
-        
+        } else alert("user name olready used");
+                
         alert("jakoze success");
         this.userName = '';
         this.phoneNumber = '';
