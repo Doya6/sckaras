@@ -21,6 +21,7 @@
       max-width="344"
       disabled
       flat
+      dark
     >
       <v-card-text>
         <div>Jste přihlášeni jako:</div>
