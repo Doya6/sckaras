@@ -19,7 +19,7 @@
       <v-card
       class="mx-auto"
       max-width="344"
-      height= 100%
+      height="100%"
       disabled
       flat
       color="light-blue lighten-3" dark
