@@ -19,13 +19,12 @@
       <v-card
       class="mx-auto"
       max-width="344"
-      height="100%"
       disabled
       flat
       color="light-blue lighten-3" dark
     >
       <v-card-text class="text--primary text-center">
-        <div>Přihlášen uživatel:</div>
+        <div>Uživatel:</div>
         <div>userName</div>
       </v-card-text>
     </v-card>
