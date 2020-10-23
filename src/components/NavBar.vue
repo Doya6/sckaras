@@ -228,7 +228,7 @@
 export default {
   computed: {
     passwordMatch() {
-      return () => this.password === this.verify || "Heslo není platné";
+      return () => this.password === this.verify || "Hesla vzájemně nesouhlasí";
     },
   },
   methods: {
@@ -244,6 +244,11 @@ export default {
       if (this.$refs.registerForm.validate()) {
         this.loginShow = false;
         alert("jakoze Odeslano");
+        this.userName = '';
+        this.phoneNumber = '';
+        this.email = '';
+        this.password = '';
+        this.verify = '';
       }
     },
     reset() {
