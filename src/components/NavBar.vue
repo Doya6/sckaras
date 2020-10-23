@@ -245,15 +245,24 @@ export default {
         
       }
       if (this.$refs.registerForm.validate()) {
+        
+        if (testExistsInDB(users, this.userName)){
+          alert("user OK");
+        else alert("user name olready used");
+        };
+        
+        alert("jakoze success");
         this.userName = '';
         this.phoneNumber = '';
         this.email = '';
         this.password = '';
         this.verify = '';
         this.loginShow = false;
-        alert("jakoze Odeslano");
-        
       }
+    },
+    testExistsInDB(db_table, db_value){
+      
+      return true;    
     },
     reset() {
       this.$refs.form.reset();
@@ -265,7 +274,7 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
-    loggedUserName: 'toJaJsemLogged',
+    loggedUserName: 'JaJsemLogged',
 
     loginShow: false,
     dialog: true,
