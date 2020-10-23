@@ -169,7 +169,7 @@
                                 
                                 label="Telefon"
                                 maxlength="20"
-                               
+                                required
                               ></v-text-field>
                             </v-col>
                             <v-col cols="12">
@@ -241,6 +241,10 @@ export default {
         this.loginShow = false;
         alert("jakoze Odeslano");
       }
+      if (this.$refs.registerForm.validate()) {
+        this.loginShow = false;
+        alert("jakoze Odeslano");
+      }
     },
     reset() {
       this.$refs.form.reset();
@@ -268,6 +272,7 @@ export default {
     email: "",
     password: "",
     verify: "",
+    
     loginPassword: "",
     loginEmail: "",
     loginEmailRules: [
