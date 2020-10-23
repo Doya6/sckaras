@@ -238,7 +238,6 @@ export default {
     },
     validate() {
       if (this.$refs.loginForm.validate()) {
-        this.dialog = false;
         this.loginShow = false;
         alert("jakoze Odeslano");
       }
