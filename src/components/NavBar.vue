@@ -24,9 +24,9 @@
       flat
       color="light-blue lighten-3" dark
     >
-      <v-card-text>
-        <div class='hidden-xs'>Jste přihlášeni jako:</div>
-        <div class="text--primary text-center" >
+      <v-card-text class="text--primary text-center">
+        <div class='hidden-sm-and-down'>Jste přihlášeni jako:</div>
+        <div>
           userName
         </div>
       </v-card-text>
