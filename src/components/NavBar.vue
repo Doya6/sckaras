@@ -25,7 +25,7 @@
     >
       <v-card-text  class=" text--primary text-center">
         <div class="white--text">Uživatel:</div>
-        <div>{{ loggedUser }}</div>
+        <div>{{ loggedUserName }}</div>
       </v-card-text>
     </v-card>
       
@@ -148,18 +148,9 @@
                           <v-row>
                             <v-col cols="12" sm="6" md="6">
                               <v-text-field
-                                v-model="firstName"
+                                v-model="userName"
                                 :rules="[rules.required]"
-                                label="Jméno"
-                                maxlength="20"
-                                required
-                              ></v-text-field>
-                            </v-col>
-                            <v-col cols="12" sm="6" md="6">
-                              <v-text-field
-                                v-model="lastName"
-                                :rules="[rules.required]"
-                                label="Příjmení"
+                                label="Uživatelské jméno"
                                 maxlength="20"
                                 required
                               ></v-text-field>
@@ -170,6 +161,15 @@
                                 :rules="emailRules"
                                 label="E-mail"
                                 required
+                              ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="6">
+                              <v-text-field
+                                v-model="phoneNumber"
+                                <!-- :rules="[rules.required]" -->
+                                label="Telefon"
+                                maxlength="20"
+                                <!-- required -->
                               ></v-text-field>
                             </v-col>
                             <v-col cols="12">
@@ -251,7 +251,7 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
-    loggedUser: 'toJaJsemLogged',
+    loggedUserName: 'toJaJsemLogged',
 
     loginShow: false,
     dialog: true,
@@ -262,8 +262,8 @@ export default {
     ],
     valid: true,
 
-    firstName: "",
-    lastName: "",
+    userName: "",
+    phoneNumber: "",
     email: "",
     password: "",
     verify: "",
