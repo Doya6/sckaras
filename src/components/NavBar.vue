@@ -255,7 +255,7 @@ export default {
           this.password = '';
           this.verify = '';
           this.loginShow = false;
-        } else alert("user name olready used");
+        } else this.userName = 'zadej jine';
       }
     },
     testExistsInDB(db_table, db_value){
