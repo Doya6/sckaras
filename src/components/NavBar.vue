@@ -25,10 +25,8 @@
       color="light-blue lighten-3" dark
     >
       <v-card-text class="text--primary text-center">
-        <div class='hidden-sm-and-down'>Jste přihlášeni jako:</div>
-        <div>
-          userName
-        </div>
+        <div>Přihlášen uživatel:</div>
+        <div>userName</div>
       </v-card-text>
     </v-card>
       
