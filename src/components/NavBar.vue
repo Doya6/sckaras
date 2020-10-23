@@ -246,7 +246,7 @@ export default {
       }
       if (this.$refs.registerForm.validate()) {
         
-        if (this.testExistsInDB(users, this.userName)){
+        if (this.$refs.testExistsInDB(users, this.userName)){
           alert("user OK");
           alert("jakoze success");
           this.userName = '';
@@ -255,13 +255,10 @@ export default {
           this.password = '';
           this.verify = '';
           this.loginShow = false;
-        } else {alert("user name olready used");
-          
-        }
+        } else alert("user name olready used");
       }
     },
     testExistsInDB(db_table, db_value){
-      
       return false;    
     },
     reset() {
