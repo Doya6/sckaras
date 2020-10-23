@@ -16,6 +16,20 @@
       </div>
       <v-spacer></v-spacer>
       
+      <v-card
+      class="mx-auto"
+      max-width="344"
+      disabled
+      flat
+    >
+      <v-card-text>
+        <div>Jste přihlášeni jako:</div>
+        <div class="text--primary text-center" >
+          userName
+        </div>
+      </v-card-text>
+    </v-card>
+      
       <div>
         <v-icon
           large
