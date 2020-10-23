@@ -25,7 +25,7 @@
       color="light-blue lighten-3" dark
     >
       <v-card-text>
-        <div>Jste přihlášeni jako:</div>
+        <div class='hidden-md-and-down'>Jste přihlášeni jako:</div>
         <div class="text--primary text-center" >
           userName
         </div>
