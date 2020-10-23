@@ -168,8 +168,8 @@
                                 v-model="phoneNumber"
                                 
                                 label="Telefon"
-                                maxlength="20"
-                                required
+                                maxlength="16"
+                                
                               ></v-text-field>
                             </v-col>
                             <v-col cols="12">
