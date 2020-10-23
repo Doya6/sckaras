@@ -25,7 +25,7 @@
     >
       <v-card-text  class=" text--primary text-center">
         <div class="white--text">Uživatel:</div>
-        <div>userNameNameName</div>
+        <div>{{ loggedUser }}</div>
       </v-card-text>
     </v-card>
       
@@ -220,8 +220,6 @@
           </div>
 
   </v-card>
-
-
   
 </template>
 
@@ -253,6 +251,7 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
+    loggedUser: 'toJaJsemLogged',
 
     loginShow: false,
     dialog: true,
