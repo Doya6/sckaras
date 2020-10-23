@@ -245,8 +245,8 @@ export default {
         
       }
       if (this.$refs.registerForm.validate()) {
-        
-        if (this.$refs.testExistsInDB(users, this.userName)){
+        var exists = this.testExistsInDB(users, this.userName)
+        if (exists){
           alert("user OK");
           alert("jakoze success");
           this.userName = '';
