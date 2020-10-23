@@ -169,7 +169,7 @@
                                 <!-- :rules="[rules.required]" -->
                                 label="Telefon"
                                 maxlength="20"
-                                <!-- required -->
+                               required
                               ></v-text-field>
                             </v-col>
                             <v-col cols="12">
