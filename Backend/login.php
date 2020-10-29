@@ -14,7 +14,7 @@ $userEmail = $received_data['loginEmail'];
 $data = array();
 
 
-  $query = "SELECT user_id, userName, userPswd FROM Users WHERE userEmail = '$userEmail' ";
+  $query = "SELECT userID, userName, userPswd, userEmail FROM Users WHERE userEmail = '$userEmail' ";
   $statement = $connect->prepare($query);
   $statement->execute();
   while($row = $statement->fetch(PDO::FETCH_ASSOC))
@@ -22,6 +22,5 @@ $data = array();
     $data[] = $row;
   }
   echo (json_encode($data));
-
 
 ?>

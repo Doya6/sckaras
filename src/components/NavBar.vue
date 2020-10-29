@@ -226,32 +226,35 @@
 
 
 <script>
-import axios from'axios'
+import axios from "axios";
 
 export default {
   mounted() {
-    this.userLogin();
+    // this.userLogin();
   },
   computed: {
     passwordMatch() {
       return () => this.password === this.verify || "Hesla vzájemně nesouhlasí";
     },
-    labelLoggedIn(){
-      return (this.loggedUser.name !="" ? "Uživatel:" : "Přihlášení");  
-    }
+    labelLoggedIn() {
+      return this.loggedUser.name != "" ? "Uživatel:" : "Přihlášení";
+    },
   },
   methods: {
     showLoginForm() {
       this.loginShow = true;
       this.dialog = true;
     },
+    // user login submit
     validate() {
       if (this.$refs.loginForm.validate()) {
-        alert("jakoze Odeslano");
-        this.loginPassword = "";
-        this.loginEmail = "";
-        this.loginShow = false;
+        if (this.existsInSQL("Users", "userEmail", this.loginEmail)) {
+          this.userLogin();
+        } else {
+          alert("Tato e-mailová adresa není zaregistrovaná.");
+        }
       }
+      // user registration submit
       if (this.$refs.registerForm.validate()) {
         if (this.testExistsInDB("users", this.userName)) {
           alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
@@ -264,44 +267,62 @@ export default {
         } else alert(`Uživatelské jméno ${this.userName} už bylo použito.`);
       }
     },
-    fetchAllData(){
-      axios.post('http://mytestwww.tode.cz/SCKaras/login.php', {
-          action: "fetchall" //this.selectDataParam,
-      })
-      .then(response => {
-          console.log (response.data);
-      });
+    fetchAllData() {
+      axios
+        .post("http://mytestwww.tode.cz/SCKaras/login.php", {
+          action: "fetchall", //this.selectDataParam,
+        })
+        .then((response) => {
+          console.log(response.data);
+        });
     },
-    // user login check
+    // SQL data exists check
+    existsInSQL(table, column, value) {
+      axios
+        .post("http://mytestwww.tode.cz/SCKaras/existsInSQL.php", {
+          lookAtTable: table,
+          lookAtColumn: column,
+          lookForValue: value,
+        })
+        .then((response) => {
+          console.log (response.data);
+          let nalezeno = (response.data);
+          console.log ("nalezeno1" & nalezeno[2]);
+        });
+        console.log ("nalezeno2" & nalezeno[2]);
+    },
+
     userLogin() {
-      axios.post('http://mytestwww.tode.cz/SCKaras/login.php', {
-        loginEmail: this.loginEmail  
-      })
-      .then(response => {
-        if (response.data[0].userPswd == this.loginPassword) {
-        this.loggedUser.id = (response.data[0].user_id);
-        this.loggedUser.name = (response.data[0].userName);
-        console.log (this.loggedUser.id);
-        console.log (this.loggedUser.name);
-        console.log (response.data[0].userPswd);
-        } else  console.log("heslo nesedi")
-        
-      });  
-        
+      axios
+        .post("http://mytestwww.tode.cz/SCKaras/login.php", {
+          loginEmail: this.loginEmail,
+        })
+        .then((response) => {
+          if (response.data[0].userPswd == this.loginPassword) {
+            this.loggedUser.id = response.data[0].userID;
+            this.loggedUser.name = response.data[0].userName;
+            this.loggedUser.email = response.data[0].userEmail;
+            this.loginEmail = "";
+            this.loginPassword = "";
+            this.loginShow = false;
+          } else {
+            alert("Zadali jste nesprávné heslo.");
+            this.loginPassword = "";
+          }
+        });
     },
 
     reset() {
       this.$refs.form.reset();
     },
     resetValidation() {
-      this.$refs.form.resetValidation(); n
+      this.$refs.form.resetValidation();
     },
   },
   data: () => ({
     drawer: false,
     group: null,
-    loggedUser: 
-      { id:"", name: "" },
+    loggedUser: { id: "", name: "", email: "" },
     loginShow: false,
     dialog: true,
     tab: 0,
@@ -310,17 +331,14 @@ export default {
       { name: "Registrace", icon: "mdi-account-outline" },
     ],
     valid: true,
-
+    //registration data
     userName: "",
     phoneNumber: "",
     email: "",
     password: "",
-    verify: "",
-
-    data: [],
-
-    loginEmail: "User1@email.cz",
-    loginPassword: "User1PSWD",
+    //login data
+    loginEmail: "",
+    loginPassword: "",
 
     loginEmailRules: [
       (v) => !!v || "Musí být vyplněno",

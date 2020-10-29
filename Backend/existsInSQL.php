@@ -6,13 +6,12 @@ header("Access-Control-Allow-Headers: *");
 include 'config.php';
 
 $received_data = json_decode(file_get_contents("php://input"), true);
-//$lookAtTable = $received_data['lookAtTable'];
-//$lookAtColumn = $received_data['lookAtColumn'];
-//$lookForValue = $received_data['lookForValue'];
-
-$lookAtTable = "Users";
-$lookAtColumn = "userEmail";
-$lookForValue = "User1@email.cz";
+$lookAtTable = $received_data['lookAtTable'];
+$lookAtColumn = $received_data['lookAtColumn'];
+$lookForValue = $received_data['lookForValue'];
+// $lookAtTable = "Users";
+// $lookAtColumn = "userEmail";
+// $lookForValue = "User1@email.cz";
 
 $row = "";
 $exists = "";
@@ -29,6 +28,6 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
     $exists = false;
   }
 
-  echo (json_encode($exists));
+  echo (json_encode($row));
 
 ?>
