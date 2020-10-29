@@ -248,7 +248,9 @@ export default {
     // user login submit
     validate() {
       if (this.$refs.loginForm.validate()) {
-        if (this.existsInSQL("Users", "userEmail", this.loginEmail)) {
+        this.existsInSQL("Users", "userEmail", this.loginEmail);
+        console.log (this.foundInSQL);
+        if (this.foundInSQL) {
           this.userLogin();
         } else {
           alert("Tato e-mailová adresa není zaregistrovaná.");
@@ -256,7 +258,7 @@ export default {
       }
       // user registration submit
       if (this.$refs.registerForm.validate()) {
-        if (this.testExistsInDB("users", this.userName)) {
+        if (this.foundInSQL) {
           alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
           this.userName = "";
           this.phoneNumber = "";
@@ -267,17 +269,10 @@ export default {
         } else alert(`Uživatelské jméno ${this.userName} už bylo použito.`);
       }
     },
-    fetchAllData() {
-      axios
-        .post("http://mytestwww.tode.cz/SCKaras/login.php", {
-          action: "fetchall", //this.selectDataParam,
-        })
-        .then((response) => {
-          console.log(response.data);
-        });
-    },
+
     // SQL data exists check
     existsInSQL(table, column, value) {
+      let nalezeno = '';
       axios
         .post("http://mytestwww.tode.cz/SCKaras/existsInSQL.php", {
           lookAtTable: table,
@@ -285,11 +280,11 @@ export default {
           lookForValue: value,
         })
         .then((response) => {
-          console.log (response.data);
-          let nalezeno = (response.data);
-          console.log ("nalezeno1" & nalezeno[2]);
+          if (response.data) {
+            this.foundInSQL = true;
+          } else this.foundInSQL = false;
+          
         });
-        console.log ("nalezeno2" & nalezeno[2]);
     },
 
     userLogin() {
@@ -339,6 +334,8 @@ export default {
     //login data
     loginEmail: "",
     loginPassword: "",
+
+    foundInSQL: "",
 
     loginEmailRules: [
       (v) => !!v || "Musí být vyplněno",

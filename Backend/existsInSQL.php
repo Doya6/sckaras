@@ -28,6 +28,6 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
     $exists = false;
   }
 
-  echo (json_encode($row));
+  echo $exists;
 
 ?>
