@@ -4,4 +4,6 @@ module.exports = {
     'vuetify'
   ],
   //publicPath:'/SCKaras/' //...uncomment for mytestwww server build
+  
 }
+
