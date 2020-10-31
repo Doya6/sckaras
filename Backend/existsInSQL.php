@@ -11,7 +11,7 @@ $lookAtColumn = $received_data['lookAtColumn'];
 $lookForValue = $received_data['lookForValue'];
 // $lookAtTable = "Users";
 // $lookAtColumn = "userEmail";
-// $lookForValue = "User1@email.cz";
+// $lookForValue = "admin@mail.cz";
 
 $row = "";
 $exists = "";

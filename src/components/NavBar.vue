@@ -41,7 +41,7 @@
         dark
       >
         <v-card-text class="text--primary text-center">
-          <div class="white--text">{{ labelLoggedIn }}</div>
+          <div class="white--text">{{ propsTest }}</div>
           <div>{{ loggedUser.name }}</div>
         </v-card-text>
       </v-card>
@@ -249,30 +249,29 @@ export default {
     validate() {
       if (this.$refs.loginForm.validate()) {
         this.existsInSQL("Users", "userEmail", this.loginEmail);
-        console.log (this.foundInSQL);
-        if (this.foundInSQL) {
+       
+        setTimeout(() => {
           this.userLogin();
-        } else {
-          alert("Tato e-mailová adresa není zaregistrovaná.");
-        }
+          //alert (this.foundInSQL);
+        }, 1000);
+                
       }
-      // user registration submit
-      if (this.$refs.registerForm.validate()) {
-        if (this.foundInSQL) {
-          alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
-          this.userName = "";
-          this.phoneNumber = "";
-          this.email = "";
-          this.password = "";
-          this.verify = "";
-          this.loginShow = false;
-        } else alert(`Uživatelské jméno ${this.userName} už bylo použito.`);
-      }
+      // // user registration submit
+      // if (this.$refs.registerForm.validate()) {
+      //   if (this.foundInSQL) {
+      //     alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
+      //     this.userName = "";
+      //     this.phoneNumber = "";
+      //     this.email = "";
+      //     this.password = "";
+      //     this.verify = "";
+      //     this.loginShow = false;
+      //   } else alert(`Uživatelské jméno ${this.userName} už bylo použito.`);
+      // }
     },
 
     // SQL data exists check
     existsInSQL(table, column, value) {
-      let nalezeno = '';
       axios
         .post("http://mytestwww.tode.cz/SCKaras/existsInSQL.php", {
           lookAtTable: table,
@@ -280,11 +279,9 @@ export default {
           lookForValue: value,
         })
         .then((response) => {
-          if (response.data) {
-            this.foundInSQL = true;
-          } else this.foundInSQL = false;
-          
-        });
+            console.log (response.data);
+            this.foundInSQL = (response.data);
+        });    
     },
 
     userLogin() {
@@ -335,7 +332,7 @@ export default {
     loginEmail: "",
     loginPassword: "",
 
-    foundInSQL: "",
+    foundInSQL: undefined,
 
     loginEmailRules: [
       (v) => !!v || "Musí být vyplněno",

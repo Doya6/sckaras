@@ -11,22 +11,26 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    props: true
   },
   {
     path: '/contact',
     name: 'Contact',
-    component: Contact
+    component: Contact,
+    props: true
   },
   {
     path: '/fotogalerie',
     name: 'Fotogalerie',
-    component: Fotogalerie
+    component: Fotogalerie,
+    props: true
   },
   {
     path: '/aktivity',
     name: 'Aktivity',
-    component: Aktivity
+    component: Aktivity,
+    props: true
   },
 
   //comment for build / uncoment for Netlify build
