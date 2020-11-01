@@ -26,7 +26,7 @@
       <v-card height="300px"
       class='px-auto mx-auto mt-3'>
       <div>
-          <h4 class='ml-10'>Moje rezervace</h4>
+          <h3 class='text-center light-blue lighten-3 white--text'>Moje rezervace</h3>
           <h2 > User ID: {{ loggedUserId }} </h2>
       </div>
       </v-card>
