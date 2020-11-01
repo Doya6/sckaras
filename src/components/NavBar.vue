@@ -41,7 +41,7 @@
         dark
       >
         <v-card-text class="text--primary text-center">
-          <div class="white--text">{{ labelLoggedIn }}</div>
+          <div v-on:click="userLogOff()" class="white--text" v-bind:class="[ (loggedUser.id != '') ? 'click-enabled' : 'click-disabled']">{{ labelLoggedIn }}</div>
           <div>{{ loggedUser.name }}</div>
         </v-card-text>
       </v-card>
@@ -237,7 +237,7 @@ export default {
       return () => this.password === this.verify || "Hesla vzájemně nesouhlasí";
     },
     labelLoggedIn() {
-      return this.loggedUser.name != "" ? "Uživatel:" : "Přihlášení";
+      return this.loggedUser.name != "" ? "Odhlásit" : "Přihlášení";
     },
   },
   methods: {
@@ -324,6 +324,14 @@ export default {
       }
     },
 
+    //* user log off
+    userLogOff(){
+      alert(`Uživatel "${this.loggedUser.name}" bude odhlášen.`);
+      this.loggedUser.id = "";
+      this.loggedUser.name = "";
+      this.loggedUser.email = "";
+    },
+
     reset() {
       this.$refs.form.reset();
     },
@@ -372,7 +380,12 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
+  .click-enabled{
+    pointer-events: all;
+    cursor: pointer;
+  }
+  .click-disabled{
+    pointer-events: none;
+  }
 </style>
