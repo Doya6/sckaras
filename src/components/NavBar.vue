@@ -265,7 +265,7 @@ export default {
     // SQL data exists check
     existsInSQL(table, column, value) {
       axios
-        .post("http://mytestwww.tode.cz/SCKaras/existsInSQL.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/existsInSQL.php", {
           lookAtTable: table,
           lookAtColumn: column,
           lookForValue: value,
@@ -282,7 +282,7 @@ export default {
         this.email = "";
       } else {
       axios
-        .post("http://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
           insertIntoTable: "Users",
           insertIntoColumns: "userName, userPhoneNum, userPswd, userEmail",
           insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
@@ -305,7 +305,7 @@ export default {
         alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
       } else {
       axios
-        .post("http://mytestwww.tode.cz/SCKaras/login.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/login.php", {
           loginEmail: this.loginEmail,
         })
         .then((response) => {
