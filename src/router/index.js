@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
 import Fotogalerie from '../views/Fotogalerie.vue'
-import Aktivity from '../views/Aktivity.vue'
+import Aktivity from '../components/Aktivity.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +27,11 @@ const routes = [
     path: '/aktivity',
     name: 'Aktivity',
     component: Aktivity,
+    props: { 
+      loggedUser: {
+        name: "Jan"
+      }
+    }
   },
 
   //comment for build / uncoment for Netlify build

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <NavBar/>
         <h3 class='text-center light-blue lighten-3 white--text'>Fotogalerie</h3>
         <div class='kontejner'>
           <div class='foto'><img src="../assets/Pics/001.jpg"></div>

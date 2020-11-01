@@ -1,6 +1,5 @@
 <template>
     <div>
-        <NavBar/>
         <v-content>
     <v-card 
         class='pa-5 mx-auto mt-15 text-center'
