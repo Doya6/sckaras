@@ -41,7 +41,7 @@
         dark
       >
         <v-card-text class="text--primary text-center">
-          <div class="white--text">{{ propsTest }}</div>
+          <div class="white--text">{{ labelLoggedIn }}</div>
           <div>{{ loggedUser.name }}</div>
         </v-card-text>
       </v-card>
@@ -249,25 +249,17 @@ export default {
     validate() {
       if (this.$refs.loginForm.validate()) {
         this.existsInSQL("Users", "userEmail", this.loginEmail);
-       
         setTimeout(() => {
           this.userLogin();
-          //alert (this.foundInSQL);
-        }, 1000);
-                
+        }, 1000);         
       }
-      // // user registration submit
-      // if (this.$refs.registerForm.validate()) {
-      //   if (this.foundInSQL) {
-      //     alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
-      //     this.userName = "";
-      //     this.phoneNumber = "";
-      //     this.email = "";
-      //     this.password = "";
-      //     this.verify = "";
-      //     this.loginShow = false;
-      //   } else alert(`Uživatelské jméno ${this.userName} už bylo použito.`);
-      // }
+      // user registration submit
+      if (this.$refs.registerForm.validate()) {
+        this.existsInSQL("Users", "userEmail", this.email);
+        setTimeout(() => {
+          this.userRegistration();
+        }, 1000);
+      }
     },
 
     // SQL data exists check
@@ -279,12 +271,39 @@ export default {
           lookForValue: value,
         })
         .then((response) => {
-            console.log (response.data);
             this.foundInSQL = (response.data);
         });    
     },
 
+    //user registration
+    userRegistration(){
+      if (this.foundInSQL) {
+        alert(`Uživatelský e-mail ${this.email} už byl zaregistrován.`);
+        this.email = "";
+      } else {
+      axios
+        .post("http://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
+          insertIntoTable: "Users",
+          insertIntoColumns: "userName, userPhoneNum, userPswd, userEmail",
+          insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
+        })
+        .then((response) => {
+        alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
+        this.userName = "";
+        this.phoneNumber = "";
+        this.email = "";
+        this.password = "";
+        this.verify = "";
+        this.loginShow = false;
+        });
+      }     
+    },
+  
+    // user login
     userLogin() {
+      if (!this.foundInSQL) {
+        alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
+      } else {
       axios
         .post("http://mytestwww.tode.cz/SCKaras/login.php", {
           loginEmail: this.loginEmail,
@@ -302,6 +321,7 @@ export default {
             this.loginPassword = "";
           }
         });
+      }
     },
 
     reset() {

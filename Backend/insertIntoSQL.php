@@ -5,19 +5,21 @@ header("Access-Control-Allow-Headers: *");
 
 include 'config.php';
 
-//$phpInput = json_decode(file_get_contents("php://input"), true);
+$phpInput = json_decode(file_get_contents("php://input"), true);
 
-//$insertIntoTable = $phpInput['insertIntoTable'];
-//$insertIntoColumns = $phpInput['insertIntoColumns'];
-//$insertValues = $phpInput['insertValues'];
+$insertIntoTable = $phpInput['insertIntoTable'];
+$insertIntoColumns = $phpInput['insertIntoColumns'];
+$insertValues = $phpInput['insertValues'];
 
 //-------------
-$insertIntoTable = "Users";
-$insertIntoColumns = "userName, userPswd, userEmail";
-$insertIntoValues = "'User4', 'User4PSWD', 'User5@email.cz'";
+// $insertIntoTable = "Users";
+// $insertIntoColumns = "userName, userPswd, userEmail";
+// $insertValues = "'User4', 'User4PSWD', 'User5@email.cz'";
 //-------------
 
-$query = "INSERT INTO $insertIntoTable ($insertIntoColumns) VALUES ($insertIntoValues) ";  
+$query = "INSERT INTO $insertIntoTable ($insertIntoColumns) VALUES ($insertValues) ";  
+
+echo $query;
 
 $statement = $connect->prepare($query);
 $statement->execute();
