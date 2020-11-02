@@ -289,8 +289,9 @@ export default {
         })
         .then((response) => {
           alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje najdete ve své e-mail schránce ${this.email}.`);
+        });
         
-        axios
+       axios
         .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
           userName: `'${this.userName}'`,
           userPswd: `'${this.password}'`,
@@ -302,9 +303,7 @@ export default {
           this.email = "";
           this.password = "";
           this.verify = "";
-          this.loginShow = false;
-        
-        });
+          this.loginShow = false;       
       }     
     },
   
