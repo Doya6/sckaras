@@ -288,7 +288,7 @@ export default {
           insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
         })
         .then((response) => {
-        alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje najdete ve své e-mail schránce ${this.email}.`);
+          alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje najdete ve své e-mail schránce ${this.email}.`);
         
         axios
         .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
@@ -296,13 +296,14 @@ export default {
           userPswd: this.password,
           userEmail: this.email
         })
-                
-        this.userName = "";
-        this.phoneNumber = "";
-        this.email = "";
-        this.password = "";
-        this.verify = "";
-        this.loginShow = false;
+        .then(() => {        
+          this.userName = "";
+          this.phoneNumber = "";
+          this.email = "";
+          this.password = "";
+          this.verify = "";
+          this.loginShow = false;
+        };
         });
       }     
     },
