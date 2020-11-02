@@ -296,7 +296,8 @@ export default {
           userPswd: this.password,
           userEmail: this.email
         })
-        .then(() => {        
+        .then(() => { 
+        alert(`User name: $this.userName`);
           this.userName = "";
           this.phoneNumber = "";
           this.email = "";
