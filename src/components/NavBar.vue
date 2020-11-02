@@ -288,7 +288,14 @@ export default {
           insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
         })
         .then((response) => {
-        alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
+        alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje najdete ve své e-mail schránce ${this.email}.`);
+        
+        axios
+        .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
+          userName: this.userName,
+          userPswd: this.password 
+        })
+                
         this.userName = "";
         this.phoneNumber = "";
         this.email = "";
