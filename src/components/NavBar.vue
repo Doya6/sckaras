@@ -293,9 +293,9 @@ export default {
         
        axios
         .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
-          userName: "${this.userName}",
-          userPswd: "${this.password}",
-          userEmail: "${this.email}",
+          userName: "mujeusername",
+          userPswd: "mujheslo",
+          userEmail: "dujka@centrum.cz"
         })
           this.userName = "";
           this.phoneNumber = "";
