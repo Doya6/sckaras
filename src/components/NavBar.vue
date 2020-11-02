@@ -299,7 +299,7 @@ export default {
         alert(${this.email});
           this.userName = "";
           this.phoneNumber = "";
-          //this.email = "";
+          this.email = "";
           this.password = "";
           this.verify = "";
           this.loginShow = false;
