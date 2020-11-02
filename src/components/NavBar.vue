@@ -297,7 +297,7 @@ export default {
           userEmail: this.email
         })
         .then(() => { 
-        alert(`User name: $this.userName`);
+        alert(`User name: ${this.userName}`);
           this.userName = "";
           this.phoneNumber = "";
           this.email = "";
