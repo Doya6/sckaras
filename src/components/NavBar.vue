@@ -350,10 +350,11 @@ export default {
 
     //* user log off
     userLogOff(){
-      alert(`Uživatel "${this.loggedUser.name}" bude odhlášen.`);
-      this.loggedUser.id = "";
-      this.loggedUser.name = "";
-      this.loggedUser.email = "";
+      if (confirm("Přejete si odhlásit?")) {
+        this.loggedUser.id = "";
+        this.loggedUser.name = "";
+        this.loggedUser.email = "";
+      }
     },
 
     reset() {
