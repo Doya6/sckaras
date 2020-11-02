@@ -292,13 +292,13 @@ export default {
         
         axios
         .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
-          userName: '${this.userName}',
-          userPswd: '${this.password}',
+          //userName: '${this.userName}',
+          //userPswd: '${this.password}',
           userEmail: '${this.email}'
         })
           this.userName = "";
           this.phoneNumber = "";
-          this.email = "";
+          //this.email = "";
           this.password = "";
           this.verify = "";
           this.loginShow = false;
