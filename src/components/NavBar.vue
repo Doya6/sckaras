@@ -208,14 +208,6 @@
                           block
                           :disabled="!valid"
                           color="success lighten-2"
-                          @click="sendConfirmEmail"
-                          >send e-mail</v-btn
-                        >
-                        <v-btn
-                          x-large
-                          block
-                          :disabled="!valid"
-                          color="success lighten-2"
                           @click="validate"
                           >Register</v-btn
                         >
