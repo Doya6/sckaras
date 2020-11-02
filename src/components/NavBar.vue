@@ -208,6 +208,14 @@
                           block
                           :disabled="!valid"
                           color="success lighten-2"
+                          @click="sendConfirmEmail"
+                          >send e-mail</v-btn
+                        >
+                        <v-btn
+                          x-large
+                          block
+                          :disabled="!valid"
+                          color="success lighten-2"
                           @click="validate"
                           >Register</v-btn
                         >
@@ -287,23 +295,26 @@ export default {
           insertIntoColumns: "userName, userPhoneNum, userPswd, userEmail",
           insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
         })
-        .then((response) => {
-          alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje najdete ve své e-mail schránce ${this.email}.`);
-        });
-        
-       axios
-        .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
-          userName: "mujeusername",
-          userPswd: "mujheslo",
-          userEmail: "dujka@centrum.cz"
-        })
+        .then(() => {
+          this.sendConfirmEmail();
+          alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje jsme vám odeslali na e-mail ${this.email}.`);
           this.userName = "";
           this.phoneNumber = "";
           this.email = "";
           this.password = "";
           this.verify = "";
-          this.loginShow = false;       
+          this.loginShow = false;
+        });      
       }     
+    },
+    // e-mail confirmation
+    sendConfirmEmail(){
+    axios
+      .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php",{
+        name: `${this.userName}`,
+        email: `${this.email}`,
+        pswd: `${this.password}`
+      })             
     },
   
     // user login
