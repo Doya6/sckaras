@@ -22,11 +22,11 @@ $subject = 'SC Karas - potvrzeni registrace';
 
 $message = "Úspěšně jste se zaregistrovali na stránkách SCKaras.cz \n \n Uživatelské jméno: $userName \n Heslo: $userPswd \n \n Pro přihlášení použijte vaši e-mail adresu $userEmail.";
 
-$headers = "From: noreply@sckaras.cz'\n".
+$headers = "From: noreply@sckaras.cz \n".
          "MIME-Version: 1.0\n".
          "Content-Type: text/plain; charset=\"UTF-8\"\n".
           "Content-Transfer-Encoding: 8bit";
-     
+ 
 
 //check if the email address is invalid $secure_check
 
@@ -37,7 +37,5 @@ if ($secure_check == false) {
     mail($to_email, $subject, $message, $headers);
     echo "This email is sent using PHP Mail";
 }
-
-echo $userName
 
 ?>

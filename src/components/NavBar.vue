@@ -202,16 +202,24 @@
                         ></v-text-field>
                       </v-col>
                       <v-spacer></v-spacer>
-                      <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                        <v-btn
-                          x-large
-                          block
-                          :disabled="!valid"
-                          color="success lighten-2"
-                          @click="validate"
-                          >Register</v-btn
-                        >
-                      </v-col>
+                      <v-row>
+                        <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
+                          <v-switch
+                            v-model="sendEmailSwitch"
+                            :label="`Přejete si odeslat přihlašovací údaje na e-mail?`"
+                          ></v-switch> 
+                        </v-col>    
+                        <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
+                          <v-btn
+                            x-large
+                            block
+                            :disabled="!valid"
+                            color="success lighten-2"
+                            @click="validate"
+                            >Register</v-btn
+                          >
+                        </v-col>
+                      </v-row>
                     </v-row>
                   </v-form>
                 </v-card-text>
@@ -288,13 +296,16 @@ export default {
           insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
         })
         .then(() => {
-          this.sendConfirmEmail();
-          alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje jsme vám odeslali na e-mail ${this.email}.`);
+          if (this.sendEmailSwitch) {this.sendConfirmEmail();
+            alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje jsme vám odeslali na e-mail ${this.email}.`);
+          } else {alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
+          }
           this.userName = "";
           this.phoneNumber = "";
           this.email = "";
           this.password = "";
           this.verify = "";
+          this.sendEmailSwitch = false;
           this.loginShow = false;
         });      
       }     
@@ -306,7 +317,10 @@ export default {
         name: `${this.userName}`,
         email: `${this.email}`,
         pswd: `${this.password}`
-      })             
+      })
+      .then((response) => {
+        console.log(response.data);
+      });            
     },
   
     // user login
@@ -366,6 +380,7 @@ export default {
     phoneNumber: "",
     email: "",
     password: "",
+    sendEmailSwitch: false,
     //login data
     loginEmail: "",
     loginPassword: "",
