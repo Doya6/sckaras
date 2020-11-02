@@ -292,8 +292,8 @@ export default {
         
         axios
         .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php", {
-          //userName: '${this.userName}',
-          //userPswd: '${this.password}',
+          userName: "${this.userName}",
+          userPswd: "${this.password}",
           userEmail: "${this.email}"
         })
         alert(${this.email});
