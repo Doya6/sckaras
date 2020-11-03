@@ -248,7 +248,7 @@ export default {
       return this.loggedUser.name != "" ? "Odhlásit" : "Přihlášení";
     },
     sendEmail() {
-      return this.sendEmailSwitch = true ? "ANO" : "NE";
+      return this.sendEmailSwitch ? "ANO" : "NE";
     }
   },
   methods: {
