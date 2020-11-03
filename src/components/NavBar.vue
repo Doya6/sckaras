@@ -247,9 +247,9 @@ export default {
     labelLoggedIn() {
       return this.loggedUser.name != "" ? "Odhlásit" : "Přihlášení";
     },
-    odeslatEmail(){
-      return this.sendEmailSwitch ? "ANO" : "NE";
-    },
+    odeslatEmail() {
+      return this.sendEmailSwitch = true ? "ANO" : "NE";
+    }
   },
   methods: {
     showLoginForm() {
