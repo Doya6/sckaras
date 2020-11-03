@@ -206,7 +206,7 @@
                         <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
                           <v-switch
                             v-model="sendEmailSwitch"
-                            :label= "Přejete si odeslat přihlašovací údaje na e-mail? - " + (this.sendEmailSwitch ? "ANO" : "NE")
+                            :label= "Přejete si odeslat přihlašovací údaje na e-mail? - " {{ odeslatEmail }}
                           ></v-switch> 
                         </v-col>    
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
@@ -246,6 +246,9 @@ export default {
     },
     labelLoggedIn() {
       return this.loggedUser.name != "" ? "Odhlásit" : "Přihlášení";
+    },
+    odeslatEmail(){
+      return this.sendEmailSwitch ? "ANO" : "NE";
     },
   },
   methods: {
