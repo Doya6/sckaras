@@ -206,8 +206,8 @@
                         <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
                           <v-switch
                             v-model="sendEmailSwitch"
-                            :label= "Přejete si odeslat přihlašovací údaje na e-mail? - " {{ odeslatEmail }}
-                          ></v-switch> 
+                            :label= "Přejete si odeslat přihlašovací údaje na e-mail?"
+                          > {{ odeslatEmail }} </v-switch> 
                         </v-col>    
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
                           <v-btn
