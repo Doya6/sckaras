@@ -145,9 +145,9 @@
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
                           <p
                             block
-                            @click="sendPswdByEmail"
-                          >Zapomenuté heslo? Vyplňte e-mail a klikněte zde.</v-btn> 
-                        </p> 
+                          >Zapomenuté heslo? Vyplňte e-mail a klikněte< <span 
+                            @click="sendPswdByEmail"> ZDE </span> 
+                          </p> 
                       </v-row>  
                     </v-row>
                   </v-form>
