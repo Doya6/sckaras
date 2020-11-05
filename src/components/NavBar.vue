@@ -267,7 +267,7 @@ export default {
     // user login submit
     validate() {
       if (this.$refs.loginForm.validate()) {
-        this.existsInSQL("Users", "userEmail", this.loginEmail);
+        this.existsInSQL("Users", "userEmail", this.loginEmail);        
         setTimeout(() => {
           this.userLogin();
         }, 1000);         
@@ -365,9 +365,13 @@ export default {
         alert ("Nejdříve zadejte e-mail.")
         return;
       };
-      this.existsInSQL("Users", "userEmail", this.loginEmail); 
+      this.existsInSQL("Users", "userEmail", this.loginEmail);
+      setTimeout(() => {
+          this.userLogin();
+        }, 1000); 
       if (!this.foundInSQL){
           alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
+          this.loginEmail = "";
       } else {
       axios
         .post("https://mytestwww.tode.cz/SCKaras/login.php", {
