@@ -130,7 +130,14 @@
                       </v-col>
                       <v-col class="d-flex" cols="12" sm="6" xsm="12"> </v-col>
                       <v-spacer></v-spacer>
-                      <v-row> 
+                      <v-row>
+                        <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
+                          <p
+                            block
+                          >Zapomenuté heslo? Vyplňte e-mail a klikněte <span 
+                            @click="sendPswdByEmailCheck"> ZDE </span> 
+                          </p> 
+                        </v-col>
                         <v-col class="d-flex" cols="12" sm="4" xsm="12" align-end>
                           <v-btn
                             x-large
@@ -142,12 +149,7 @@
                             Login
                           </v-btn>
                         </v-col>
-                        <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
-                          <p
-                            block
-                          >Zapomenuté heslo? Vyplňte e-mail a klikněte <span 
-                            @click="sendPswdByEmailCheck"> ZDE </span> 
-                          </p> 
+                        
                       </v-row>  
                     </v-row>
                   </v-form>
