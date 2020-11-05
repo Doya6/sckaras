@@ -361,11 +361,11 @@ export default {
     
     // zapomenute heslo
     sendPswdByEmail(){
-    alert ("klik ZDE");
       if (this.loginEmail == '') {
         alert ("Nejdříve zadejte e-mail.");
-      } else if (!this.foundInSQL){
-        alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
+      } else this.existsInSQL(Users, userEmail, this.loginEmail); 
+        if (!this.foundInSQL){
+          alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
       } else {
       axios
         .post("https://mytestwww.tode.cz/SCKaras/login.php", {
