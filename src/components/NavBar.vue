@@ -383,7 +383,7 @@ export default {
         })
         .then((response) => {
           let Pswd = response.data[0].userPswd;
-          alert(${Pswd});
+          alert(`${Pswd}`);
           let Name = response.data[0].userName;
           let Email = response.data[0].userEmail;
           
