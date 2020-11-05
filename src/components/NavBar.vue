@@ -328,7 +328,7 @@ export default {
           this.password = "";
           this.verify = "";
           this.sendEmailSwitch = false;
-          this.infoEmailOption = 0;
+          this.infoEmailOption = false;
           this.loginShow = false;
         });      
       }     
