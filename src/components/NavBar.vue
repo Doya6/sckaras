@@ -133,11 +133,14 @@
                       <v-row>
                         <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
                           <v-btn
-                            v-model="sendPswdByEmail"
+                            x-large
+                            block
+                            :disabled=false
                             :label= "`Zapomenuté heslo? Vyplňte e-mail a klikněte zde.`"
+                            @click="sendPswdByEmail"
                           ></v-btn> 
                         </v-col>  
-                        <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
+                        <v-col class="d-flex" cols="12" sm="4" xsm="12" align-end>
                           <v-btn
                             x-large
                             block
