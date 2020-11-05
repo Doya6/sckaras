@@ -222,7 +222,7 @@
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
                           <v-switch
                             v-model="infoEmailOption"
-                            :label= "`Přejete si dostávat informace na e-mail?`"
+                            :label= "`Přejete si dostávat informace na e-mail? ${infoEmail}`"
                           ></v-switch> 
                         </v-col>
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
@@ -265,6 +265,9 @@ export default {
     },
     sendEmail() {
       return this.sendEmailSwitch ? "ANO" : "NE";
+    },
+    infoEmail() {
+      return this.infoEmailOption ? "ANO" : "NE";
     }
   },
   methods: {
@@ -311,8 +314,8 @@ export default {
       axios
         .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
           insertIntoTable: "Users",
-          insertIntoColumns: "userName, userPhoneNum, userPswd, userEmail",
-          insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}'` 
+          insertIntoColumns: "userName, userPhoneNum, userPswd, userEmail, infoEmail",
+          insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}', '${this.infoEmailOption}'` 
         })
         .then(() => {
           if (this.sendEmailSwitch) {this.sendConfirmEmail();
@@ -325,6 +328,7 @@ export default {
           this.password = "";
           this.verify = "";
           this.sendEmailSwitch = false;
+          this.infoEmailOption = 0;
           this.loginShow = false;
         });      
       }     
