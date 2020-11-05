@@ -137,18 +137,17 @@
                             block
                             :disabled="!valid"
                             color="success lighten-2"
-                            @click="validate"
+                            @click="validate" 
                           >
                             Login
                           </v-btn>
                         </v-col>
-                        <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
-                          <v-btn
-                            x-large
+                        <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
+                          <p
                             block
                             @click="sendPswdByEmail"
                           >Zapomenuté heslo? Vyplňte e-mail a klikněte zde.</v-btn> 
-                        </v-col> 
+                        </p> 
                       </v-row>  
                     </v-row>
                   </v-form>
@@ -359,6 +358,11 @@ export default {
         });
       }
     },
+    
+    // zapomenute heslo
+    sendPswdByEmail(){
+      alert ("odeslu email s hslem");
+    },
 
     //* user log off
     userLogOff(){
@@ -397,7 +401,6 @@ export default {
     //login data
     loginEmail: "",
     loginPassword: "",
-    sendPswdByEmail: "udeslu email",
 
     foundInSQL: undefined,
 
