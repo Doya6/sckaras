@@ -363,7 +363,7 @@ export default {
     sendPswdByEmail(){
       if (this.loginEmail == '') {
         alert ("Nejdříve zadejte e-mail.");
-      } else this.existsInSQL(Users, userEmail, this.loginEmail); 
+      } else this.existsInSQL("Users", "userEmail", this.loginEmail); 
         if (!this.foundInSQL){
           alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
       } else {
