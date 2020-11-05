@@ -213,12 +213,18 @@
                       </v-col>
                       <v-spacer></v-spacer>
                       <v-row>
-                        <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
+                        <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
                           <v-switch
                             v-model="sendEmailSwitch"
                             :label= "`Přejete si odeslat přihlašovací údaje na e-mail? ${sendEmail}`"
                           ></v-switch> 
-                        </v-col>    
+                        </v-col>
+                        <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
+                          <v-switch
+                            v-model="infoEmailOption"
+                            :label= "`Přejete si dostávat informace na e-mail?`"
+                          ></v-switch> 
+                        </v-col>
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
                           <v-btn
                             x-large
@@ -432,12 +438,15 @@ export default {
       { name: "Registrace", icon: "mdi-account-outline" },
     ],
     valid: true,
+    
     //registration data
     userName: "",
     phoneNumber: "",
     email: "",
     password: "",
     sendEmailSwitch: false,
+    infoEmailOption: false,
+    
     //login data
     loginEmail: "",
     loginPassword: "",
