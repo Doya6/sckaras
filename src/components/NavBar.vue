@@ -42,7 +42,7 @@
       >
         <v-card-text class="text--primary text-center">
           <div v-on:click="userLogOff()" class="white--text" v-bind:class="[ (loggedUser.id != '') ? 'click-enabled' : 'click-disabled']">{{ labelLoggedIn }}</div>
-          <div>{{ loggedUser.name }}</div>
+          <div v-on:click="userDetailEdit()" class="click-enabled">{{ loggedUser.name }}</div>
         </v-card-text>
       </v-card>
 
@@ -84,6 +84,12 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
+
+    <v-card v-if="userDetailEditShow" 
+      class='pa-5 mx-auto mt-5 text-center'
+      width='80%'
+    >User Details 
+    </v-card>
 
     <!-- Login Form -->
     <div v-if="loginShow">
@@ -130,13 +136,14 @@
                       </v-col>
                       <v-spacer></v-spacer>
                       <v-row>
-                        <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12">
-                          <p
+                        <v-col class="d-flex ml-auto" cols="12" sm="6" xsm="12" align-start>
+                          <p ml-2
                             block
                           >Zapomenuté heslo? Přihlašovací údaje vám odešleme na e-mail. Vyplňte e-mail a klikněte <span 
-                            @click="sendPswdByEmailCheck"> ZDE </span> 
+                            @click="sendPswdByEmailCheck" class="click-enabled"> ZDE </span> 
                           </p> 
                         </v-col>
+                        <v-spacer></v-spacer>
                         <v-col class="d-flex" cols="12" sm="4" xsm="12" align-end>
                           <v-btn
                             x-large
@@ -422,6 +429,10 @@ export default {
       }
     },
 
+    userDetailEdit(){
+      this.userDetailEditShow = !this.userDetailEditShow;
+    },
+
     reset() {
       this.$refs.form.reset();
     },
@@ -455,6 +466,8 @@ export default {
     loginPassword: "",
 
     foundInSQL: undefined,
+
+    userDetailEditShow: false,
 
     loginEmailRules: [
       (v) => !!v || "Musí být vyplněno",
