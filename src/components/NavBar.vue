@@ -146,7 +146,7 @@
                           <p
                             block
                           >Zapomenuté heslo? Vyplňte e-mail a klikněte <span 
-                            @click="sendPswdByEmail"> ZDE </span> 
+                            @click="sendPswdByEmailCheck"> ZDE </span> 
                           </p> 
                       </v-row>  
                     </v-row>
@@ -359,16 +359,20 @@ export default {
       }
     },
     
-    // zapomenute heslo
-    sendPswdByEmail(){
+    // zapomenute heslo check
+    sendPswdByEmailCheck(){
       if (this.loginEmail == '') {
         alert ("Nejdříve zadejte e-mail.")
         return;
       };
       this.existsInSQL("Users", "userEmail", this.loginEmail);
       setTimeout(() => {
-          this.userLogin();
-        }, 1000); 
+          this.sendPswdByEmail();
+        }, 1000);
+      },
+      
+      // zapomenute heslo 
+      sendPswdByEmail(){
       if (!this.foundInSQL){
           alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
           this.loginEmail = "";
