@@ -309,7 +309,7 @@ export default {
         .then(() => {
           if (this.sendEmailSwitch) {this.sendConfirmEmail();
             alert(`Byli jste zaregistrováni jako uživatel ${this.userName}. Přihlašovací údaje jsme vám odeslali na e-mail ${this.email}.`);
-          } else {alert(`Byli jste zaregistrováni jako uživatel ${this.userName}.`);
+          } else {alert(`Zaregistrovali jste se jako uživatel ${this.userName}.`);
           }
           this.userName = "";
           this.phoneNumber = "";
@@ -383,7 +383,6 @@ export default {
         })
         .then((response) => {
           let Pswd = response.data[0].userPswd;
-          alert(`${Pswd}`);
           let Name = response.data[0].userName;
           let Email = response.data[0].userEmail;
           
@@ -396,6 +395,8 @@ export default {
             Name = "";        
             Email = "";
             Pswd = "";
+            this.loginEmail ="";
+            alert("Přihlašovací údaje jsme vám odeslali na e-mail.")
             this.loginShow = false;
         });   
       }
