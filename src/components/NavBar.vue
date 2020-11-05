@@ -385,8 +385,7 @@ export default {
             Email = "";
             Pswd = "";
             this.loginShow = false;
-        });  
-      } 
+        });   
       }
     },
 
