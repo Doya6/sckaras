@@ -362,7 +362,7 @@ export default {
     // zapomenute heslo
     sendPswdByEmail(){
     alert ("klik ZDE");
-      if (loginEmail == '') {
+      if (this.loginEmail == '') {
         alert ("Nejdříve zadejte e-mail.");
       } else if (!this.foundInSQL){
         alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
