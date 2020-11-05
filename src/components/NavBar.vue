@@ -146,7 +146,7 @@
                           <p
                             block
                           >Zapomenuté heslo? Vyplňte e-mail a klikněte <span 
-                            @click="sendPswdByEmail"> ZDE </span>< 
+                            @click="sendPswdByEmail"> ZDE </span> 
                           </p> 
                       </v-row>  
                     </v-row>
@@ -361,6 +361,7 @@ export default {
     
     // zapomenute heslo
     sendPswdByEmail(){
+    alert ("klik ZDE");
       if (loginEmail == '') {
         alert ("Nejdříve zadejte e-mail.");
       } else if (!this.foundInSQL){
