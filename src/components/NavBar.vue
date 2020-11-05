@@ -145,8 +145,8 @@
                         <v-col class="d-flex ml-auto" cols="12" sm="4" xsm="12">
                           <p
                             block
-                          >Zapomenuté heslo? Vyplňte e-mail a klikněte< <span 
-                            @click="sendPswdByEmail"> ZDE </span> 
+                          >Zapomenuté heslo? Vyplňte e-mail a klikněte <span 
+                            @click="sendPswdByEmail"> ZDE </span>< 
                           </p> 
                       </v-row>  
                     </v-row>
@@ -361,7 +361,35 @@ export default {
     
     // zapomenute heslo
     sendPswdByEmail(){
-      alert ("odeslu email s hslem");
+      if (loginEmail == '') {
+        alert ("Nejdříve zadejte e-mail.");
+      } else if (!this.foundInSQL){
+        alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
+      } else {
+      axios
+        .post("https://mytestwww.tode.cz/SCKaras/login.php", {
+          loginEmail: this.loginEmail,
+        })
+        .then((response) => {
+          let Pswd = response.data[0].userPswd
+          let Name = response.data[0].userName;
+          let Email = response.data[0].userEmail;
+          
+            axios
+            .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php",{
+            name: `${Name}`,
+            email: `${email}`,
+            pswd: `${Pswd}`
+             })
+            Name = "";        
+            Email = "";
+            Pswd = "";
+            this.loginShow = false;
+          }
+        });
+      }
+        
+      }
     },
 
     //* user log off
