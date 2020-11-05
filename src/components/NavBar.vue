@@ -179,7 +179,7 @@
                       <v-col cols="12">
                         <v-text-field
                           v-model="phoneNumber"
-                          label="Telefon"
+                          label="Telefon (nepovinný)"
                           maxlength="16"
                         ></v-text-field>
                       </v-col>
@@ -362,9 +362,11 @@ export default {
     // zapomenute heslo
     sendPswdByEmail(){
       if (this.loginEmail == '') {
-        alert ("Nejdříve zadejte e-mail.");
-      } else this.existsInSQL("Users", "userEmail", this.loginEmail); 
-        if (!this.foundInSQL){
+        alert ("Nejdříve zadejte e-mail.")
+        return;
+      };
+      this.existsInSQL("Users", "userEmail", this.loginEmail); 
+      if (!this.foundInSQL){
           alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
       } else {
       axios
