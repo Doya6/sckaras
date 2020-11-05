@@ -390,7 +390,7 @@ export default {
             axios
             .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php",{
             name: `${Name}`,
-            email: `${email}`,
+            email: `${Email}`,
             pswd: `${Pswd}`
              })
             Name = "";        
