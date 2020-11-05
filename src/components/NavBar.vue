@@ -395,8 +395,8 @@ export default {
             Name = "";        
             Email = "";
             Pswd = "";
+            alert(`Přihlašovací údaje jsme vám odeslali na e-mail ${this.loginEmail}.`)
             this.loginEmail ="";
-            alert("Přihlašovací údaje jsme vám odeslali na e-mail.")
             this.loginShow = false;
         });   
       }
