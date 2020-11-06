@@ -6,7 +6,7 @@
           <h3>Kalendář aktivit</h3>
         </v-col>
       
-        <v-col class="pr-4" cols="6" align="end">
+        <v-col class="pr-4" cols="6" align="end" width="80%">
           <v-btn v-on:click="aktivityFilter()" height="90%"   >
             Filtr aktivit
           </v-btn>
@@ -49,12 +49,12 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="7" class = "ml-3" align="start">
+          <v-col  cols="7" class = "pl-2" align="start">
             <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
             <p> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col  cols="3" class = "mr-3" align="end">
+          <v-col  cols="3" class = "pr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
