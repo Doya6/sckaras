@@ -141,12 +141,13 @@ export default {
   methods:{
     getAktivityTypeList() {
     axios
-      .post("https://mytestwww.tode.cz/SCKaras/selectAktivityTypeList.php", {
+      .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
       })
       .then((response) => {
         this.listOfAktivityTypes = (response.data);
+        alert(this.listOfAktivityTypes);
       });
-      alert(this.listOfAktivityTypes);
+      
     },
   
     getAktivityList() {
