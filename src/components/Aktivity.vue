@@ -75,6 +75,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import axios from'axios'
 
 export default {
   name: 'Aktivity',
@@ -87,7 +88,7 @@ export default {
       required: true,
     }
   },
-  created() {
+  mounted() {
     this.getAktivityTypeList()
   },
   data: () => ({
