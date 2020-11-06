@@ -45,7 +45,7 @@
       class='px-3 mx-auto scroll'>
       
         <v-row
-          v-for="(activity, index) in ListOfActivities"
+          v-for="(activity, index) in listOfActivities"
           v-bind:key="index"
           class = "rows"
         >
