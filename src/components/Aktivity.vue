@@ -2,12 +2,12 @@
     <div>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
         
-        <v-col class="pl-4" cols="6">
-          <h3>Kalendář aktivit</h3>
+        <v-col class="pl-4" cols="6" >
+          <h3 class="py-3">Kalendář aktivit</h3>
         </v-col>
       
         <v-col class="pr-4" cols="6" align="end">
-          <v-btn v-on:click="aktivityFilter()" height="90%">
+          <v-btn v-on:click="aktivityFilter()" color="light-blue lighten-3">
             Filtr aktivit
           </v-btn>
         </v-col>
@@ -15,29 +15,29 @@
       </v-row>
 
       <v-dialog  v-model="dialog" max-width="350px" min-width="200px">
-        <v-list>
-          <v-list-item-group 
-            multiple
-            color="gray"
-          >
+        
+        <v-list class= "pa-0">
             <v-list-item
               v-for="(type, i) in listOfAktivityTypes"
               :key="i"
-              class="mx-6" 
+              class="mx-4" 
             >
-              <v-list-item-content>
+              <v-list-item-content >
                 <v-list-item-title v-text="type.eventTypeDesc" ></v-list-item-title>
               </v-list-item-content>
               <v-list-item-action>
                 <v-checkbox 
+                  v-on:click="addToSelectedActivityTypes(type.eventType_id)"
                   color="light-blue lighten-3"
                 ></v-checkbox>
               </v-list-item-action>
             </v-list-item>
-          </v-list-item-group>
-          <v-btn class="mx-auto" width="70%">
-            Použít filtr  
-          </v-btn>
+
+          <v-row no-gutters>
+            <v-btn  class="mx-auto" mb="0" width="100%" color="light-blue lighten-3" >
+              Použít filtr  
+            </v-btn>
+          </v-row>
         </v-list>
       </v-dialog>
 
@@ -49,12 +49,12 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="6" class = "ml-2" align="start">
-            <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
-            <p> {{ activity.eventDesc }}</p>
+          <v-col  cols="8" sm="6" class = "pl-2" align="start">
+            <p class="mb-0"> {{ activity.eventStartDate.slice(0, -3) }}</p>
+            <p class="mb-0"> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col  cols="3" class = "mr-2" align="end">
+          <v-col  cols="4" sm="6" class = "pr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
@@ -65,10 +65,10 @@
       </v-card>
       
       <v-card height="300px"
-      class='px-auto mx-auto mt-3'
+      class='px-auto mx-auto'
       >
       <div>
-          <h3 class='text-left pl-6 light-blue lighten-3 white--text'>Moje rezervace</h3>
+          <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h2 > Datum now: {{ datum }} </h2>
           <h2 > User ID: {{ loggedUserId }} </h2>
       </div>
@@ -78,14 +78,9 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
 import axios from'axios'
 
 export default {
-  name: 'Aktivity',
-  components: {
-    NavBar
-  },
   props: { 
     loggedUser: {
       type: Object,
@@ -96,12 +91,12 @@ export default {
     this.getAktivityTypeList(),
     this.getAktivityList()
   },
-  
+ 
   data: () => ({
     dialog: false,
-    model: [1],
     
     listOfAktivityTypes: [],
+    selectedActivityTypes: [],
     listOfActivities: [],
     
     loggedUserId: 1,
@@ -110,6 +105,7 @@ export default {
   }),
   
   methods:{
+
     getAktivityTypeList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
@@ -128,6 +124,13 @@ export default {
       .then((response) => {
           this.listOfActivities = (response.data);
       });
+    },
+    
+    addToSelectedActivityTypes(TypeId){
+      if (this.selectedActivityTypes.includes(TypeId)) {
+        this.selectedActivityTypes.splice(this.selectedActivityTypes.indexOf(TypeId), 1);
+    } else
+      this.selectedActivityTypes.push(TypeId);
     },
 
     naCoSiKliknul(index){

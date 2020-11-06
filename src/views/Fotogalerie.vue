@@ -16,15 +16,12 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
 
 export default {
-  name: 'Fotogalerie',
-  components: {
-    NavBar
-  },
 }
+
 </script>
+
 <style scoped>
 .kontejner{
   display: grid;
