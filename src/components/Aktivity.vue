@@ -49,8 +49,8 @@
           v-bind:key="index"
           class = "rows"
         >
-        <p class = ml-6 > Termín: {{ listOfActivities.eventStartDate }}</p>
-        <p class = ml-6 > Název aktivity: {{ listOfActivities.eventDesc }}</p>
+        <p class = ml-6 > Termín: {{ activity.eventStartDate }}</p>
+        <p class = ml-6 > Název aktivity: {{ activity.eventDesc }}</p>
         <v-spacer></v-spacer>
         <v-btn
         depressed v-on:click=naCoSiKliknul(index)
