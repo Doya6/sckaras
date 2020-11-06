@@ -116,7 +116,7 @@ export default {
     getAktivityList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php", {
-        dateStart: Date.now(),
+        
       })
       .then((response) => {
           this.listOfActivities = (response.data);
