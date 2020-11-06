@@ -7,14 +7,14 @@
         </v-col>
       
         <v-col class="pr-4" cols="6" align="end">
-          <v-btn v-on:click="aktivityFilter()" height="90%"   >
+          <v-btn v-on:click="aktivityFilter()" height="90%">
             Filtr aktivit
           </v-btn>
         </v-col>
 
       </v-row>
 
-      <v-dialog  v-model="dialog" max-width="350px" min-width="200px" >
+      <v-dialog  v-model="dialog" max-width="350px" min-width="200px">
         <v-list>
           <v-list-item-group 
             multiple
@@ -35,10 +35,10 @@
               </v-list-item-action>
             </v-list-item>
           </v-list-item-group>
+          <v-btn align="center" width="80%">
+            Použít filtr  
+          </v-btn>
         </v-list>
-        <v-btn  width="80%">
-          Použít filtr  
-        </v-btn>
       </v-dialog>
 
       <v-card height="350px" 
@@ -49,12 +49,12 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="7" class = "pl-2" align="start">
+          <v-col  cols="6" class = "ml-2" align="start">
             <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
             <p> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col  cols="3" class = "pr-2" align="end">
+          <v-col  cols="3" class = "mr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
