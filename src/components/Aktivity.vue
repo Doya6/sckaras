@@ -49,13 +49,14 @@
           v-bind:key="index"
           class = "rows"
           >
-          <p class = ml-6 > {{ activity.eventStartDate.slice(0, -3) }}</p>
-          <p class = ml-6 > {{ activity.eventDesc }}</p>
+          <v-col  cols="9" class = "ml-6" align="start">
+            <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
+            <p> {{ activity.eventDesc }}</p>
+          </v-col>
           <v-spacer></v-spacer>
-          <v-col>
+          <v-col  cols="3" class = "mr-6" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
-              class = "mr-6" align="end"
              >
               Rezervovat
             </v-btn>
