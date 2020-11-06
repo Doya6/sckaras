@@ -49,7 +49,7 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="9" class = "ml-6" align="start">
+          <v-col  cols="7" class = "ml-6" align="start">
             <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
             <p> {{ activity.eventDesc }}</p>
           </v-col>
