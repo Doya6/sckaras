@@ -145,7 +145,7 @@ export default {
       })
       .then((response) => {
         this.listOfAktivityTypes = (response.data);
-        alert(${this.listOfAktivityTypes});
+        alert("response asi empty");
       });
       
     },
