@@ -49,7 +49,7 @@
           v-bind:key="index"
           class = "rows"
         >
-        <p class = ml-6 > {{ activity.eventStartDate }}</p>
+        <p class = ml-6 > {{ activity.eventStartDate.slice(0, -3) }}</p>
         <p class = ml-6 > {{ activity.eventDesc }}</p>
         <v-spacer></v-spacer>
         <v-btn
@@ -90,10 +90,7 @@ export default {
   mounted() {
     this.getAktivityTypeList(),
     this.getAktivityList()
-  },
-  computed() {
-  activity.eventStartDate = activity.eventStartDate.slice(0, -3);
-  },
+  }
   
   data: () => ({
     dialog: false,
