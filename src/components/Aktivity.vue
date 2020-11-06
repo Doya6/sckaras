@@ -54,7 +54,7 @@
         <v-spacer></v-spacer>
         <v-btn
         depressed v-on:click=naCoSiKliknul(index)
-        class = mr-6
+        class = "mr-6" align="end"
         >
           Rezervovat
         </v-btn>
