@@ -42,33 +42,37 @@
       </v-dialog>
 
       <v-card height="350px" 
-      class='px-3 mx-auto scroll'>
-      
+      class='px-3 mx-auto scroll'
+      >
         <v-row
           v-for="(activity, index) in listOfActivities"
           v-bind:key="index"
           class = "rows"
-        >
-        <p class = ml-6 > {{ activity.eventStartDate.slice(0, -3) }}</p>
-        <p class = ml-6 > {{ activity.eventDesc }}</p>
-        <v-spacer></v-spacer>
-        <v-btn
-        depressed v-on:click=naCoSiKliknul(index)
-        class = "mr-6" align="end"
-        >
-          Rezervovat
-        </v-btn>
+          >
+          <p class = ml-6 > {{ activity.eventStartDate.slice(0, -3) }}</p>
+          <p class = ml-6 > {{ activity.eventDesc }}</p>
+          <v-spacer></v-spacer>
+          <v-col>
+            <v-btn
+              depressed v-on:click=naCoSiKliknul(index)
+              class = "mr-6" align="end"
+             >
+              Rezervovat
+            </v-btn>
+          </v-col>
         </v-row>
-        <!-- <h2 > Datum now: {{ datum }} </h2> -->
-     
       </v-card>
+      
       <v-card height="300px"
-      class='px-auto mx-auto mt-3'>
+      class='px-auto mx-auto mt-3'
+      >
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text'>Moje rezervace</h3>
+          <h2 > Datum now: {{ datum }} </h2>
           <h2 > User ID: {{ loggedUserId }} </h2>
       </div>
       </v-card>
+      
     </div>
 </template>
 
