@@ -6,7 +6,7 @@
           <h3>Kalendář aktivit</h3>
         </v-col>
       
-        <v-col class="pr-4" cols="6" align="end" width="80%">
+        <v-col class="pr-4" cols="6" align="end">
           <v-btn v-on:click="aktivityFilter()" height="90%"   >
             Filtr aktivit
           </v-btn>
@@ -36,7 +36,7 @@
             </v-list-item>
           </v-list-item-group>
         </v-list>
-        <v-btn>
+        <v-btn  width="80%">
           Použít filtr  
         </v-btn>
       </v-dialog>
