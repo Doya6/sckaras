@@ -34,7 +34,7 @@
             </v-list-item>
 
           <v-row no-gutters>
-            <v-btn  class="mx-auto" mb="0" width="100%" color="light-blue lighten-3" >
+            <v-btn  v-on:click="applyTypeFilter()" class="mx-auto" mb="0" width="100%" color="light-blue lighten-3" >
               Použít filtr  
             </v-btn>
           </v-row>
@@ -49,12 +49,12 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="8" sm="6" class = "pl-2" align="start">
+          <v-col  cols="6" xs="8" class = "pl-2" align="start">
             <p class="mb-0"> {{ activity.eventStartDate.slice(0, -3) }}</p>
             <p class="mb-0"> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col  cols="4" sm="6" class = "pr-2" align="end">
+          <v-col  cols="6" xs="4" class = "pr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
@@ -131,6 +131,10 @@ export default {
         this.selectedActivityTypes.splice(this.selectedActivityTypes.indexOf(TypeId), 1);
     } else
       this.selectedActivityTypes.push(TypeId);
+    },
+
+    applyTypeFilter(){
+      this.dialog = false;
     },
 
     naCoSiKliknul(index){
