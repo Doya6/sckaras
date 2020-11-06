@@ -87,7 +87,7 @@ export default {
       required: true,
     }
   },
-  mounted: {
+  mounted() {
     this.getAktivityTypeList()
   },
   data: () => ({
