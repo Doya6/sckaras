@@ -26,7 +26,7 @@
               class="mx-6" 
             >
               <v-list-item-content>
-                <v-list-item-title v-text="type.typeDescription" ></v-list-item-title>
+                <v-list-item-title v-text="type.eventTypeDesc" ></v-list-item-title>
               </v-list-item-content>
 
               <v-list-item-action>
@@ -146,7 +146,6 @@ export default {
       })
       .then((response) => {
         this.listOfAktivityTypes = (response.data);
-        alert("response asi empty");
       });
       
     },
