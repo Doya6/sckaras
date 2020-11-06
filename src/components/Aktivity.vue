@@ -49,8 +49,8 @@
           v-bind:key="index"
           class = "rows"
         >
-        <p class = ml-6 > Termín: {{ activity.eventStartDate }}</p>
-        <p class = ml-6 > Název aktivity: {{ activity.eventDesc }}</p>
+        <p class = ml-6 > {{ activity.eventStartDate }}</p>
+        <p class = ml-6 > {{ activity.eventDesc }}</p>
         <v-spacer></v-spacer>
         <v-btn
         depressed v-on:click=naCoSiKliknul(index)
@@ -91,6 +91,10 @@ export default {
     this.getAktivityTypeList(),
     this.getAktivityList()
   },
+  computed() {
+  activity.eventStartDate = activity.eventStartDate.slice(0, -3);
+  },
+  
   data: () => ({
     dialog: false,
     model: [1],
@@ -102,6 +106,7 @@ export default {
     datum: Date.now()    
     
   }),
+  
   methods:{
     getAktivityTypeList() {
     axios
