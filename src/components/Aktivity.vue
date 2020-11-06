@@ -87,17 +87,14 @@ export default {
       required: true,
     }
   },
+  mounted: {
+    this.getAktivityTypeList()
+  },
   data: () => ({
     dialog: false,
 
     listOfAktivityTypes: [
-      {id: 1,
-        typeDescription: "cviceni  detmi"},
-        {id: 2,
-        typeDescription: "cviceni"},
-        {id: 3,
-        typeDescription: "tvorenicko"},
-        
+      
     ],
     model: [1],
 
@@ -143,6 +140,16 @@ export default {
     ]
   }),
   methods:{
+    getAktivityTypeList() {
+    axios
+      .post("https://mytestwww.tode.cz/SCKaras/selectAktivityTypeList.php", {
+      })
+      .then((response) => {
+        this.listOfAktivityTypes = (response.data);
+      });
+      alert(this.listOfAktivityTypes);
+    },
+  
     getAktivityList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/getActivityList.php", {
