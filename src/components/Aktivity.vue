@@ -28,17 +28,17 @@
               <v-list-item-content>
                 <v-list-item-title v-text="type.eventTypeDesc" ></v-list-item-title>
               </v-list-item-content>
-
               <v-list-item-action>
-                <v-checkbox
-                  
+                <v-checkbox 
                   color="light-blue lighten-3"
                 ></v-checkbox>
               </v-list-item-action>
-
             </v-list-item>
           </v-list-item-group>
         </v-list>
+        <v-btn>
+          Použít filtr  
+        </v-btn>
       </v-dialog>
 
       <v-card height="350px" 
@@ -49,12 +49,12 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="7" class = "ml-6" align="start">
+          <v-col  cols="7" class = "ml-3" align="start">
             <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
             <p> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col  cols="3" class = "mr-6" align="end">
+          <v-col  cols="3" class = "mr-3" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
