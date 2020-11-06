@@ -35,7 +35,7 @@
               </v-list-item-action>
             </v-list-item>
           </v-list-item-group>
-          <v-btn align="center" width="80%">
+          <v-btn mx-"auto" width="70%">
             Použít filtr  
           </v-btn>
         </v-list>
@@ -49,12 +49,12 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="6" class = "ml-2" align="start">
+          <v-col  cols="6" col-xs-"3" class = "ml-2" align="start">
             <p> {{ activity.eventStartDate.slice(0, -3) }}</p>
             <p> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col  cols="3" class = "mr-2" align="end">
+          <v-col  cols="3" col-xs-"3" class = "mr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
