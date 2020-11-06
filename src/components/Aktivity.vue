@@ -87,15 +87,14 @@ export default {
       required: true,
     }
   },
-  mounted() {
+  created() {
     this.getAktivityTypeList()
   },
   data: () => ({
     dialog: false,
 
-    listOfAktivityTypes: [
-      
-    ],
+    listOfAktivityTypes: [],
+    
     model: [1],
 
     loggedUserId: 1,
