@@ -8,7 +8,7 @@
       
         <v-col class="pr-4" cols="6" align="end">
           <v-btn v-on:click="aktivityFilter()" height="90%"   >
-            Typ aktivity - filtr
+            Filtr aktivit
           </v-btn>
         </v-col>
 
@@ -90,7 +90,7 @@ export default {
   mounted() {
     this.getAktivityTypeList(),
     this.getAktivityList()
-  }
+  },
   
   data: () => ({
     dialog: false,
