@@ -89,55 +89,19 @@ export default {
     }
   },
   mounted() {
-    this.getAktivityTypeList()
+    this.getAktivityTypeList(),
+    this.getAktivityList()
   },
   data: () => ({
     dialog: false,
-
-    listOfAktivityTypes: [],
-    
     model: [1],
-
+    
+    listOfAktivityTypes: [],
+    listOfActivities: [],
+    
     loggedUserId: 1,
-    datum: Date.now(),
-    ListOfActivities: [
-      {id: '01',
-      date: '20201111',
-      name: 'dalsi akce 1',
-      obsazenost: '5 / 5'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 2',
-      obsazenost: '8 / 10'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 3',
-      obsazenost: '2 / 10'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 4',
-      obsazenost: '3 / 5'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 5',
-      obsazenost: '6 / 15'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 6',
-      obsazenost: '5 / 7'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 7',
-      obsazenost: '4 / 12'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 8',
-      obsazenost: '12 / 20'},
-       {id: '02',
-      date: '20201112',
-      name: 'dalsi akce 9',
-      obsazenost: '3 / 6'},
-    ]
+    datum: Date.now()    
+    
   }),
   methods:{
     getAktivityTypeList() {
@@ -152,21 +116,11 @@ export default {
   
     getAktivityList() {
     axios
-      .post("https://mytestwww.tode.cz/SCKaras/getActivityList.php", {
+      .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php", {
         dateStart: Date.now(),
       })
       .then((response) => {
-        if (response.data[0].userPswd == this.loginPassword) {
-          this.loggedUser.id = response.data[0].userID;
-          this.loggedUser.name = response.data[0].userName;
-          this.loggedUser.email = response.data[0].userEmail;
-          this.loginEmail = "";
-          this.loginPassword = "";
-          this.loginShow = false;
-        } else {
-          alert("Zadali jste nesprávné heslo.");
-          this.loginPassword = "";
-        }
+          this.listOfActivities = (response.data);
       });
     },
 
