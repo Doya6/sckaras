@@ -49,12 +49,16 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="6" xs="8" class = "pl-2" align="start">
+          <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
             <h5 class="mb-0" > {{ activity.eventStartDate.slice(0, -3) }}  - {{ activity.eventEndDate.slice(10, -3) }} hod</h5>
             <p class="mb-0"> {{ activity.eventDesc }}</p>
           </v-col>
-          <v-spacer></v-spacer>
-          <v-col  cols="6" xs="4" class = "pr-2" align="end">
+          <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
+           <p class = "my-0 hidden-xs-only"> obsazenost </p>
+           <p class = "my-0 hidden-sm-and-up"> obs. </p>
+           <p class = "my-0"> 01 / {{ activity.maxSumOfAttendees }}</p>
+          </v-col>
+          <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(index)
              >
@@ -123,7 +127,6 @@ export default {
       })
       .then((response) => {
           this.listOfActivities = (response.data);
-          console.log(response.data);
       });
     },
     
