@@ -56,11 +56,11 @@
           <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
            <p class = "my-0 hidden-xs-only"> obsazenost </p>
            <p class = "my-0 hidden-sm-and-up"> obs. </p>
-           <p class = "my-0"> 01 / {{ activity.maxSumOfAttendees }}</p>
+           <p class = "my-0"> 0/{{ activity.maxSumOfAttendees }}</p>
           </v-col>
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
-              depressed v-on:click=naCoSiKliknul(index)
+              depressed v-on:click=naCoSiKliknul(activity.event_id)
              >
               Rezervovat
             </v-btn>
@@ -95,13 +95,15 @@ export default {
     this.getAktivityTypeList(),
     this.getAktivityList()
   },
- 
+
   data: () => ({
     dialog: false,
     
     listOfAktivityTypes: [],
     selectedActivityTypes: [],
     listOfActivities: [],
+
+    obsazenostVal: "",
     
     loggedUserId: 1,
     datum: Date.now()    
@@ -127,9 +129,23 @@ export default {
       })
       .then((response) => {
           this.listOfActivities = (response.data);
+          // let activity;
+          // for (activity in this.listOfActivities){
+          //   axios
+          //   .post("https://mytestwww.tode.cz/SCKaras/selectSumObsazenost.php", {
+          //     selsectEventId: activity.event_id 
+          //   })
+          //   .then((response) => {
+          //     if ((response.data) == null){
+          //       this.listOfActivities.push({obsazenost: "0"});
+          //     } else { 
+          //       this.listOfActivities.push({obsazenost: (response.data)});
+          //     }
+          //   });
+          // }
       });
     },
-    
+      
     addToSelectedActivityTypes(TypeId){
       if (this.selectedActivityTypes.includes(TypeId)) {
         this.selectedActivityTypes.splice(this.selectedActivityTypes.indexOf(TypeId), 1);
@@ -142,8 +158,8 @@ export default {
       this.dialog = false;
     },
 
-    naCoSiKliknul(index){
-      alert(`Kliknul si na index ${index}`)
+    naCoSiKliknul(eventId){
+      alert(`Kliknul si na eventId ${eventId}`)
     },
 
     aktivityFilter(){
