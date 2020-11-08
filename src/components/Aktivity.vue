@@ -50,7 +50,7 @@
           class = "rows"
           >
           <v-col  cols="6" xs="8" class = "pl-2" align="start">
-            <p class="mb-0"> {{ activity.eventStartDate.slice(0, -3) }}</p>
+            <h5 class="mb-0" > {{ activity.eventStartDate.slice(0, -3) }}  - {{ activity.eventEndDate.slice(10, -3) }} hod</h5>
             <p class="mb-0"> {{ activity.eventDesc }}</p>
           </v-col>
           <v-spacer></v-spacer>
@@ -115,14 +115,15 @@ export default {
       });
       
     },
-  
+
     getAktivityList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php", {
-        
+         sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
           this.listOfActivities = (response.data);
+          console.log(response.data);
       });
     },
     
@@ -134,6 +135,7 @@ export default {
     },
 
     applyTypeFilter(){
+      this.getAktivityList();
       this.dialog = false;
     },
 
