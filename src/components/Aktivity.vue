@@ -60,7 +60,7 @@
           </v-col>
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
-              depressed v-on:click=naCoSiKliknul(activity.event_id)
+              depressed v-on:click=naCoSiKliknul(activity.myEventID)
              >
               Rezervovat
             </v-btn>
