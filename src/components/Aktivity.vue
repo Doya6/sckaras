@@ -56,7 +56,7 @@
           <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
            <p class = "my-0 hidden-xs-only"> obsazenost </p>
            <p class = "my-0 hidden-sm-and-up"> obs. </p>
-           <p class = "my-0"> {{ activity.mySum }}/{{ activity.maxSumOfAttendees }}</p>
+           <p class = "my-0"> 0/{{ activity.maxSumOfAttendees }}</p>
           </v-col>
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
@@ -126,7 +126,9 @@ export default {
          sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
+      
           this.listOfActivities = (response.data);
+          
           // let activity;
           // for (activity in this.listOfActivities){
           //   axios
