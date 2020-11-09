@@ -102,8 +102,6 @@ export default {
     listOfAktivityTypes: [],
     selectedActivityTypes: [],
     listOfActivities: [],
-
-    obsazenostVal: "",
     
     loggedUserId: 1,
     datum: Date.now()    
