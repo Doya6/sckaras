@@ -85,12 +85,8 @@
 import axios from'axios'
 
 export default {
-  props: { 
-    loggedUser: {
-      type: Object,
-      required: true,
-    }
-  },
+  props: ["loogedUser"],
+  
   mounted() {
     this.getAktivityTypeList(),
     this.getAktivityList()
