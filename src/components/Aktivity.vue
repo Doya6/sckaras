@@ -74,7 +74,7 @@
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h2 > Datum now: {{ datum }} </h2>
-          <h2 > User ID: {{ loggedUserId }} </h2>
+          <h2 > User ID: {{ loggedUser.id }} </h2>
       </div>
       </v-card>
       
