@@ -20,9 +20,11 @@
       <v-spacer></v-spacer>
       <div class="hidden-sm-and-down">
         <v-btn to="/" color="amber lighten-1" class="mx-1">Home</v-btn>
-        <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1"
-          >Aktivity</v-btn
-        >
+        
+        <router-link  :to="{ name: 'Aktivity', params: {id: loggedUser.id}}" 
+          ><v-btn color="amber lighten-1" class="mx-1">Aktivity</v-btn>
+        </router-link>
+
         <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1"
           >Fotogalerie</v-btn
         >
@@ -260,7 +262,6 @@ import axios from "axios";
 
 export default {
   mounted() {
-    // this.userLogin();
   },
   computed: {
     passwordMatch() {
@@ -494,5 +495,8 @@ export default {
   }
   .click-disabled{
     pointer-events: none;
+  }
+  a{
+    text-decoration: none;
   }
 </style>

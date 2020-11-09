@@ -24,14 +24,9 @@ const routes = [
     component: Fotogalerie,
   },
   {
-    path: '/aktivity',
+    path: '/aktivity/:id',
     name: 'Aktivity',
     component: Aktivity,
-    props: { 
-      loggedUser: {
-        name: "Jan"
-      }
-    }
   },
 
   //comment for build / uncoment for Netlify build

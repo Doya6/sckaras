@@ -74,7 +74,7 @@
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h2 > Datum now: {{ datum }} </h2>
-          <h2 > UserID: {{ loggedUser.id }} </h2>
+          <h2 > UserID: {{ id }} </h2>
       </div>
       </v-card>
       
@@ -83,16 +83,21 @@
 
 <script>
 import axios from'axios'
+import router from '../router'
 
 export default {
-  props: ["loggedUser"],
-  
+
   mounted() {
     this.getAktivityTypeList(),
     this.getAktivityList()
   },
-
+  created() {
+    this.id = this.$route.params.id;
+  },
+  
   data: () => ({
+    id: 0,
+
     dialog: false,
     
     listOfAktivityTypes: [],

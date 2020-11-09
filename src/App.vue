@@ -14,9 +14,7 @@ export default {
   components:{
     NavBar
   },
-  data: () => ({
-    loggedUser: { id: "", name: "", email: "" },
-  }),
+  
 }
 </script>
 
