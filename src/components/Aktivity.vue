@@ -74,7 +74,7 @@
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h2 > Datum now: {{ datum }} </h2>
-          <h2 > UserID: {{ id }} </h2>
+          <h2 > UserID: {{ loggedUserId }} </h2>
           
       </div>
       </v-card>
@@ -84,7 +84,7 @@
 
 <script>
 import axios from'axios'
-import router from '../router'
+//import router from '../router'
 
 export default {
 
@@ -95,7 +95,7 @@ export default {
     //this.$store.dispatch("setMessage");
   },
   created() {
-    this.id = this.$route.params.id;
+    //this.id = this.$route.params.id;
   },
   
   data: () => ({
