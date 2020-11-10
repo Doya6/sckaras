@@ -90,7 +90,7 @@ export default {
 
   mounted() {
     this.getAktivityTypeList(),
-    this.getAktivityList(),
+    this.getAktivityList()
     //this.message = this.$store.getters.getMessage;
     //this.$store.dispatch("setMessage");
   },
