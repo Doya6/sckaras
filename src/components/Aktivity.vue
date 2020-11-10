@@ -77,8 +77,8 @@
           
       <v-row
           v-else
-          v-for="(myActivity, index) in listOfMyActivities"
-          v-bind:key="index"
+          v-for="(myActivity, index1) in listOfMyActivities"
+          v-bind:key="index1"
           class = "rows"
           >
           <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
