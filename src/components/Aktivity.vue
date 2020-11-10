@@ -74,9 +74,9 @@
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h4 > {{ this.userID == '' ? "Nejdrive se prihlaste" : userID }} </h4>
-          <h4> userID: {{ userID }} </h4>
-          <p> {{ compMojeRezrv }} </p>
           
+          <p v-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
+          <h4 v-else> userID: {{ userID }} </h4>
           
       </div>
       </v-card>
@@ -102,11 +102,11 @@ export default {
     //this.id = this.$route.params.id;
   },
   
-  computed: {
-    compMojeRezrv: function () {
-      return (this.userID == '' ? "Nejdrive se prihlaste" : this.userID)
-    }
-  },
+  //computed: {
+  //  compMojeRezrv: function () {
+  //    return (this.userID == '' ? "Nejdrive se prihlaste" : this.userID)
+  //  }
+  //},
   
   data: () => ({
     message: '',
