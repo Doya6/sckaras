@@ -261,6 +261,7 @@ import axios from "axios";
 
 export default {
   mounted() {
+  store.commit('userID', 10)
   },
   computed: {
     passwordMatch() {
