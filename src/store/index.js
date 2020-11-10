@@ -22,7 +22,7 @@ export default new Vuex.Store({
       //const joke = await fetch(url, { headers });
       //const j = await joke.json();
       //state.commit("setMessage", j.joke);
-    }
+    //}
   },
   modules:{
 
