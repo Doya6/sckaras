@@ -75,7 +75,7 @@
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h2 > Datum now: {{ datum }} </h2>
           <h2 > UserID: {{ id }} </h2>
-          <h2 > ta massage: {{ message }} </h2>
+          
       </div>
       </v-card>
       
@@ -99,7 +99,7 @@ export default {
   },
   
   data: () => ({
-    message: '',
+    //message: '',
 
     dialog: false,
     
