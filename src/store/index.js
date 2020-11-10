@@ -18,10 +18,10 @@ export default new Vuex.Store({
     }
   },
   actions: { //asyncronous
-    async setMessage(state) {
-      const joke = await fetch(url, { headers });
-      const j = await joke.json();
-      state.commit("setMessage", j.joke);
+    //async setMessage(state) {
+      //const joke = await fetch(url, { headers });
+      //const j = await joke.json();
+      //state.commit("setMessage", j.joke);
     }
   },
   modules:{
