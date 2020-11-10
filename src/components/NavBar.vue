@@ -430,6 +430,8 @@ export default {
         this.loggedUser.id = "";
         this.loggedUser.name = "";
         this.loggedUser.email = "";
+        
+        this.$store.commit('setUserID', this.loggedUser.id);
       }
     },
 
