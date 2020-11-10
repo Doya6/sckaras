@@ -72,7 +72,7 @@
       class='px-auto mx-auto'
       >      
       <div>
-          <h3 v-on:click="getMyAktivityList()" class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>          
+          <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>          
           <p v-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
           <h4 v-else> userID: {{ userID }} </h4>
           
@@ -93,7 +93,7 @@
           </v-col>
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
-              depressed v-on:click=naCoSiKliknul(myActivity.myEventID)
+              
              >
               Rezervovat2
             </v-btn>
