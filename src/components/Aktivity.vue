@@ -76,7 +76,7 @@
           <p> {{ userID }} </p>
           <p> {{ listOfMyActivities }} </p>
           
-          <p v-if="listOfMyActivities == []" > Nemáte žádné rezervace. </p>
+          <p v-if="listOfMyActivities == ''" > Nemáte žádné rezervace. </p>
           <p v-else-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
           <p v-else> {{ listOfMyActivities }} </p>
    <!--   <v-row
