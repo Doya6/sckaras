@@ -94,6 +94,8 @@ export default {
     this.getAktivityList()
     this.message = this.$store.getters.getMessage;
     this.$store.dispatch("setMessage");
+    this.userID = this.$store.getters.getUserID;
+    this.$store.dispatch("setUserID");
   },
   created() {
     //this.id = this.$route.params.id;
