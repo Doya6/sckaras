@@ -73,10 +73,7 @@
       >
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
-          <h2 > Datum now: {{ datum }} </h2>
-          <h2 > UserID: {{ loggedUserId }} </h2>
-          <h3 > Message: {{ message }} </h3>
-          <h3 > useID: {{ userID }} </h3>
+          <h4 > {{ loggedUseID == '' ? "Nejdrive se prihlaste" : userID }} </h4>
       </div>
       </v-card>
       
@@ -94,7 +91,7 @@ export default {
     this.getAktivityList()
     this.message = this.$store.getters.getMessage;
     this.$store.dispatch("setMessage");
-    this.userID = this.$store.getters.getUserID;
+    this.loggedUserID = this.$store.getters.getUserID;
     this.$store.dispatch("setUserID");
   },
   created() {
@@ -103,7 +100,7 @@ export default {
   
   data: () => ({
     message: '',
-    userID: '',
+    loggedUserID: '',
 
     dialog: false,
     
@@ -111,7 +108,6 @@ export default {
     selectedActivityTypes: [],
     listOfActivities: [],
     
-    loggedUserId: 1,
     datum: Date.now()    
     
   }),
@@ -134,23 +130,7 @@ export default {
          sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
-      
           this.listOfActivities = (response.data);
-          
-          // let activity;
-          // for (activity in this.listOfActivities){
-          //   axios
-          //   .post("https://mytestwww.tode.cz/SCKaras/selectSumObsazenost.php", {
-          //     selsectEventId: activity.event_id 
-          //   })
-          //   .then((response) => {
-          //     if ((response.data) == null){
-          //       this.listOfActivities.push({obsazenost: "0"});
-          //     } else { 
-          //       this.listOfActivities.push({obsazenost: (response.data)});
-          //     }
-          //   });
-          // }
       });
     },
       
