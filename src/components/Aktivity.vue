@@ -92,7 +92,7 @@ export default {
     this.getAktivityTypeList(),
     this.getAktivityList(),
     this.message = this.$store.getters.getMessage;
-    this.$store.dispatch("setMessage");
+    //this.$store.dispatch("setMessage");
   },
   created() {
     this.id = this.$route.params.id;
