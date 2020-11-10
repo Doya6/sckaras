@@ -77,28 +77,7 @@
           <h4 v-else> userID: {{ userID }} </h4>
           
       </div>
-      <v-row
-          v-for="(myActivity, index) in listOfMyActivities"
-          v-bind:key="index"
-          class = "rows"
-          >
-          <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
-            <h5 class="mb-0" > {{ myActivity.eventStartDate.slice(0, -3) }}  - {{ myActivity.eventEndDate.slice(10, -3) }} hod</h5>
-            <p class="mb-0"> {{ myActivity.eventDesc }}</p>
-          </v-col>
-          <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
-           <p class = "my-0 hidden-xs-only"> obsazenost </p>
-           <p class = "my-0 hidden-sm-and-up"> obs. </p>
-           <p class = "my-0"> {{ myActivity.mySUM == null ? 0 :  myActivity.mySUM }}/{{ myActivity.maxSumOfAttendees }}</p>
-          </v-col>
-          <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
-            <v-btn
-              
-             >
-              Rezervovat2
-            </v-btn>
-          </v-col>
-        </v-row>
+  
       </v-card>
       
     </div>
@@ -113,7 +92,7 @@ export default {
   mounted() {
     this.getAktivityTypeList()
     this.getAktivityList()
-    this.getMyAktivityList()
+    //this.getMyAktivityList()
     
     this.message = this.$store.getters.getMessage;
     this.$store.dispatch("setMessage");
@@ -139,7 +118,7 @@ export default {
     listOfAktivityTypes: [],
     selectedActivityTypes: [],
     listOfActivities: [],
-    listOfMyActivities: [],
+    //listOfMyActivities: [],
     
     datum: Date.now()    
     
