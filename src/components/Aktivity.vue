@@ -73,12 +73,12 @@
       >      
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>          
-          <p v-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
-          
+          <p v-if="listOfMyActivities == []" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
+          <p v-if="listOfMyActivities != []" > {{ listOfMyActivities }} </p>
       <v-row
           v-else
-          v-for="(myActivity, index1) in listOfMyActivities"
-          v-bind:key="index1"
+          v-for="(myActivity, index) in listOfMyActivities"
+          v-bind:key="index"
           class = "rows"
           >
           <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
