@@ -24,7 +24,7 @@ const routes = [
     component: Fotogalerie,
   },
   {
-    path: '/aktivity/:id',
+    path: '/aktivity',
     name: 'Aktivity',
     component: Aktivity,
   },
