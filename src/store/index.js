@@ -3,19 +3,19 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-//const url = "https://icanhazdadjoke.com";
-//const headers = { Accept: "application/json"};
+const url = "https://icanhazdadjoke.com";
+const headers = { Accept: "application/json"};
 
 export default new Vuex.Store({
   state: {
-   // message: 'Hello from Vuex',
-    //noveMessage: []
+    message: 'Hello from Vuex',
+    noveMessage: []
   },
   mutations: { //syncronous
-    //setMessage(state, payload) {
-    //  state.message = payload;
-    //  state.noveMessage.push(payload);
-    //}
+    setMessage(state, payload) {
+      state.message = payload;
+      state.noveMessage.push(payload);
+    }
   },
   actions: { //asyncronous
     //async setMessage(state) {
@@ -28,7 +28,7 @@ export default new Vuex.Store({
 
   },
   getters: {
-    //getMessage: state => state.message 
+    getMessage: state => state.message 
   },
 
     
