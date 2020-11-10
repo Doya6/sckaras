@@ -9,7 +9,7 @@ const headers = { Accept: "application/json"};
 export default new Vuex.Store({
   state: {
     message: 'Hello from Vuex',
-    userID: '',
+    userID: 'tomojeID',
     noveMessage: []
   },
   mutations: { //syncronous
