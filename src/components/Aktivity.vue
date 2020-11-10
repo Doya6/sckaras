@@ -73,8 +73,8 @@
       >
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
-          <h4 > {{ this.loggedUseID == '' ? "Nejdrive se prihlaste" : loggedUseID }} </h4>
-          <h4> loggedUserID: {{ loggedUseID }} </h4>
+          <h4 > {{ this.userID == '' ? "Nejdrive se prihlaste" : userID }} </h4>
+          <h4> userID: {{ userID }} </h4>
           
           
       </div>
@@ -94,7 +94,7 @@ export default {
     this.getAktivityList()
     this.message = this.$store.getters.getMessage;
     this.$store.dispatch("setMessage");
-    this.loggedUserID = this.$store.getters.getUserID;
+    this.userID = this.$store.getters.getUserID;
     this.$store.dispatch("setUserID");
   },
   created() {
@@ -103,7 +103,7 @@ export default {
   
   data: () => ({
     message: '',
-    loggedUserID: '',
+    userID: '',
 
     dialog: false,
     
