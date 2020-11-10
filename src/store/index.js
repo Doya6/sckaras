@@ -8,15 +8,9 @@ const headers = { Accept: "application/json"};
 
 export default new Vuex.Store({
   state: {
-    message: 'Hello from Vuex',
-    userID: '',
-    noveMessage: []
+    userID: ''
   },
   mutations: { //syncronous
-    setMessage(state, payload) {
-      state.message = payload;
-      state.noveMessage.push(payload);
-    },
     setUserID(state, payload) {
       state.userID = payload;
     }
@@ -32,7 +26,6 @@ export default new Vuex.Store({
 
   },
   getters: {
-    getMessage: state => state.message ,
     getUserID: state => state.userID 
   },
 

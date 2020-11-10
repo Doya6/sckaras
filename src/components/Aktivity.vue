@@ -1,21 +1,18 @@
 <template>
     <div>
+      <!-- KALENDAR ------------------------------------------------------------------>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
-        
         <v-col class="pl-4" cols="6" >
           <h3 class="py-3">Kalendář aktivit</h3>
         </v-col>
-      
         <v-col class="pr-4" cols="6" align="end">
           <v-btn v-on:click="aktivityFilter()" color="light-blue lighten-3">
             Filtr aktivit
           </v-btn>
         </v-col>
-
       </v-row>
-
-      <v-dialog  v-model="dialog" max-width="350px" min-width="200px">
-        
+      <!-- VYBER TYPU ---------------------------------------------------------------->
+      <v-dialog  v-model="dialog" max-width="350px" min-width="200px">  
         <v-list class= "pa-0">
             <v-list-item
               v-for="(type, i) in listOfAktivityTypes"
@@ -32,7 +29,6 @@
                 ></v-checkbox>
               </v-list-item-action>
             </v-list-item>
-
           <v-row no-gutters>
             <v-btn  v-on:click="applyTypeFilter()" class="mx-auto" mb="0" width="100%" color="light-blue lighten-3" >
               Použít filtr  
@@ -40,8 +36,8 @@
           </v-row>
         </v-list>
       </v-dialog>
-
-      <v-card height="350px" 
+      <!-- VYBER TYPU ^^^^ ---------------------------------------------------------------------->
+      <v-card height="450px" 
       class='px-3 mx-auto scroll'
       >
         <v-row
@@ -50,7 +46,7 @@
           class = "rows"
           >
           <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
-            <h5 class="mb-0" > {{ activity.eventStartDate.slice(0, -3) }}  - {{ activity.eventEndDate.slice(10, -3) }} hod</h5>
+            <h5 class="mb-0" > {{ activity.eventStartDate.slice(0, -3) }}  - {{ activity.eventEndDate.slice(11, -3) }} hod</h5>
             <p class="mb-0"> {{ activity.eventDesc }}</p>
           </v-col>
           <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
@@ -67,26 +63,26 @@
           </v-col>
         </v-row>
       </v-card>
-      
-      <v-card height="300px"
-      class='px-auto mx-auto'
-      >      
-      <div>
-          <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
-          <p> {{ userID }} </p>
-          <p> {{ listOfMyActivities }} </p>
+      <!-- MOJE REZERVACE ------------------------------------------------------------------>
+      <v-card height="300px" 
+      class='px-3 mx-auto scroll'
+      >
+        <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
+          <v-col class="pl-4" cols="6" >
+            <h3 class="py-3">Moje rezervace</h3>
+          </v-col>
+        </v-row>
+
+        <p v-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
           
-          <p v-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
-          <p v-else-if="listOfMyActivities[0] == ''" > Nemáte žádné rezervace. </p>
-          <p v-else> {{ listOfMyActivities }} </p>
-   <!--   <v-row
+        <v-row
           v-else
           v-for="(myActivity, index) in listOfMyActivities"
           v-bind:key="index"
           class = "rows"
           >
           <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
-            <h5 class="mb-0" > {{ myActivity.eventStartDate.slice(0, -3) }}  - {{ myActivity.eventEndDate.slice(10, -3) }} hod</h5>
+            <h5 class="mb-0" > {{ myActivity.eventStartDate }}  - {{ myActivity.eventEndDate }} hod</h5>
             <p class="mb-0"> {{ myActivity.eventDesc }}</p>
           </v-col>
           <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
@@ -95,11 +91,9 @@
            <p class = "my-0"> {{ myActivity.mySUM == null ? 0 :  myActivity.mySUM }}/{{ myActivity.maxSumOfAttendees }}</p>
           </v-col>
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
-            <v-btn>Rezervovat2</v-btn>
+            <v-btn>Zrušit</v-btn>
           </v-col>
-         </v-row> -->
-            
-      </div>
+         </v-row>
       </v-card>
     </div>
 </template>
@@ -110,24 +104,20 @@ import axios from'axios'
 export default {
 
   mounted() {
+    this.userID = this.$store.getters.getUserID;
+    
     this.getAktivityTypeList()
     this.getAktivityList()
     this.getMyAktivityList()
-    
-    this.message = this.$store.getters.getMessage;
-    this.$store.dispatch("setMessage");
-    this.userID = this.$store.getters.getUserID;
-    this.$store.dispatch("setUserID");
   },
 
-  //computed: {
-  //  compMojeRezrv: function () {
-  //    return (this.userID == '' ? "Nejdrive se prihlaste" : this.userID)
-  //  }
-  //},
+  computed: {
+   Date: function () {
+     return Date.slice(0, -3);
+   }
+  },
   
   data: () => ({
-    message: '',
     userID: '',
 
     dialog: false,
