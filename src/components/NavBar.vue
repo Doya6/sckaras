@@ -261,7 +261,7 @@ import axios from "axios";
 
 export default {
   mounted() {
-  store.commit('setUserID', {
+  this.$store.commit('setUserID', {
     userID: 10
     })
   },
