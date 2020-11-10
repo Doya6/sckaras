@@ -74,7 +74,7 @@
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>          
           <p v-if="listOfMyActivities == []" > Nemáte žádné rezervace. </p>
-          <p v-else-if="listOfMyActivities = 'Nejste prihlaseni'" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
+          <p v-else-if="listOfMyActivities == 'Nejste prihlaseni'" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
       <v-row
           v-else
           v-for="(myActivity, index) in listOfMyActivities"
