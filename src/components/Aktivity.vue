@@ -112,7 +112,9 @@ export default {
 
   mounted() {
     this.getAktivityTypeList(),
-    this.getAktivityList()
+    this.getAktivityList(),
+    this.getMyAktivityList()
+    
     this.message = this.$store.getters.getMessage;
     this.$store.dispatch("setMessage");
     this.userID = this.$store.getters.getUserID;
