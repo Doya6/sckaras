@@ -73,7 +73,10 @@
       >
       <div>
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
-          <h4 > {{ loggedUseID == '' ? "Nejdrive se prihlaste" : userID }} </h4>
+          <h4 > {{ this.loggedUseID == '' ? "Nejdrive se prihlaste" : loggedUseID }} </h4>
+          <h4> loggedUserID: {{ loggedUseID }} </h4>
+          
+          
       </div>
       </v-card>
       
