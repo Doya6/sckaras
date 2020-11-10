@@ -76,6 +76,7 @@
           <h2 > Datum now: {{ datum }} </h2>
           <h2 > UserID: {{ loggedUserId }} </h2>
           <h3 > Message: {{ message }} </h3>
+          <h3 > useID: {{ userID }} </h3>
       </div>
       </v-card>
       
@@ -100,6 +101,7 @@ export default {
   
   data: () => ({
     message: '',
+    userID: '',
 
     dialog: false,
     
