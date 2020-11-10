@@ -75,7 +75,7 @@
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>
           <h2 > Datum now: {{ datum }} </h2>
           <h2 > UserID: {{ loggedUserId }} </h2>
-          
+          <h3 > Message: {{ message }} </h3>
       </div>
       </v-card>
       
@@ -91,15 +91,15 @@ export default {
   mounted() {
     this.getAktivityTypeList(),
     this.getAktivityList()
-    //this.message = this.$store.getters.getMessage;
-    //this.$store.dispatch("setMessage");
+    this.message = this.$store.getters.getMessage;
+    this.$store.dispatch("setMessage");
   },
   created() {
     //this.id = this.$route.params.id;
   },
   
   data: () => ({
-    //message: '',
+    message: '',
 
     dialog: false,
     
