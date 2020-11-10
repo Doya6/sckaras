@@ -21,9 +21,8 @@
       <div class="hidden-sm-and-down">
         <v-btn to="/" color="amber lighten-1" class="mx-1">Home</v-btn>
         
-        <router-link  :to="{ name: 'Aktivity', params: {id: loggedUser.id}}" 
-          ><v-btn color="amber lighten-1" class="mx-1">Aktivity</v-btn>
-        </router-link>
+       <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1">Aktivity</v-btn>
+        
 
         <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1"
           >Fotogalerie</v-btn
@@ -496,7 +495,5 @@ export default {
   .click-disabled{
     pointer-events: none;
   }
-  a{
-    text-decoration: none;
-  }
+
 </style>
