@@ -170,7 +170,7 @@ export default {
     getMyAktivityList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectMyEvents.php", {
-         sqlStringWhere: this.userID  
+         sqlStringUserID: this.userID  
       })
       .then((response) => {
           this.listOfMyActivities = (response.data);
