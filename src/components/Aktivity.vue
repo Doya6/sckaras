@@ -85,24 +85,20 @@
 
 <script>
 import axios from'axios'
-//import router from '../router'
 
 export default {
 
   mounted() {
     this.getAktivityTypeList()
     this.getAktivityList()
-    //this.getMyAktivityList()
+    this.getMyAktivityList()
     
     this.message = this.$store.getters.getMessage;
     this.$store.dispatch("setMessage");
     this.userID = this.$store.getters.getUserID;
     this.$store.dispatch("setUserID");
   },
-  created() {
-    //this.id = this.$route.params.id;
-  },
-  
+
   //computed: {
   //  compMojeRezrv: function () {
   //    return (this.userID == '' ? "Nejdrive se prihlaste" : this.userID)
@@ -118,7 +114,7 @@ export default {
     listOfAktivityTypes: [],
     selectedActivityTypes: [],
     listOfActivities: [],
-    //listOfMyActivities: [],
+    listOfMyActivities: [],
     
     datum: Date.now()    
     
