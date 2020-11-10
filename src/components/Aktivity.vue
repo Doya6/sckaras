@@ -111,8 +111,8 @@ import axios from'axios'
 export default {
 
   mounted() {
-    this.getAktivityTypeList(),
-    this.getAktivityList(),
+    this.getAktivityTypeList()
+    this.getAktivityList()
     this.getMyAktivityList()
     
     this.message = this.$store.getters.getMessage;
