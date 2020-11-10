@@ -75,7 +75,8 @@
           <h3 class='text-left pl-6 light-blue lighten-3 white--text py-3'>Moje rezervace</h3>          
           <p v-if="listOfMyActivities == []" > Nemáte žádné rezervace. </p>
           <p v-else-if="listOfMyActivities == 'Nejste prihlaseni'" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
-      <v-row
+          <p v-else> {{ listOfMyActivities }} </p>
+   <!--   <v-row
           v-else
           v-for="(myActivity, index) in listOfMyActivities"
           v-bind:key="index"
@@ -93,7 +94,7 @@
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn>Rezervovat2</v-btn>
           </v-col>
-         </v-row>
+         </v-row> -->
             
       </div>
       </v-card>
