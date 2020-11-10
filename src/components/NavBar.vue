@@ -368,7 +368,7 @@ export default {
             this.loggedUser.name = response.data[0].userName;
             this.loggedUser.email = response.data[0].userEmail;
             
-            this.$store.commit('setUserID', 10);
+            this.$store.commit('setUserID', this.loggedUser.id);
             
             this.loginEmail = "";
             this.loginPassword = "";
