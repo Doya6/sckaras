@@ -116,7 +116,7 @@ export default {
    Date: function () {
      return Date.slice(0, -3);
    },
-   showRezervovatButton: function(index) {
+   showRezervovatButton: function() {
    if ((activity.mySUM(index) == activity.maxSumOfAttendees(index)) || (this.userID === '')) {
      return true;
      }
