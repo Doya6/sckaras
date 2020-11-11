@@ -374,7 +374,7 @@ export default {
             this.loginPassword = "";
             this.loginShow = false;
             
-            router.push({ path: '/' })
+            router.push('Home');
             
           } else {
             alert("Zadali jste nesprávné heslo.");
@@ -435,6 +435,9 @@ export default {
         this.loggedUser.email = "";
         
         this.$store.commit('setUserID', this.loggedUser.id);
+        
+        router.push('Home');
+        
       }
     },
 
