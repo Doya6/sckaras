@@ -57,7 +57,7 @@
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
               depressed v-on:click=naCoSiKliknul(activity.myEventID)
-              v-bind:disabled="showRezervovatButton[activity]"
+              v-bind:disabled="showRezervovatButton(activity.index)"
              >
               Rezervovat
             </v-btn>
@@ -116,8 +116,8 @@ export default {
    Date: function () {
      return Date.slice(0, -3);
    },
-   showRezervovatButton: function(activity) {
-   if ((activity.mySUM == activity.maxSumOfAttendees) || (this.userID === '')) {
+   showRezervovatButton: function(index) {
+   if ((activity.mySUM(index) == activity.maxSumOfAttendees(index)) || (this.userID === '')) {
      return true;
      } return false;
    }
