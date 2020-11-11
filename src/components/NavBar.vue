@@ -374,7 +374,7 @@ export default {
             this.loginPassword = "";
             this.loginShow = false;
             
-            this.$router.push({ name: 'Aktivity' });
+            this.$router.push({ name: 'Home' });
             
           } else {
             alert("Zadali jste nesprávné heslo.");
@@ -436,7 +436,7 @@ export default {
         
         this.$store.commit('setUserID', this.loggedUser.id);
         
-        this.$router.push({ name: 'Aktivity' });
+        this.$router.push({ name: 'Home' });
         
       }
     },
