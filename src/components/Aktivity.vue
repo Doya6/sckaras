@@ -2,32 +2,28 @@
     <div>
       <!-- MOJE REZERVACE ------------------------------------------------------------------>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
-          <v-col class="pl-4" cols="12" >
-            <h3 class="py-3">Moje rezervace {{ rezervaceStav }}</h3>
-          </v-col>
+        <v-col class="pl-4 rows" cols="12" >
+          <h3 class="py-3">Moje rezervace <span class="rezervaceStav px-6 body-2"> {{ rezervaceStav }}</span></h3>
+        </v-col>
+      </v-row>
+      <v-row
+        v-for="(myActivity, index) in listOfMyActivities"
+        v-bind:key="index"
+        class = "rows px-3"
+        >
+        <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
+          <h5 class="mb-0" > {{ myActivity.eventStartDate.slice(0, -3) }}  - {{ myActivity.eventEndDate.slice(11, -3) }} hod</h5>
+          <p class="mb-0"> {{ myActivity.eventDesc }}</p>
+        </v-col>
+        <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
+          <p class = "my-0 hidden-xs-only"> obsazenost </p>
+          <p class = "my-0 hidden-sm-and-up"> obs. </p>
+          <p class = "my-0"> {{ myActivity.mySUM == null ? 0 :  myActivity.mySUM }}/{{ myActivity.maxSumOfAttendees }}</p>
+        </v-col>
+        <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
+          <v-btn>Zrušit</v-btn>
+        </v-col>
         </v-row>
-      <v-card height="300px" 
-      class='px-3 mx-auto scroll'
-      >
-        <v-row
-          v-for="(myActivity, index) in listOfMyActivities"
-          v-bind:key="index"
-          class = "rows"
-          >
-          <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
-            <h5 class="mb-0" > {{ myActivity.eventStartDate.slice(0, -3) }}  - {{ myActivity.eventEndDate.slice(11, -3) }} hod</h5>
-            <p class="mb-0"> {{ myActivity.eventDesc }}</p>
-          </v-col>
-          <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
-           <p class = "my-0 hidden-xs-only"> obsazenost </p>
-           <p class = "my-0 hidden-sm-and-up"> obs. </p>
-           <p class = "my-0"> {{ myActivity.mySUM == null ? 0 :  myActivity.mySUM }}/{{ myActivity.maxSumOfAttendees }}</p>
-          </v-col>
-          <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
-            <v-btn>Zrušit</v-btn>
-          </v-col>
-         </v-row>
-      </v-card>
       <!-- KALENDAR ------------------------------------------------------------------>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
         <v-col class="pl-4" cols="6" >
@@ -44,21 +40,22 @@
         <v-list class= "pa-0">
             <v-list-item
               v-for="(type, i) in listOfAktivityTypes"
-              :key="i"
+              v-bind:key="i"
               class="mx-4" 
             >
-              <v-list-item-content >
+              <v-list-item-content>
                 <v-list-item-title v-text="type.eventTypeDesc" ></v-list-item-title>
               </v-list-item-content>
               <v-list-item-action>
                 <v-checkbox 
                   v-on:click="addToSelectedActivityTypes(type.eventType_id)"
                   color="light-blue lighten-3"
+                  v-bind:value="type"
                 ></v-checkbox>
               </v-list-item-action>
             </v-list-item>
           <v-row no-gutters>
-            <v-btn  v-on:click="applyTypeFilter()" class="mx-auto" mb="0" width="100%" color="light-blue lighten-3" >
+            <v-btn   v-model="selectedActivityTypes" v-on:click="applyTypeFilter()" class="mx-auto" mb="0" width="100%" color="light-blue lighten-3" >
               Použít filtr  
             </v-btn>
           </v-row>
@@ -112,10 +109,10 @@ export default {
   computed: {
    rezervaceStav: function () {
     if (this.userID == '') {
-      return " - Pro zobrazení vašich rezervací se musíte přihlásit."
+      return "- pro zobrazení vašich rezervací se musíte přihlásit"
      }
     if (this.listOfMyActivities == '0'){
-      return " - Nemáte žádné rezervace."
+      return "- nemáte žádné rezervace"
     }
    }
   },
@@ -143,7 +140,6 @@ export default {
       .then((response) => {
         this.listOfAktivityTypes = (response.data);
       });
-      
     },
 
     getAktivityList() {
@@ -177,7 +173,7 @@ export default {
       this.getAktivityList();
       this.dialog = false;
     },
-
+    
     naCoSiKliknul(eventId){
       alert(`Kliknul si na eventId ${eventId}`)
     },
@@ -185,7 +181,6 @@ export default {
     aktivityFilter(){
       this.dialog = !this.dialog;
     }
-
   }
 }
 </script>
@@ -203,5 +198,9 @@ export default {
   }
   .click-disabled{
     pointer-events: none;
+  }
+  .rezervaceStav{
+    color: black;
+  
   }
 </style>
