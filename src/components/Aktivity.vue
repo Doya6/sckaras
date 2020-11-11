@@ -75,7 +75,8 @@
         </v-row>
 
         <p v-if="userID == ''" > Pro zobrazení vašich rezervací se musíte přihlásit. </p>
-          
+        <p v-if-else="listOfMyActivities === 'empty'" > Nemáte žádné rezervace. </p>
+        
         <v-row
           v-else
           v-for="(myActivity, index) in listOfMyActivities"
