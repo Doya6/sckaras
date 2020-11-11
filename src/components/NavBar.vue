@@ -373,6 +373,9 @@ export default {
             this.loginEmail = "";
             this.loginPassword = "";
             this.loginShow = false;
+            
+            router.push({ path: '/' })
+            
           } else {
             alert("Zadali jste nesprávné heslo.");
             this.loginPassword = "";
