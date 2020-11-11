@@ -83,7 +83,7 @@
           class = "rows"
           >
           <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
-            <h5 class="mb-0" > {{ myActivity.eventStartDate }}  - {{ myActivity.eventEndDate }} hod</h5>
+            <h5 class="mb-0" > {{ myActivity.eventStartDate.slice(0, -3) }}  - {{ myActivity.eventEndDate.slice(11, -3) }} hod</h5>
             <p class="mb-0"> {{ myActivity.eventDesc }}</p>
           </v-col>
           <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
@@ -112,17 +112,11 @@ export default {
     this.getMyAktivityList()
   },
 
-  computed: {
-    Date: function () {
-     return Date.slice(0, -3);
-    }
-   },
-   //showRezervovatButton: function(index) {
-   //if ((activity.mySUM(index) == activity.maxSumOfAttendees(index)) || (this.userID === '')) {
-   //  return true;
-   //  } return false;
-   //}
-  
+  //computed: {
+  //  Date: function () {
+  //   return Date.slice(0, -3);
+  //  }
+  //},
   
   data: () => ({
     userID: '',
