@@ -119,7 +119,7 @@ export default {
    showRezervovatButton: function(activity) {
    if ((activity.mySUM == activity.maxSumOfAttendees) || (this.userID === '')) {
      return true;
-     }
+     } return false;
    }
   },
   
