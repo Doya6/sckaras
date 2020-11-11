@@ -26,9 +26,9 @@ $statement->execute();
 
 $arr = $statement->errorInfo();
 if (json_encode($arr[2]) == 'null'){
-	if ($insertIntoTable = "Users"){
+	if ($insertIntoTable === "Users"){
 	$result = "Byli jste úspěšně zaregistrováni.";
-	} elseif ($insertIntoTable = "Rezrvs") { 
+	} elseif ($insertIntoTable === "Rezrvs") { 
 	$result = "Rezervace byla úspěšně vytvořena.";
 	} else 
 	$result = "Data byla odeslána na server.";

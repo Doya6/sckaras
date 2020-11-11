@@ -1,8 +1,13 @@
 <template>
     <div>
         <v-content>
+    <v-card   class='pa-5 mx-auto mt-5 text-center'
+        width='350px'>
+    <a href="https://www.zidenice.eu/zivot_v_mc/kultura/spolecenske-centrum-karas" target="_blank"><img src="/ZideniceLogo.png">Zřizovatel - městská část Brno-Židenice</a>
+    
+    </v-card>
     <v-card 
-        class='pa-5 mx-auto mt-15 text-center'
+        class='pa-5 mx-auto mt-5 text-center'
         width='250px'
     >
         <div>
@@ -70,6 +75,12 @@ export default {
 }
 .mapa{
     height: 400px;
+}
+a{
+    text-decoration: none;
+}
+img{
+    width: 100%;
 }
 </style>
 
