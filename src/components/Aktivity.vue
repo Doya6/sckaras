@@ -113,15 +113,16 @@ export default {
   },
 
   computed: {
-   Date: function () {
+    Date: function () {
      return Date.slice(0, -3);
+    }
    },
    //showRezervovatButton: function(index) {
    //if ((activity.mySUM(index) == activity.maxSumOfAttendees(index)) || (this.userID === '')) {
    //  return true;
    //  } return false;
    //}
-  //},
+  
   
   data: () => ({
     userID: '',
