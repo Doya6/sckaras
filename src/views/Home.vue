@@ -32,5 +32,6 @@ export default {
     background-size: cover;
     background-color: gray;
     transform: scale(1.1);
+    z-index: 0;
   }
   </style>
