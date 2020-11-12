@@ -1,5 +1,6 @@
 <template>
-  <v-app>
+  <v-app style="
+    background: rgba(0,0,0,0);">
     <div>
       <NavBar />
       <router-view/>
