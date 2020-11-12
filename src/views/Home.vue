@@ -1,6 +1,8 @@
 <template>
     <div>
-      <div :style="{'background-image':'url(https://via.placeholder.com/150)'}">
+        <section>
+        <div :style="image" class="image"></div>
+    </section>
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
@@ -10,28 +12,25 @@
           width="100%"
           src="../assets/HomePic.jpg" ></v-img>
         </v-card>
-      </div>
+      </section>
     </div>
 </template>
 
 <script>
 
 export default {
-
-}
+        data() {
+            return {
+                image: {backgroundImage: "url(https://via.placeholder.com/150)"}
+            };
+        }
+    };
 
 </script>
 
 <style>
-.bg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: url( 'https://cdn.pixabay.com/photo/2016/03/26/13/09/organic-1280537_1280.jpg') no-repeat center center;
-    background-size: cover;
-    background-color: gray;
-    transform: scale(1.1);
-  }
+.image {
+        width: 100%;
+        background-repeat: no-repeat;
+    }
   </style>
