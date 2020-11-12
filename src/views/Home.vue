@@ -1,7 +1,7 @@
 <template>
     <div>
       <section>
-        <v-img>height="100%"
+        <v-img height="100%"
           width="100%"
           src="../assets/HomePic.jpg" >
         </v-img>
