@@ -19,7 +19,7 @@
 export default {
         data() {
             return {
-                image: {backgroundImage: "url('../assets/HomePic.jpg')"}
+                image: {backgroundImage: "src='../assets/HomePic.jpg'"}
             };
         }
     };
