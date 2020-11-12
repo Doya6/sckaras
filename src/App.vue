@@ -1,6 +1,5 @@
 <template>
-  <v-app style="
-    background: rgba(0,0,0,0);">
+  <v-app id="inspire">
     <div>
       <NavBar />
       <router-view/>
@@ -18,5 +17,10 @@ export default {
   
 }
 </script>
+
+<style>
+#inspire {
+  background: none;
+</style>
 
 
