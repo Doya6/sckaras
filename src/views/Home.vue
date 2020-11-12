@@ -1,6 +1,6 @@
 <template>
     <div>
-    
+      <container Class="bg">
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
@@ -10,6 +10,7 @@
           width="100%"
           src="../assets/HomePic.jpg" ></v-img>
         </v-card>
+      </container>  
     </div>
 </template>
 
