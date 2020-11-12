@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div :style="{'background-image':'url(https://example.com/bg.png)'}">
+      <div :style="{'background-image':'url(https://via.placeholder.com/150)"'}">
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
