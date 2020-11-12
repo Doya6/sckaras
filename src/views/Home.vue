@@ -1,8 +1,6 @@
 <template>
     <div>
-        <section>
-        <div :style="image" class="image"></div>
-    </section>
+        <section :style="image" class="image">
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
