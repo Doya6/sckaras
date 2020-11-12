@@ -1,6 +1,6 @@
 <template>
-    <div>
-    <span class="bg"></span>
+    <div class="bg">
+    
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
@@ -32,6 +32,5 @@ export default {
     background-size: cover;
     background-color: gray;
     transform: scale(1.1);
-    z-index: 0;
   }
   </style>
