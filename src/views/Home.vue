@@ -1,6 +1,10 @@
 <template>
     <div>
-        <section :style="image" class="image">
+      <section>
+        <v-img>height="100%"
+          width="100%"
+          src="../assets/HomePic.jpg" >
+        </v-img>
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
