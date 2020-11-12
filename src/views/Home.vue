@@ -1,7 +1,6 @@
 <template>
     <div>
-      <section>
-
+      <section :style="{'background-image':"src='../assets/HomePic.jpg'"}">
         <v-card 
           class='pa-5 mx-auto mt-15 text-center'
           width='500px'>
@@ -18,18 +17,11 @@
 <script>
 
 export default {
-        data() {
-            return {
-                image: {backgroundImage: "src='../assets/HomePic.jpg'"}
-            };
-        }
-    };
+
+};
 
 </script>
 
 <style>
-.image {
-        width: 100%;
-        background-repeat: no-repeat;
-    }
-  </style>
+
+</style>
