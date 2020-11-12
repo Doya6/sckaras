@@ -21,7 +21,7 @@
 export default {
         data() {
             return {
-                image: {backgroundImage: "url(https://via.placeholder.com/150)"}
+                image: {backgroundImage: "url('../assets/HomePic.jpg')"}
             };
         }
     };
