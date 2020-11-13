@@ -471,7 +471,7 @@ export default {
     email: "",
     password: "",
     sendEmailSwitch: false,
-    infoEmailOption: false,
+    infoEmailOption: true,
     
     //login data
     loginEmail: "",
