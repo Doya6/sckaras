@@ -13,7 +13,7 @@
         >
         <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
           <h5 class="mb-0" > {{ myActivity.eventStartDate.slice(0, -3) }}  - {{ myActivity.eventEndDate.slice(11, -3) }} hod</h5>
-          <p class="mb-0"> {{ myActivity.eventDesc }}</p>
+          <p class="mb-0"> {{ myActivity.eventName }}</p>
         </v-col>
         <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
           <p class = "my-0 hidden-xs-only"> obsazenost </p>
@@ -70,9 +70,9 @@
           v-bind:key="index"
           class = "rows"
           >
-          <v-col  cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
+          <v-col  v-on:click="showAktivityCard(index)" cols="6" xs="5" sm="7" md="8" lg="9" class = "pl-2 pr-0" align="start">
             <h5 class="mb-0" > {{ activity.eventStartDate.slice(0, -3) }}  - {{ activity.eventEndDate.slice(11, -3) }} hod</h5>
-            <p class="mb-0"> {{ activity.eventDesc }}</p>
+            <p  class="mb-0"> {{ activity.eventName }}</p>
           </v-col>
           <v-col  cols="2" xs="2" sm="2" md="2" lg="1" class = "pl-2 pr-0" align="center">
            <p class = "my-0 hidden-xs-only"> obsazenost </p>
@@ -89,6 +89,73 @@
           </v-col>
         </v-row>
       </v-card>
+      <!-- aktivity Card -------------------------------------------------->
+       <v-dialog v-if="aktivityCard" v-model="aktivityCard" max-width="600px" min-width="360px" >
+        <div>
+          <v-card
+            class="mx-auto"
+            max-width="600"
+            min-width="360px"
+            outlined
+            min-height="200px"
+          >
+            <v-row no-gutters class="pa-3">
+              <v-col class="pr-3" cols="9">
+                <div class="mb-2">
+                  {{ listOfActivities[selectedAktivityCard].eventStartDate.slice(0, -3) }} - 
+                  {{ listOfActivities[selectedAktivityCard].eventEndDate.slice(11, -3) }} hod
+                </div>
+                <div class="headline mb-1  pl-2">
+                  {{ listOfActivities[selectedAktivityCard].eventName }}
+                </div>
+                <div>{{ listOfActivities[selectedAktivityCard].eventDesc }}
+                </div>
+                <div  align="end" class="mt-4">
+                  Je obsazeno {{ listOfActivities[selectedAktivityCard].mySUM == null ? 0 :  listOfActivities[selectedAktivityCard].mySUM }} míst z {{ listOfActivities[selectedAktivityCard].maxSumOfAttendees }}
+                <span >
+                  <v-btn
+                  align="end" v-bind:disabled="(listOfActivities[selectedAktivityCard].mySUM == listOfActivities[selectedAktivityCard].maxSumOfAttendees) || (userID =='')"
+                  class="ml-2">              
+                  Rezervovat
+                  </v-btn>
+                  <!-- <v-input>
+                  počet míst
+                  </v-input> -->
+                </span>  
+                </div> 
+              </v-col>
+
+              <v-col cols="3" align="end" class="rightCollumn">
+                <v-list-item-avatar
+                  tile
+                  size="80"
+                  color="grey">
+                </v-list-item-avatar>
+                <div class="mr-4 font-weight-light">
+                  Organizátor:
+                </div>
+                <div class="mr-4" id=kontaktText>
+                  uziv.jmeno
+                </div>
+                <div class="mr-4 font-weight-light">
+                  Telefon:
+                </div>
+                <div class="mr-4" id=kontaktText>
+                  uziv.telefon
+                </div>
+                <div class="mr-4 font-weight-light">
+                  E-mail:
+                </div>
+                <div class="mr-4" id=kontaktText>
+                  uziv.email
+                </div>
+              </v-col>
+            </v-row>
+
+            
+          </v-card>
+        </div>
+      </v-dialog>
       
     </div>
 </template>
@@ -119,7 +186,8 @@ export default {
   
   data: () => ({
     userID: '',
-
+    aktivityCard: false,
+    selectedAktivityCard: undefined,
     dialog: false,
     
     listOfAktivityTypes: [],
@@ -180,6 +248,11 @@ export default {
 
     aktivityFilter(){
       this.dialog = !this.dialog;
+    },
+    showAktivityCard(index){
+      this.aktivityCard = !this.aktivityCard;
+      this.selectedAktivityCard = index;
+      console.log(this.listOfActivities);
     }
   }
 }
@@ -192,15 +265,21 @@ export default {
 .rows{
   border-bottom: 1px solid Lightgray;
 }
-  .click-enabled{
-    pointer-events: all;
-    cursor: pointer;
-  }
-  .click-disabled{
-    pointer-events: none;
-  }
-  .rezervaceStav{
-    color: black;
-  
-  }
+.click-enabled{
+  pointer-events: all;
+  cursor: pointer;
+}
+.click-disabled{
+  pointer-events: none;
+}
+.rezervaceStav{
+  color: black;
+}
+.rightCollumn{
+border-left: 1px solid gray;
+}
+#kontaktText{
+  color: #64B5F6;
+}
+
 </style>

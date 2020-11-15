@@ -14,7 +14,7 @@ $userEmail = $received_data['loginEmail'];
 $data = array();
 
 
-  $query = "SELECT userID, userName, userPswd, userEmail FROM Users WHERE userEmail = '$userEmail' ";
+  $query = "SELECT userID, userName, userPswd, userEmail, userLevel FROM Users WHERE userEmail = '$userEmail' ";
   $statement = $connect->prepare($query);
   $statement->execute();
   while($row = $statement->fetch(PDO::FETCH_ASSOC))

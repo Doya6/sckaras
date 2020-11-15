@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const url = "https://icanhazdadjoke.com";
 const headers = { Accept: "application/json"};
 
 export default new Vuex.Store({
@@ -26,7 +25,7 @@ export default new Vuex.Store({
 
   },
   getters: {
-    getUserID: state => state.userID 
+    getUserID: state => state.userID
   },
 
     

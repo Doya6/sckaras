@@ -20,16 +20,11 @@
       <v-spacer></v-spacer>
       <div class="hidden-sm-and-down">
         <v-btn to="/" color="amber lighten-1" class="mx-1">Home</v-btn>
-        
-       <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1">Aktivity</v-btn>
-        
-
-        <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1"
-          >Fotogalerie</v-btn
-        >
-        <v-btn to="/Contact" color="amber lighten-1" class="mx-1"
-          >Kontakt</v-btn
-        >
+        <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1">Aktivity</v-btn>
+        <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1">Fotogalerie</v-btn>
+        <v-btn to="/Contact" color="amber lighten-1" class="mx-1">Kontakt</v-btn>
+        <v-btn v-if="loggedUser.userLevel === '1'|| loggedUser.userLevel === '2'" class="mx-1">Přidat aktivitu</v-btn>
+        <v-btn v-if="loggedUser.userLevel === '1'" class="mx-1">UserLevel</v-btn>
       </div>
       <v-spacer></v-spacer>
 
@@ -82,6 +77,21 @@
             </v-list-item-icon>
             <v-list-item-title>Kontakt</v-list-item-title>
           </v-list-item>
+
+          <v-list-item v-if="loggedUser.userLevel === '2' || loggedUser.userLevel === '1'" >
+            <v-list-item-icon>
+              <v-icon>mdi-arrow-right-bold</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Přidat aktivitu</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item v-if="loggedUser.userLevel === '1'" >
+            <v-list-item-icon>
+              <v-icon>mdi-account-cog</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>UserLevel</v-list-item-title>
+          </v-list-item>
+
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -367,6 +377,7 @@ export default {
             this.loggedUser.id = response.data[0].userID;
             this.loggedUser.name = response.data[0].userName;
             this.loggedUser.email = response.data[0].userEmail;
+            this.loggedUser.userLevel = response.data[0].userLevel;
             
             this.$store.commit('setUserID', this.loggedUser.id);
             
@@ -433,6 +444,7 @@ export default {
         this.loggedUser.id = "";
         this.loggedUser.name = "";
         this.loggedUser.email = "";
+        this.loggedUser.userLevel = "";
         
         this.$store.commit('setUserID', this.loggedUser.id);
         
@@ -455,7 +467,7 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
-    loggedUser: { id: "", name: "", email: "" },
+    loggedUser: { id: "", name: "", email: "", userLevel: ""},
     loginShow: false,
     dialog: true,
     tab: 0,
