@@ -100,7 +100,7 @@
             min-height="200px"
           >
             <v-row no-gutters class="pa-3">
-              <v-col class="pr-3" cols="9" sm="7">
+              <v-col class="pr-3" cols="9" xs="6">
                 <div class="mb-2">
                   {{ listOfActivities[selectedAktivityCard].eventStartDate.slice(0, -3) }} - 
                   {{ listOfActivities[selectedAktivityCard].eventEndDate.slice(11, -3) }} hod
@@ -125,7 +125,7 @@
                 </div> 
               </v-col>
 
-              <v-col cols="3" sm="5" align="end" class="rightCollumn">
+              <v-col cols="3" xs="6" align="end" class="rightCollumn">
                 <v-list-item-avatar
                   tile
                   size="80"
