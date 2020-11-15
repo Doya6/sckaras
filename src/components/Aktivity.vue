@@ -100,7 +100,7 @@
             min-height="200px"
           >
             <v-row no-gutters class="pa-3">
-              <v-col class="pr-3" xs="12" sm="9">
+              <v-col class="pr-3" xs="7" sm="9">
                 <div class="mb-2">
                   {{ listOfActivities[selectedAktivityCard].eventStartDate.slice(0, -3) }} - 
                   {{ listOfActivities[selectedAktivityCard].eventEndDate.slice(11, -3) }} hod
@@ -125,7 +125,7 @@
                 </div> 
               </v-col>
             
-              <v-col xs="12" sm="3" align="end" class="rightCollumn">
+              <v-col xs="5" sm="3" align="end" class="rightCollumn">
                 <v-list-item-avatar
                   tile
                   size="80"
@@ -150,10 +150,7 @@
                   uziv.email
                 </div>
               </v-col>
-            
-            </v-row>
-
-            
+            </v-row>  
           </v-card>
         </div>
       </v-dialog>

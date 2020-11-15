@@ -7,11 +7,15 @@ const headers = { Accept: "application/json"};
 
 export default new Vuex.Store({
   state: {
-    userID: ''
+    userID: '',
+    userLevel: ''
   },
   mutations: { //syncronous
     setUserID(state, payload) {
       state.userID = payload;
+    },
+    setUserLevel(state, payload) {
+      state.userLevel = payload;
     }
   },
   actions: { //asyncronous
@@ -25,7 +29,8 @@ export default new Vuex.Store({
 
   },
   getters: {
-    getUserID: state => state.userID
+    getUserID: state => state.userID,
+    getUserLevel: state => state.userLevel
   },
 
     

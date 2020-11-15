@@ -23,10 +23,10 @@
         <v-btn to="/Aktivity" color="amber lighten-1" class="mx-1">Aktivity</v-btn>
         <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1">Fotogalerie</v-btn>
         <v-btn to="/Contact" color="amber lighten-1" class="mx-1">Kontakt</v-btn>
-        <v-btn v-if="loggedUser.userLevel === '1'|| loggedUser.userLevel === '2'" class="mx-1">Přidat aktivitu</v-btn>
-        <v-btn v-if="loggedUser.userLevel === '1'" class="mx-1">UserLevel</v-btn>
+        <v-btn to="/NewActivityForm" v-if="loggedUser.userLevel === '1'|| loggedUser.userLevel === '2'" class="mx-1">Přidat aktivitu</v-btn>
+        <v-btn to="/UserLevelAssign" v-if="loggedUser.userLevel === '1'" class="mx-1">UserLevel</v-btn>
       </div>
-      <v-spacer></v-spacer>
+      <v-spacer></v-spacer> 
 
       <v-card
         class="mx-auto"
@@ -78,14 +78,14 @@
             <v-list-item-title>Kontakt</v-list-item-title>
           </v-list-item>
 
-          <v-list-item v-if="loggedUser.userLevel === '2' || loggedUser.userLevel === '1'" >
+          <v-list-item to="/NewActivityForm" v-if="loggedUser.userLevel === '2' || loggedUser.userLevel === '1'" >
             <v-list-item-icon>
               <v-icon>mdi-arrow-right-bold</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Přidat aktivitu</v-list-item-title>
           </v-list-item>
 
-          <v-list-item v-if="loggedUser.userLevel === '1'" >
+          <v-list-item to="/UserLevelAssign" v-if="loggedUser.userLevel === '1'" >
             <v-list-item-icon>
               <v-icon>mdi-account-cog</v-icon>
             </v-list-item-icon>
@@ -380,7 +380,10 @@ export default {
             this.loggedUser.userLevel = response.data[0].userLevel;
             
             this.$store.commit('setUserID', this.loggedUser.id);
+            this.$store.commit('setUserLevel', this.loggedUser.userLevel);
             
+            console.log(this.loggedUser.id);
+
             this.loginEmail = "";
             this.loginPassword = "";
             this.loginShow = false;
