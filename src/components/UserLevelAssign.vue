@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   mounted() {
     this.userLevel = this.$store.getters.getUserLevel;
@@ -53,7 +55,7 @@ export default {
     return {
       userLevel: '',
       allUsers: [],
-      value: '',
+      value: undefined,
     };
   },
 };
