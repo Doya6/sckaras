@@ -11,7 +11,7 @@
             label="Users"
             filled
             solo
-            v-bind:"items">
+            v-bind:items="items">
             Seznam
             </v-autocomplete>
           </v-col>
