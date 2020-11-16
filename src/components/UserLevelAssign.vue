@@ -37,7 +37,7 @@ export default {
   
   methods: {
     show(){
-    alert(this.value);
+    alert(this.allUsers);
     },
     
     getUserList() {
