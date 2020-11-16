@@ -3,11 +3,19 @@
     
     <v-section v-if="this.userLevel === '1'">
       <h1 class='pl-6 justify="center" light-blue lighten-3 white--text'>Správa uživatelských přístupů UserLevel: {{ userLevel }}</h1>
-      <v-autocomplete
-      filled
-      solo
-      v-bind:"items">Seznam
-      </v-autocomplete>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="12">
+            <v-autocomplete
+            v-model="value"
+            label="Users"
+            filled
+            solo
+            v-bind:"items">
+            Seznam
+            </v-autocomplete>
+          </v-col>
+        </v-row>    
       <v-btn v-on:click="show">SHOW</v-btn>
     </v-section>
     <p v-else>Pro vstup na tuto stránku nemáte oprávnění.</p>
