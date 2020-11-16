@@ -51,13 +51,12 @@ export default {
     
   },
   
-  data() {
-    return {
+  data: () => ({
       userLevel: '',
       allUsers: [],
       value: undefined,
-    };
-  },
+  });
+  
 };
 </script>
 
