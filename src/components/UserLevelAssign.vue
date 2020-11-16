@@ -11,7 +11,7 @@
             label="Users"
             filled
             solo
-            v-bind:items="items">
+            v-bind:items="allUsers">
             Seznam
             </v-autocomplete>
           </v-col>
@@ -28,23 +28,30 @@
 export default {
   mounted() {
     this.userLevel = this.$store.getters.getUserLevel;
-    
+    getUserList();
   },
   
   methods: {
     show(){
-    alert(this.items);
-    alert(this.values);
     alert(this.value);
+    },
+    
+    getUserList() {
+    axios
+      .post("https://mytestwww.tode.cz/SCKaras/selectAllUsers.php", {
+      })
+      .then((response) => {
+        this.allUsers = (response.data);
+      });
     }
+    
   },
   
   data() {
     return {
       userLevel: '',
-      items: ['foo', 'bar', 'fizz', 'buzz'],
-      values: ['foo', 'bar'],
-      value: null,
+      allUsers: [],
+      value: '',
     };
   },
 };
