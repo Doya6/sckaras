@@ -130,7 +130,9 @@
                   tile
                   size="80"
                   color="grey">
+                  <!--
                   <v-img height="100%" width="100%" v-bind:src="require(`../AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`)"></v-img>
+                  -->
                </v-list-item-avatar>
                 <div class="mr-4 font-weight-light">
                   Organizátor:
