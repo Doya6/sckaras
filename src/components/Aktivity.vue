@@ -131,7 +131,7 @@
                   size="80"
                   color="grey">
           
-                  <v-img height="100%" width="100%" src=`https://mytestwww.tode.cz/SCKaras/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`></v-img>
+                  <v-img height="100%" width="100%" v-bind:src="`https://mytestwww.tode.cz/SCKaras/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"></v-img>
             
                </v-list-item-avatar>
                 <div class="mr-4 font-weight-light">
