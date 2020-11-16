@@ -11,7 +11,9 @@
             label="Users"
             filled
             solo
-            v-bind:items="allUsers.userEmail">
+            v-bind:items="allUsers"
+            item-text="userName"
+            item-value="userName">
             Seznam
             </v-autocomplete>
           </v-col>
