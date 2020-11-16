@@ -135,19 +135,19 @@
                   Organizátor:
                 </div>
                 <div class="mr-4" id=kontaktText>
-                  {{ listOfActivities.userName }}
+                  {{ listOfActivities[selectedAktivityCard].userName }}
                 </div>
                 <div class="mr-4 font-weight-light">
                   Telefon:
                 </div>
                 <div class="mr-4" id=kontaktText>
-                  {{ listOfActivities.userPhoneNum }}
+                  {{ listOfActivities[selectedAktivityCard].userPhoneNum }}
                 </div>
                 <div class="mr-4 font-weight-light">
                   E-mail:
                 </div>
                 <div class="mr-4" id=kontaktText>
-                  {{ listOfActivities.userEmail }}
+                  {{ listOfActivities[selectedAktivityCard].userEmail }}
                 </div>
               </v-col>
             </v-row>  
