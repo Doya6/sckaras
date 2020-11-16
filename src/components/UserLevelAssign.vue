@@ -23,7 +23,7 @@ export default {
     
   },
   
-  methods:(){
+  methods: {
     show(){
     alert(this.items);
     alert(this.values);
