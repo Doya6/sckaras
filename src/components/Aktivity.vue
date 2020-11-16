@@ -253,7 +253,6 @@ export default {
     showAktivityCard(index){
       this.aktivityCard = !this.aktivityCard;
       this.selectedAktivityCard = index;
-      console.log(this.listOfActivities);
     }
   }
 }
