@@ -6,7 +6,7 @@
       width='500px'>
         <h2 class='pl-6 justify="center" black white--text'>Správa uživatelských přístupů</h2>
         <v-row no-gutters>
-          <v-col cols="9">
+          <v-col   xs="12" sm="12" md="9">
             <v-autocomplete class="ma-3"
             v-model="selectedUser"
             label="Users"
@@ -17,7 +17,7 @@
             item-value="userEmail">
             </v-autocomplete>
           </v-col>
-          <v-col cols="3">
+          <v-col  xs="12" sm="12" md="3">
             <v-autocomplete class="ma-3"
             v-model="selectedLevel"
             label="Level"
@@ -26,7 +26,8 @@
             v-bind:items="levels">
             </v-autocomplete> 
           </v-col>
-        </v-row> 
+        </v-row>
+      
         <v-row no-gutters>
           <v-col cols="9" left>
             <h4>Level 1</h4> - Admin - zadává/spravuje všechny aktivity a edituje přístupová práva (level)
@@ -61,7 +62,9 @@ export default {
       })
       .then((response) => {   
       });
+      this.getUserList();
     },
+
     
     getUserList() {
     axios
@@ -76,9 +79,10 @@ export default {
   data: () => ({
       userLevel: '',
       allUsers: [],
-      selectedUser: undefined,
+      selectedUser: '',
       levels: [1, 2, 3],
-      selectedLevel: undefined
+      selectedLevel: undefined,
+      showUpdate: false
   }),
   
 };

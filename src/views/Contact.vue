@@ -17,7 +17,7 @@
             615 00 Brno-Židenice</p>
             <p>Tel.: 515 547 884</p>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <a href= "https://www.facebook.com/spolecenskecentrumkaras/" class="fa fa-facebook"></a>
+            <a href= "https://www.facebook.com/spolecenskecentrumkaras/" class="fa fa-facebook" target="_blank"></a>
         </div>
     </v-card>
     <v-card

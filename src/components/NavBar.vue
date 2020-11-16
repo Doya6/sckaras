@@ -24,7 +24,7 @@
         <v-btn to="/Fotogalerie" color="amber lighten-1" class="mx-1">Fotogalerie</v-btn>
         <v-btn to="/Contact" color="amber lighten-1" class="mx-1">Kontakt</v-btn>
         <v-btn to="/NewActivityForm" v-if="loggedUser.userLevel === '1'|| loggedUser.userLevel === '2'" class="mx-1">Přidat aktivitu</v-btn>
-        <v-btn to="/UserLevelAssign" v-if="loggedUser.userLevel === '1'" class="mx-1">UserLevel</v-btn>
+        <v-btn to="/UserLevelAssign" v-if="loggedUser.userLevel === '1'" class="mx-1">User Level</v-btn>
       </div>
       <v-spacer></v-spacer> 
 

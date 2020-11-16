@@ -81,8 +81,8 @@
           </v-col>
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
-              depressed v-on:click=naCoSiKliknul(activity.myEventID)
-              v-bind:disabled="(activity.mySUM == activity.maxSumOfAttendees) || (userID =='')"
+              depressed v-on:click=rezervovat(activity.myEventID)
+              v-bind:disabled="(activity.mySUM == activity.maxSumOfAttendees) || (userID =='') || (Date.parse(activity.eventStartDate) < datum)"
              >
               Rezervovat
             </v-btn>
@@ -100,7 +100,7 @@
             min-height="200px"
           >
             <v-row no-gutters class="pa-3">
-              <v-col class="pr-3" xs="7" sm="9">
+              <v-col class="pr-3" xs="7" sm="8">
                 <div class="mb-2">
                   {{ listOfActivities[selectedAktivityCard].eventStartDate.slice(0, -3) }} - 
                   {{ listOfActivities[selectedAktivityCard].eventEndDate.slice(11, -3) }} hod
@@ -111,10 +111,10 @@
                 <div>{{ listOfActivities[selectedAktivityCard].eventDesc }}
                 </div>
                 <div  align="end" class="mt-4">
-                  Je obsazeno {{ listOfActivities[selectedAktivityCard].mySUM == null ? 0 :  listOfActivities[selectedAktivityCard].mySUM }} míst z {{ listOfActivities[selectedAktivityCard].maxSumOfAttendees }}
+                  obsazeno {{ listOfActivities[selectedAktivityCard].mySUM == null ? 0 :  listOfActivities[selectedAktivityCard].mySUM }} míst z {{ listOfActivities[selectedAktivityCard].maxSumOfAttendees }}
                 <span >
-                  <v-btn
-                  align="end" v-bind:disabled="(listOfActivities[selectedAktivityCard].mySUM == listOfActivities[selectedAktivityCard].maxSumOfAttendees) || (userID =='')"
+                  <v-btn depressed v-on:click=rezervovat(listOfActivities[selectedAktivityCard].myEventID)
+                  align="end" v-bind:disabled="(listOfActivities[selectedAktivityCard].mySUM == listOfActivities[selectedAktivityCard].maxSumOfAttendees) || (userID =='') || (Date.parse(listOfActivities[selectedAktivityCard].eventStartDate) < datum)"
                   class="ml-2">              
                   Rezervovat
                   </v-btn>
@@ -125,7 +125,7 @@
                 </div> 
               </v-col>
             
-              <v-col xs="5" sm="3" align="end" class="rightCollumn">
+              <v-col xs="5" sm="4" align="end" class="rightColumn">
                 <v-list-item-avatar
                   tile
                   size="80"
@@ -243,8 +243,26 @@ export default {
       this.dialog = false;
     },
     
-    naCoSiKliknul(eventId){
+    rezervovat(eventId){
       alert(`Kliknul si na eventId ${eventId}`)
+    },
+
+    rezervovat(eventId){
+      if (this.foundInSQL) {
+        alert(`Uživatelský e-mail ${this.email} už byl zaregistrován.`);
+        this.email = "";
+      } else {
+      axios
+        .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
+          insertIntoTable: "Rezrvs",
+          insertIntoColumns: "event_id, User_id",
+          insertValues: `'${eventId}', '${this.userID}'` 
+        })
+        .then(() => {
+          this.getAktivityList();
+          this.getMyAktivityList();
+        });      
+      }     
     },
 
     aktivityFilter(){
@@ -275,7 +293,7 @@ export default {
 .rezervaceStav{
   color: black;
 }
-.rightCollumn{
+.rightColumn{
 border-left: 1px solid gray;
 }
 #kontaktText{
