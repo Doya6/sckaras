@@ -29,7 +29,7 @@ export default {
     alert(this.values);
     alert(this.value);
     }
-  }
+  },
   
   data() {
     return {
