@@ -171,17 +171,7 @@ export default {
   mounted() {
     this.userID = this.$store.getters.getUserID;
     this.getAktivityTypeList();
-    
-    getAktivityList() {
-    axios
-      .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
-         sqlStringWhere: this.selectedActivityTypes  
-      })
-      .then((response) => {
-          this.listOfActivities = (response.data);
-      });
-   
-    
+    this.getAktivityList();
     this.getMyAktivityList();
   },
 
