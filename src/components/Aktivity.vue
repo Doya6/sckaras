@@ -170,11 +170,9 @@ export default {
 
   mounted() {
     this.userID = this.$store.getters.getUserID;
-  },
-  created() {
-        this.getAktivityTypeList();
-        this.getAktivityList();
-        this.getMyAktivityList();
+    this.getAktivityTypeList();
+    this.getAktivityList();
+    this.getMyAktivityList();
   },
 
   computed: {
@@ -214,15 +212,26 @@ export default {
       });
     },
 
-    getAktivityList() {
-    axios
-      .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
-         sqlStringWhere: this.selectedActivityTypes  
+    async getAktivityList() {
+      try {
+        let {
+          data
+        } = await axios.post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
       })
-      .then((response) => {
-          //this.listOfActivities = (response.data);
-          Vue.set(this, 'listOfActivities', response.data);
-      });
+        this.listOfAktivityTypes = data
+      } catch (error) {
+        console.error(error)
+      }
+      }
+    
+    //axios
+    //  .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
+    //     sqlStringWhere: this.selectedActivityTypes  
+    //  })
+    //  .then((response) => {
+    //      //this.listOfActivities = (response.data);
+    //      Vue.set(this, 'listOfActivities', response.data);
+    //  });
     },
     
     getMyAktivityList() {
