@@ -220,7 +220,8 @@ export default {
          sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
-          this.listOfActivities = (response.data);
+          //this.listOfActivities = (response.data);
+          Vue.set(this, 'listOfActivities', response.data);
       });
     },
     
