@@ -212,24 +212,14 @@ export default {
       });
     },
 
-    async getAktivityList() {
-      try {
-        let {
-          data
-        } = await axios.post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php")
-        this.listOfAktivityTypes = data
-      } catch (error) {
-        console.error(error)
-      }
-    
-    //axios
-    //  .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
-    //     sqlStringWhere: this.selectedActivityTypes  
-    //  })
-    //  .then((response) => {
-    //      //this.listOfActivities = (response.data);
-    //      Vue.set(this, 'listOfActivities', response.data);
-    //  });
+    getAktivityList() {
+    axios
+      .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
+         sqlStringWhere: this.selectedActivityTypes  
+      })
+      .then((response) => {
+          this.listOfActivities = (response.data);
+      });
     },
     
     getMyAktivityList() {
