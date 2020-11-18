@@ -180,7 +180,7 @@ export default {
       .then((response) => {
           this.listOfActivities = (response.data);
       });
-    },
+   
     
     this.getMyAktivityList();
   },
