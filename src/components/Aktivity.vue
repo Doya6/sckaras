@@ -170,8 +170,11 @@ export default {
 
   mounted() {
     this.userID = this.$store.getters.getUserID;
-    
-    this.loadData();
+  },
+  created() {
+        this.getAktivityTypeList();
+        this.getAktivityList();
+        this.getMyAktivityList();
   },
 
   computed: {
@@ -201,17 +204,7 @@ export default {
   }),
   
   methods:{
-  
-    loadData(){
-      this.getAktivityTypeList();
-      setTimeout(() => {
-          this.getAktivityList();
-        }, 1000); 
-        setTimeout(() => {
-           this.getMyAktivityList();
-        }, 1000);  
-    },
-
+ 
     getAktivityTypeList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
