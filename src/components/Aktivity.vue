@@ -215,7 +215,8 @@ export default {
 
     getAktivityList() {
     axios
-      .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php", {
+      .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
+      timeout: 5000,
          sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
