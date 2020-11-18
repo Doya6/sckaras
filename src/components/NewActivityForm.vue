@@ -152,23 +152,23 @@
             </v-col>
           </v-row>
           <!-- MIN OSOB ---------------------------------->
-          <v-text-field 
+          <!-- <v-text-field 
             v-model.number="foo" 
             label="Number" 
             append-outer-icon="add" 
             @click:append-outer="increment" 
             prepend-icon="remove" 
             @click:prepend="decrement">
-          </v-text-field>
+          </v-text-field> -->
           <!-- MIN OSOB ---------------------------------->
-          <v-text-field 
+          <!-- <v-text-field 
             v-model.number="foo" 
             label="Number" 
             append-outer-icon="add" 
             @click:append-outer="increment" 
             prepend-icon="remove" 
             @click:prepend="decrement">
-          </v-text-field>
+          </v-text-field> -->
 
           <v-checkbox
             v-model="checkbox"
