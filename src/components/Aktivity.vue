@@ -6,7 +6,8 @@
           <h3 class="py-3">Moje rezervace <span class="rezervaceStav px-6 body-2"> {{ rezervaceStav }}</span></h3>
         </v-col>
       </v-row>
-      <v-row
+      <div>
+      <v-row 
         v-for="(myActivity, index) in listOfMyActivities"
         v-bind:key="index"
         class = "rows px-3"
@@ -26,6 +27,7 @@
              >Zrušit</v-btn>
         </v-col>
         </v-row>
+        </div>
       <!-- KALENDAR ------------------------------------------------------------------>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
         <v-col class="pl-4" cols="6" >
@@ -38,7 +40,7 @@
         </v-col>
       </v-row>
       <!-- VYBER TYPU ---------------------------------------------------------------->
-      <v-dialog  v-model="dialog" max-width="350px" min-width="200px">  
+      <v-dialog  v-model="aktFilter" max-width="350px" min-width="200px">  
         <v-list class= "pa-0">
             <v-list-item
               v-for="(type, i) in listOfAktivityTypes"
@@ -65,8 +67,7 @@
       </v-dialog>
       <!-- VYBER TYPU ^^^^ ---------------------------------------------------------------------->
       <v-card height="450px" 
-      class='px-3 mx-auto scroll'
-      >
+      class='px-3 mx-auto scroll' >
         <v-row
           v-for="(activity, index) in listOfActivities"
           v-bind:key="index"
@@ -169,13 +170,13 @@ import axios from'axios'
 export default {
   
   mounted() {
-    this.userID = this.$store.getters.getUserID; 
-  },
+    },
   
   created() {
-    this.getAktivityList();
-    //this.getAktivityTypeList();
+    this.userID = this.$store.getters.getUserID;
+    this.getAktivityTypeList(); 
     this.getMyAktivityList();
+    this.getAktivityList();
   },
 
   computed: {
@@ -183,7 +184,7 @@ export default {
     if (this.userID == '') {
       return "- pro zobrazení vašich rezervací se musíte přihlásit"
      }
-    if (this.listOfMyActivities == '0'){
+    if (this.listOfMyActivities.length == 0){
       return "- nemáte žádné rezervace"
     }
    }
@@ -194,18 +195,17 @@ export default {
     aktivityCard: false,
     selectedAktivityCard: undefined,
     dialog: false,
-    
+    aktFilter: false,
     listOfAktivityTypes: [],
     selectedActivityTypes: [],
     listOfActivities: [],
     listOfMyActivities: [],
-    
     datum: Date.now()
     
   }),
   
   methods:{
- 
+  
     getAktivityTypeList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
@@ -232,6 +232,7 @@ export default {
       })
       .then((response) => {
           this.listOfMyActivities = (response.data);
+          console.log(this.listOfMyActivities);
       });
     },
       
@@ -244,7 +245,7 @@ export default {
 
     applyTypeFilter(){
       this.getAktivityList();
-      this.dialog = false;
+      this.aktFilter = false;
     },
     
     rezervovat(eventId){
@@ -259,9 +260,9 @@ export default {
           insertValues: `'${eventId}', '${this.userID}'` 
         })
         .then(() => {
-          alert("Rezervace byla provedena");
           this.getAktivityList();
           this.getMyAktivityList();
+          alert("Rezervace byla provedena");
         });      
       }     
     },
@@ -271,20 +272,18 @@ export default {
       console.log(this.userID);
       axios
       .post("https://mytestwww.tode.cz/SCKaras/cancelRezrvs.php", {
-         canceled: 'yes',
          eventID: eventId,
          userID: this.userID
       })
       .then((response) => { 
-        alert("Rezervace byla zrušena");
         this.getMyAktivityList();
         this.getAktivityList();   
+        alert("Rezervace byla zrušena");
       });
     },
 
     aktivityFilter(){
-      this.getAktivityTypeList();
-      this.dialog = !this.dialog;
+      this.aktFilter = !this.aktFilter;
     },
     
     showAktivityCard(index){
@@ -294,6 +293,11 @@ export default {
   }
 }
 </script>
+
+
+
+
+
 
 <style>
 .scroll {

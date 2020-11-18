@@ -7,8 +7,6 @@ include 'config.php';
 
 $received_data = json_decode(file_get_contents("php://input"), true);
 
-$row = "";
-
 $query = "SELECT * FROM EventTypes";  
 $statement = $connect->prepare($query);
 $statement->execute();

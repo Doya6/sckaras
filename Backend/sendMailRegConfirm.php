@@ -20,9 +20,10 @@ $userPswd = $received_data['pswd'];
 $to_email = $userEmail;
 $subject = 'SC Karas - potvrzeni registrace';
 
-$message = "Úspěšně jste se zaregistrovali na stránkách SCKaras.cz \n \n Uživatelské jméno: $userName \n Heslo: $userPswd \n \n Pro přihlášení použijte vaši e-mail adresu $userEmail.";
+$message = "Na stránkách SCKaras.cz jste se zaregistrovali jako užvatel: $userName \n\n Heslo: $userPswd \n \n Pro přihlášení použijte vaši e-mail adresu $userEmail.";
 
 $headers = "From: noreply@sckaras.cz \n".
+            "Reply-To: noreply@sckaras.cz" . "\r\n" .
          "MIME-Version: 1.0\n".
          "Content-Type: text/plain; charset=\"UTF-8\"\n".
           "Content-Transfer-Encoding: 8bit";

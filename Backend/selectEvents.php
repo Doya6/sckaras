@@ -14,12 +14,13 @@ $aktivityTypesArray = ("'" . implode("', ' ",$received_data['sqlStringWhere']) .
 $data = [];
 
 if($aktivityTypes === []){
-  //$query = "SELECT * FROM Events";
-  //$query = "SELECT *, Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM Events LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id GROUP BY Events.event_id";
-  $query = "SELECT *, Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM Events LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id GROUP BY Events.event_id ORDER BY Events.eventStartDate ASC";
+
+//$query = "SELECT * , Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM `Events` JOIN Users ON Users.userID=Events.initializator_id LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id GROUP BY Events.event_id ORDER BY Events.eventStartDate ASC";
+
+  $query = "SELECT Events.event_id, Events.eventType_id, Events.eventName, Events.eventDesc, Events.eventStartDate, Events.eventEndDate, Events.maxSumOfAttendees, Events.eventCancelDate, Events.initializator_id, Users.userName, Users.userEmail, Users.userPhoneNum, Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM Events JOIN Users ON Users.userID=Events.initializator_id LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id GROUP BY Events.event_id ORDER BY Events.eventStartDate ASC";
+
 }
 else {
-  //$query = "SELECT * FROM Events WHERE eventType_id IN ($aktivityTypesArray) "; 
   $query = "SELECT * , Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM Events LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id WHERE eventType_id IN ($aktivityTypesArray) GROUP BY Events.event_id ORDER BY Events.eventStartDate ASC"; 
 }  
 
