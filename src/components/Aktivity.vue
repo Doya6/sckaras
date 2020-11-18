@@ -216,12 +216,10 @@ export default {
       try {
         let {
           data
-        } = await axios.post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
-      })
+        } = await axios.post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php")
         this.listOfAktivityTypes = data
       } catch (error) {
         console.error(error)
-      }
       }
     
     //axios
