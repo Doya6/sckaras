@@ -167,9 +167,12 @@
 import axios from'axios'
 
 export default {
-
+  
+  mounted() {
+    this.userID = this.$store.getters.getUserID; 
+  },
+  
   created() {
-    this.userID = this.$store.getters.getUserID;
     this.getAktivityTypeList();
     this.getAktivityList();
     this.getMyAktivityList();
