@@ -174,7 +174,7 @@ export default {
   
   created() {
     this.getAktivityList();
-    this.getAktivityTypeList();
+    //this.getAktivityTypeList();
     this.getMyAktivityList();
   },
 
@@ -283,8 +283,10 @@ export default {
     },
 
     aktivityFilter(){
+      this.getAktivityTypeList();
       this.dialog = !this.dialog;
     },
+    
     showAktivityCard(index){
       this.aktivityCard = !this.aktivityCard;
       this.selectedAktivityCard = index;
