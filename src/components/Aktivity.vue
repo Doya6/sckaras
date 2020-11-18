@@ -207,6 +207,7 @@ export default {
     getAktivityTypeList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
+      timeout: 5000,
       })
       .then((response) => {
         this.listOfAktivityTypes = (response.data);
