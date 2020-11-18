@@ -221,8 +221,8 @@ export default {
          sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
-      isFetching = false;
           this.listOfActivities = (response.data);
+          this.isFetching = false;
       });
     },
     
