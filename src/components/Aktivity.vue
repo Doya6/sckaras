@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!isFetching">
+    <div>
       <!-- MOJE REZERVACE ------------------------------------------------------------------>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
         <v-col class="pl-4 rows" cols="12" >
@@ -27,6 +27,7 @@
         </v-col>
         </v-row>
       <!-- KALENDAR ------------------------------------------------------------------>
+      <p v-if="listOfActivities = []"> listOfActivities EMPTY </p>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
         <v-col class="pl-4" cols="6" >
           <h3 class="py-3">Kalendář aktivit</h3>
@@ -198,9 +199,7 @@ export default {
     listOfActivities: [],
     listOfMyActivities: [],
     
-    datum: Date.now(),
-    
-    isFetching: true
+    datum: Date.now()
     
   }),
   
@@ -222,7 +221,6 @@ export default {
       })
       .then((response) => {
           this.listOfActivities = (response.data);
-          this.isFetching = false;
       });
     },
     
