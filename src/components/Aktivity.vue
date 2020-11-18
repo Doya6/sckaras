@@ -21,7 +21,9 @@
           <p class = "my-0"> {{ myActivity.mySUM == null ? 0 :  myActivity.mySUM }}/{{ myActivity.maxSumOfAttendees }}</p>
         </v-col>
         <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
-          <v-btn>Zrušit</v-btn>
+          <v-btn depressed v-on:click=zrusitRezervaci(myActivity.myEventID)
+              v-bind:disabled="(Date.parse(myActivity.eventStartDate) < datum)"
+             >Zrušit</v-btn>
         </v-col>
         </v-row>
       <!-- KALENDAR ------------------------------------------------------------------>
@@ -244,10 +246,6 @@ export default {
     },
     
     rezervovat(eventId){
-      alert(`Kliknul si na eventId ${eventId}`)
-    },
-
-    rezervovat(eventId){
       if (this.foundInSQL) {
         alert(`Uživatelský e-mail ${this.email} už byl zaregistrován.`);
         this.email = "";
@@ -259,10 +257,27 @@ export default {
           insertValues: `'${eventId}', '${this.userID}'` 
         })
         .then(() => {
+          alert("Rezervace byla provedena");
           this.getAktivityList();
           this.getMyAktivityList();
         });      
       }     
+    },
+
+    zrusitRezervaci(eventId){
+      console.log(eventId);
+      console.log(this.userID);
+      axios
+      .post("https://mytestwww.tode.cz/SCKaras/cancelRezrvs.php", {
+         canceled: 'yes',
+         eventID: eventId,
+         userID: this.userID
+      })
+      .then((response) => { 
+        alert("Rezervace byla zrušena");
+        this.getMyAktivityList();
+        this.getAktivityList();   
+      });
     },
 
     aktivityFilter(){
