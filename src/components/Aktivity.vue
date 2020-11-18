@@ -173,8 +173,8 @@ export default {
   },
   
   created() {
-    this.getAktivityTypeList();
     this.getAktivityList();
+    this.getAktivityTypeList();
     this.getMyAktivityList();
   },
 
