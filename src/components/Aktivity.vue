@@ -27,8 +27,8 @@
         </v-col>
         </v-row>
       <!-- KALENDAR ------------------------------------------------------------------>
-      <p v-if="listOfActivities = []"> listOfActivities EMPTY </p>
-      <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
+      <p v-if="listOfActivities.length"> listOfActivities EMPTY </p>
+      <v-row v-else no-gutters align="center" class='light-blue lighten-3 white--text'>
         <v-col class="pl-4" cols="6" >
           <h3 class="py-3">Kalendář aktivit</h3>
         </v-col>
