@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!isFetching">
       <!-- MOJE REZERVACE ------------------------------------------------------------------>
       <v-row no-gutters align="center" class='light-blue lighten-3 white--text'>
         <v-col class="pl-4 rows" cols="12" >
@@ -198,7 +198,9 @@ export default {
     listOfActivities: [],
     listOfMyActivities: [],
     
-    datum: Date.now()    
+    datum: Date.now(),
+    
+    isFetching: true
     
   }),
   
@@ -207,7 +209,6 @@ export default {
     getAktivityTypeList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {
-      timeout: 5000,
       })
       .then((response) => {
         this.listOfAktivityTypes = (response.data);
@@ -217,10 +218,10 @@ export default {
     getAktivityList() {
     axios
       .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php",  {
-      timeout: 5000,
          sqlStringWhere: this.selectedActivityTypes  
       })
       .then((response) => {
+      isFetching = false;
           this.listOfActivities = (response.data);
       });
     },
