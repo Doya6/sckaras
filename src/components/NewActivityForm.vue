@@ -155,7 +155,8 @@
           </v-row>
           <!-- MIN OSOB ---------------------------------->
           <v-row>
-            <v-col cols="6">
+            <v-col cols="6" align="center"
+      justify="center">
             <v-text-field 
               v-model.number="minAttendees" 
               label="min osob" 
@@ -166,7 +167,8 @@
             </v-text-field>
             </v-col>
           <!-- MAX OSOB ---------------------------------->
-            <v-col cols="6">
+            <v-col cols="6" align="center"
+      justify="center">
             <v-text-field 
               v-model.number="maxAttendees" 
               label="max osob" 
