@@ -160,9 +160,9 @@
               v-model.number="minAttendees" 
               label="min osob" 
               append-outer-icon="mdi-plus-box" 
-              @click:append-outer="increment(minAttendees)" 
+              @click:append-outer="incrementMIN" 
               prepend-icon="mdi-minus-box" 
-              @click:prepend="decrement(minAttendees)">
+              @click:prepend="decrementMIN">
             </v-text-field>
             </v-col>
           <!-- MAX OSOB ---------------------------------->
@@ -171,9 +171,9 @@
               v-model.number="maxAttendees" 
               label="max osob" 
               append-outer-icon="mdi-plus-box" 
-              @click:append-outer="increment(maxAttendees)" 
+              @click:append-outer="incrementMAX" 
               prepend-icon="mdi-minus-box" 
-              @click:prepend="decrement(maxAttendees)">
+              @click:prepend="decrementMAX">
             </v-text-field>
             </v-col>
           </v-row>
@@ -274,11 +274,18 @@ export default {
         });
     },
     
-    increment(att) {
-      this.att = parseInt(this.att,10) + 1
+    incrementMIN {
+      this.minAttendees = parseInt(this.minAttendees,10) + 1
     },
-    decrement(att) {
-      this.att = parseInt(this.att,10) - 1
+    decrementMIN {
+      this.minAttendees = parseInt(this.minAttendees,10) - 1
+    },
+    
+    incrementMAX {
+      this.maxAttendees = parseInt(this.maxAttendees,10) + 1
+    },
+    decrementMAX {
+      this.maxAttendees = parseInt(this.maxttendees,10) - 1
     },
 
     validate() {
