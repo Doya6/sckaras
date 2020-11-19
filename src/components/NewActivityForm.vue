@@ -127,7 +127,7 @@
                 v-model="menu3"
                 :close-on-content-click="false"
                 :nudge-right="40"
-                :return-value.sync="starTime"
+                :return-value.sync="endTime"
                 transition="scale-transition"
                 offset-y
                 max-width="290px"
