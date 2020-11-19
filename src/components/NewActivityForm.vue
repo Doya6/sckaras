@@ -144,7 +144,7 @@
                   ></v-text-field>
                 </template>
                 <v-time-picker
-                  v-if="menu1"
+                  v-if="menu3"
                   v-model="endTime"
                   format="24hr"
                   full-width
