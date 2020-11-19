@@ -86,6 +86,7 @@
                 <v-time-picker
                   v-if="menu1"
                   v-model="startTime"
+                  format:"24hr"
                   full-width
                   @click:minute="$refs.menu.save(time)"
                 ></v-time-picker>
@@ -145,6 +146,7 @@
                 <v-time-picker
                   v-if="menu3"
                   v-model="endTime"
+                  format:"24hr"
                   full-width
                   @click:minute="$refs.menu.save(time)"
                 ></v-time-picker>
@@ -272,10 +274,10 @@ export default {
         });
     },
     
-    increment (att) {
+    increment(att) {
       this.att = parseInt(this.att,10) + 1
     },
-    decrement (att) {
+    decrement(att) {
       this.att = parseInt(this.att,10) - 1
     },
 
