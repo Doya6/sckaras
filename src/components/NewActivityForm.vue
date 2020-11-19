@@ -124,7 +124,7 @@
             <v-col cols="6" sm="6" md="6">
               <v-menu
                 ref="menu"
-                v-model="menu1"
+                v-model="menu3"
                 :close-on-content-click="false"
                 :nudge-right="40"
                 :return-value.sync="endTime"
@@ -248,7 +248,7 @@ export default {
       menu2: false,
 
       endTime: null,
-      menu1: false,
+      menu3: false,
       modal: false,
 
       endDate: new Date().toISOString().substr(0, 10),
