@@ -274,17 +274,17 @@ export default {
         });
     },
     
-    incrementMIN {
+    incrementMIN() {
       this.minAttendees = parseInt(this.minAttendees,10) + 1
     },
-    decrementMIN {
+    decrementMIN() {
       this.minAttendees = parseInt(this.minAttendees,10) - 1
     },
     
-    incrementMAX {
+    incrementMAX() {
       this.maxAttendees = parseInt(this.maxAttendees,10) + 1
     },
-    decrementMAX {
+    decrementMAX() {
       this.maxAttendees = parseInt(this.maxttendees,10) - 1
     },
 
