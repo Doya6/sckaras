@@ -65,7 +65,7 @@
               <v-menu
                 ref="menu"
                 v-model="menu1"
-                :close-on-content-click="true"
+                :close-on-content-click="false"
                 :nudge-right="40"
                 :return-value.sync="starTime"
                 transition="scale-transition"
@@ -125,7 +125,7 @@
               <v-menu
                 ref="menu"
                 v-model="menu1"
-                :close-on-content-click="true"
+                :close-on-content-click="false"
                 :nudge-right="40"
                 :return-value.sync="endTime"
                 transition="scale-transition"
