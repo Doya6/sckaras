@@ -57,6 +57,7 @@
                 <v-date-picker
                   v-model="startDate"
                   @input="menu2 = false"
+                   locale="cz"
                 ></v-date-picker>
               </v-menu>
             </v-col>
@@ -84,7 +85,7 @@
                   ></v-text-field>
                 </template>
                 <v-time-picker
-                  v-if="menu"
+                  v-if="menu1"
                   v-model="startTime"
                   format="24hr"
                   full-width
@@ -117,6 +118,7 @@
                 <v-date-picker
                   v-model="endDate"
                   @input="menu4 = false"
+                  locale="cz"
                 ></v-date-picker>
               </v-menu>
             </v-col>
@@ -144,7 +146,7 @@
                   ></v-text-field>
                 </template>
                 <v-time-picker
-                  v-if="menu"
+                  v-if="menu3"
                   v-model="endTime"
                   format="24hr"
                   full-width
