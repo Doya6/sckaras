@@ -240,7 +240,7 @@ export default {
 
       startTime: null,
       menu1: false,
-      modal2: false,
+      modal: false,
 
       startDate: new Date().toISOString().substr(0, 10),
       menu: false,
@@ -249,7 +249,7 @@ export default {
 
       endTime: null,
       menu3: false,
-      modal2: false,
+      modal: false,
 
       endDate: new Date().toISOString().substr(0, 10),
       menu: false,
@@ -275,17 +275,21 @@ export default {
     },
     
     incrementMIN() {
-      this.minAttendees = parseInt(this.minAttendees,10) + 1
+      this.minAttendees++
     },
     decrementMIN() {
-      this.minAttendees = parseInt(this.minAttendees,10) - 1
+    if(this.minAttendees >0){
+      this.minAttendees--
+      }
     },
     
     incrementMAX() {
-      this.maxAttendees = parseInt(this.maxAttendees,10) + 1
+      this.maxAttendees++
     },
     decrementMAX() {
-      this.maxAttendees = parseInt(this.maxttendees,10) - 1
+      if(this.maxAttendees >0){
+      this.maxAttendees--
+      }
     },
 
     validate() {
