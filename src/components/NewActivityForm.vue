@@ -152,23 +152,29 @@
             </v-col>
           </v-row>
           <!-- MIN OSOB ---------------------------------->
-          <v-text-field 
-            v-model.number="minAttendees" 
-            label="min osob" 
-            append-outer-icon="mdi-plus-box" 
-            @click:append-outer="increment" 
-            prepend-icon="mdi-minus-box" 
-            @click:prepend="decrement">
-          </v-text-field>
+          <v-row>
+            <v-col cols="6">
+            <v-text-field 
+              v-model.number="minAttendees" 
+              label="min osob" 
+              append-outer-icon="mdi-plus-box" 
+              @click:append-outer="increment(minAttendees)" 
+              prepend-icon="mdi-minus-box" 
+              @click:prepend="decrement(minAttendees)">
+            </v-text-field>
+            </v-col>
           <!-- MAX OSOB ---------------------------------->
-          <v-text-field 
-            v-model.number="maxAttendees" 
-            label="max osob" 
-            append-outer-icon="mdi-plus-box" 
-            @click:append-outer="increment" 
-            prepend-icon="mdi-minus-box" 
-            @click:prepend="decrement">
-          </v-text-field>
+            <v-col cols="6">
+            <v-text-field 
+              v-model.number="maxAttendees" 
+              label="max osob" 
+              append-outer-icon="mdi-plus-box" 
+              @click:append-outer="increment(maxAttendees)" 
+              prepend-icon="mdi-minus-box" 
+              @click:prepend="decrement(maxAttendees)">
+            </v-text-field>
+            </v-col>
+          </v-row>
 
           <v-checkbox
             v-model="checkbox"
@@ -264,6 +270,13 @@ export default {
         .then((response) => {
           this.listOfAktivityTypes = response.data;
         });
+    },
+    
+    increment (att) {
+      this.att = parseInt(this.att,10) + 1
+    },
+    decrement (att) {
+      this.att = parseInt(this.att,10) - 1
     },
 
     validate() {
