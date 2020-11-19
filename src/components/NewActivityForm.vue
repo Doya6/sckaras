@@ -124,7 +124,7 @@
             <v-col cols="6" sm="6" md="6">
               <v-menu
                 ref="menu"
-                v-model="menu3"
+                v-model="menu1"
                 :close-on-content-click="true"
                 :nudge-right="40"
                 :return-value.sync="endTime"
@@ -144,7 +144,7 @@
                   ></v-text-field>
                 </template>
                 <v-time-picker
-                  v-if="menu3"
+                  v-if="menu1"
                   v-model="endTime"
                   format="24hr"
                   full-width
@@ -248,7 +248,7 @@ export default {
       menu2: false,
 
       endTime: null,
-      menu3: false,
+      menu1: false,
       modal: false,
 
       endDate: new Date().toISOString().substr(0, 10),
