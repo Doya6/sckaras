@@ -65,7 +65,7 @@
               <v-menu
                 ref="menu"
                 v-model="menu1"
-                :close-on-content-click="false"
+                :close-on-content-click="true"
                 :nudge-right="40"
                 :return-value.sync="starTime"
                 transition="scale-transition"
@@ -125,7 +125,7 @@
               <v-menu
                 ref="menu"
                 v-model="menu3"
-                :close-on-content-click="false"
+                :close-on-content-click="true"
                 :nudge-right="40"
                 :return-value.sync="endTime"
                 transition="scale-transition"
@@ -155,9 +155,8 @@
           </v-row>
           <!-- MIN OSOB ---------------------------------->
           <v-row>
-            <v-col cols="6" align="center"
-      justify="center">
-            <v-text-field 
+            <v-col cols="6">
+            <v-text-field align="center"
               v-model.number="minAttendees" 
               label="min osob" 
               append-outer-icon="mdi-plus-box" 
@@ -167,9 +166,8 @@
             </v-text-field>
             </v-col>
           <!-- MAX OSOB ---------------------------------->
-            <v-col cols="6" align="center"
-      justify="center">
-            <v-text-field 
+            <v-col cols="6">
+            <v-text-field align="center"
               v-model.number="maxAttendees" 
               label="max osob" 
               append-outer-icon="mdi-plus-box" 
