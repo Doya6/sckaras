@@ -64,7 +64,7 @@
             <!-- START TIME  ---------------------------------->
             <v-col cols="6" sm="6" md="6">
               <v-menu
-                ref="menu"
+                ref="menu1"
                 v-model="menu1"
                 :close-on-content-click="false"
                 :nudge-right="40"
@@ -125,7 +125,7 @@
             <!-- END TIME  ---------------------------------->
             <v-col cols="6" sm="6" md="6">
               <v-menu
-                ref="menu"
+                ref="menu3"
                 v-model="menu3"
                 :close-on-content-click="false"
                 :nudge-right="40"
