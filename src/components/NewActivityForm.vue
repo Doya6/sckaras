@@ -152,23 +152,23 @@
             </v-col>
           </v-row>
           <!-- MIN OSOB ---------------------------------->
-          <!-- <v-text-field 
-            v-model.number="foo" 
-            label="Number" 
-            append-outer-icon="add" 
+          <v-text-field 
+            v-model.number="minAttendees" 
+            label="min osob" 
+            append-outer-icon="mdi-plus-box" 
             @click:append-outer="increment" 
-            prepend-icon="remove" 
+            prepend-icon="mdi-minus-box" 
             @click:prepend="decrement">
-          </v-text-field> -->
-          <!-- MIN OSOB ---------------------------------->
-          <!-- <v-text-field 
-            v-model.number="foo" 
-            label="Number" 
-            append-outer-icon="add" 
+          </v-text-field>
+          <!-- MAX OSOB ---------------------------------->
+          <v-text-field 
+            v-model.number="maxAttendees" 
+            label="max osob" 
+            append-outer-icon="mdi-plus-box" 
             @click:append-outer="increment" 
-            prepend-icon="remove" 
+            prepend-icon="mdi-minus-box" 
             @click:prepend="decrement">
-          </v-text-field> -->
+          </v-text-field>
 
           <v-checkbox
             v-model="checkbox"
@@ -247,6 +247,9 @@ export default {
       menu: false,
       modal: false,
       menu4: false,
+      
+      minAttendees: '1',
+      maxAttendees: '10',
 
       selectedType: null,
 
