@@ -136,7 +136,7 @@
           
                   <v-img height="100%" width="100%" v-bind:src="`https://mytestwww.tode.cz/SCKaras/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"></v-img>
             
-               </v-list-item-avatar><span><v-btn v-on:click="showAktivityCard(index)"><v-icon>mdi-close</v-icon></v-btn></span>
+               </v-list-item-avatar><span><v-icon v-on:click="showAktivityCard(index)" right small>mdi-close</v-icon></span>
                 <div class="mr-4 font-weight-light">
                   Organizátor:
                 </div>
