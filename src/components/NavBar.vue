@@ -106,6 +106,7 @@
     <div v-if="loginShow">
       <v-dialog v-model="dialog" max-width="600px" min-width="360px">
         <div>
+        <v-row no-gutters align="end"><v-icon v-on:click="closeLoginForm()" small>mdi-close</v-icon></v-row>
           <v-tabs
             v-model="tab"
             show-arrows
@@ -292,6 +293,10 @@ export default {
       this.loginShow = true;
       this.dialog = true;
     },
+    closeLoginForm() {
+      this.loginShow = false;
+      this.dialog = false;
+    },  
     // user login submit
     validate() {
       if (this.$refs.loginForm.validate()) {
