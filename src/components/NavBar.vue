@@ -106,7 +106,6 @@
     <div v-if="loginShow">
       <v-dialog v-model="dialog" max-width="600px" min-width="360px">
         <div>
-        <v-row no-gutters align="end"><v-icon v-on:click="closeLoginForm()" small>mdi-close</v-icon></v-row>
           <v-tabs
             v-model="tab"
             show-arrows
@@ -115,6 +114,7 @@
             dark
             grow
           >
+          <v-row no-gutters align="end"><v-icon v-on:click="closeLoginForm()" small>mdi-close</v-icon></v-row>
             <v-tabs-slider color="light-blue lighten-3"></v-tabs-slider>
             <v-tab v-for="i in tabs" :key="i">
               <v-icon large>{{ i.icon }}</v-icon>
