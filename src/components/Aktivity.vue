@@ -102,7 +102,7 @@
             outlined
             min-height="200px"
           >
-          <v-row no-gutters align="end" class="ma-0 pa-0"><v-icon v-on:click="showAktivityCard(index)" right small>mdi-close</v-icon></v-row>
+          <v-row no-gutters align="end" class="ma-0 pa-0"><v-icon v-on:click="showAktivityCard(index)" small>mdi-close</v-icon></v-row>
             <v-row no-gutters class="pa-3">
               <v-col class="pr-3" xs="7" sm="8">
                 <div class="mb-2">
