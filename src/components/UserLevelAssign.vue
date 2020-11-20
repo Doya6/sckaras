@@ -20,8 +20,8 @@
             >
             </v-autocomplete>
           </v-col>
-          <v-col cols="1" align="center" justify="center">
-            <h1 mb="2">{{ userLevel2show }}</h1>
+          <v-col cols="1" align="center">
+            <p id="currLevel">{{ userLevel2show }}</p>
           </v-col>
           <v-col xs="11" sm="11" md="3" >
             <v-autocomplete
@@ -111,3 +111,11 @@ export default {
   
 };
 </script>
+
+<style scoped>
+#currLevel{
+  font-size: 3.5vh;
+}
+
+</style>
+

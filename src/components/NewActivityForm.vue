@@ -6,7 +6,7 @@
           <v-select
             v-model="selectedType"
             :items="listOfAktivityTypes"
-            :rules="[(v) => !!v || 'Item is required']"
+            :rules="[(v) => !!v || 'Položka je povinná']"
             label="Typ aktivity"
             required
             item-text="eventTypeDesc"
@@ -17,6 +17,7 @@
           <v-text-field
             v-model="nazev"
             :counter="100"
+            :rules="[(v) => !!v || 'Položka je povinná']"
             label="Název aktivity"
             required
           >
@@ -25,6 +26,7 @@
           <v-textarea
             v-model="popis"
             :counter="300"
+            :rules="[(v) => !!v || 'Položka je povinná']"
             name="popis"
             label="Popis aktivity"
             required
@@ -38,6 +40,7 @@
             <v-col cols="6" sm="6" md="6">
               <v-menu
                 v-model="menu2"
+                :rules="[(v) => !!v || 'Položka je povinná']"
                 :close-on-content-click="false"
                 :nudge-right="40"
                 transition="scale-transition"
@@ -52,23 +55,24 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    :rules="[(v) => !!v || 'Položka je povinná']"
                   ></v-text-field>
                 </template>
                 <v-date-picker
                   v-model="startDate"
                   @input="menu2 = false"
-                   locale="cz"
+                  locale="cz"
                 ></v-date-picker>
               </v-menu>
             </v-col>
             <!-- START TIME  ---------------------------------->
             <v-col cols="6" sm="6" md="6">
               <v-menu
-                ref="menu1"
+                ref="menu8"
                 v-model="menu1"
                 :close-on-content-click="false"
                 :nudge-right="40"
-                :return-value.sync="starTime"
+                :return-value.sync="time"
                 transition="scale-transition"
                 offset-y
                 max-width="290px"
@@ -82,14 +86,15 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    :rules="[(v) => !!v || 'Položka je povinná']"
                   ></v-text-field>
                 </template>
                 <v-time-picker
                   v-if="menu1"
                   v-model="startTime"
-                  format="24hr"
                   full-width
-                  @click:minute="$refs.menu.save(time)"
+                  format="24hr"
+                  @click:minute="$refs.menu8.save(time)"
                 ></v-time-picker>
               </v-menu>
             </v-col>
@@ -113,6 +118,7 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    :rules="[(v) => !!v || 'Položka je povinná']"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -125,11 +131,12 @@
             <!-- END TIME  ---------------------------------->
             <v-col cols="6" sm="6" md="6">
               <v-menu
-                ref="menu3"
+                ref="menu9"
                 v-model="menu3"
+                :rules="[(v) => !!v || 'Položka je povinná']"
                 :close-on-content-click="false"
                 :nudge-right="40"
-                :return-value.sync="endTime"
+                :return-value.sync="time"
                 transition="scale-transition"
                 offset-y
                 max-width="290px"
@@ -143,14 +150,15 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    :rules="[(v) => !!v || 'Položka je povinná']"
                   ></v-text-field>
                 </template>
                 <v-time-picker
                   v-if="menu3"
                   v-model="endTime"
-                  format="24hr"
                   full-width
-                  @click:minute="$refs.menu.save(time)"
+                  format="24hr"
+                  @click:minute="$refs.menu9.save(time)"
                 ></v-time-picker>
               </v-menu>
             </v-col>
@@ -158,49 +166,46 @@
           <!-- MIN OSOB ---------------------------------->
           <v-row>
             <v-col cols="6">
-            <v-text-field
-              v-model.number="minAttendees" 
-              label="min osob" 
-              append-outer-icon="mdi-plus-box" 
-              @click:append-outer="incrementMIN" 
-              prepend-icon="mdi-minus-box" 
-              @click:prepend="decrementMIN">
-            </v-text-field>
+              <v-text-field
+                id="maxMinOsob"
+                v-model.number="minAttendees"
+                label="min osob"
+                append-outer-icon="mdi-plus-box"
+                @click:append-outer="incrementMIN"
+                prepend-icon="mdi-minus-box"
+                @click:prepend="decrementMIN"
+                :rules="[(v) => v>0 || 'Položka je povinná']"
+              >
+              </v-text-field>
             </v-col>
-          <!-- MAX OSOB ---------------------------------->
+            <!-- MAX OSOB ---------------------------------->
             <v-col cols="6">
-            <v-text-field
-              v-model.number="maxAttendees" 
-              label="max osob" 
-              append-outer-icon="mdi-plus-box" 
-              @click:append-outer="incrementMAX" 
-              prepend-icon="mdi-minus-box" 
-              @click:prepend="decrementMAX">
-            </v-text-field>
+              <v-text-field
+                id="maxMinOsob"
+                v-model.number="maxAttendees"
+                label="max osob"
+                append-outer-icon="mdi-plus-box"
+                @click:append-outer="incrementMAX"
+                prepend-icon="mdi-minus-box"
+                @click:prepend="decrementMAX"
+                :rules="[(v) => v>0 || 'Položka je povinná']"
+              >
+              </v-text-field>
             </v-col>
           </v-row>
-
-          <v-checkbox
-            v-model="checkbox"
-            :rules="[(v) => !!v || 'You must agree to continue!']"
-            label="Do you agree?"
-            required
-          >
-          </v-checkbox>
+          <v-row justify="space-around">
+          <v-btn color="warning" @click="resetValidation">
+            Vymazat ověření
+          </v-btn>
+          <v-btn color="error" @click="reset"> Vymazat </v-btn>
           <v-btn
             :disabled="!valid"
             color="success"
-            class="mr-4"
             @click="validate"
           >
-            Validate
+            Odeslat
           </v-btn>
-
-          <v-btn color="error" class="mr-4" @click="reset"> Reset Form </v-btn>
-
-          <v-btn color="warning" @click="resetValidation">
-            Reset Validation
-          </v-btn>
+          </v-row>
         </v-form>
       </v-card>
     </v-container>
@@ -219,7 +224,14 @@ export default {
     this.getAktivityTypeList();
   },
 
-  computed: {},
+  // computed: {
+  //   startDateTime(){
+  //     return this.startDate + ' ' + this.startTime;
+  //   },
+  //   endDateTime(){
+  //     return this.endtDate + ' ' + this.endTime;
+  //   }
+  // },
 
   data() {
     return {
@@ -227,6 +239,8 @@ export default {
       listOfAktivityTypes: [],
 
       valid: true,
+
+      selectedType: '',
 
       nazev: "",
       nazevRules: [
@@ -257,13 +271,13 @@ export default {
       menu: false,
       modal: false,
       menu4: false,
-      
-      minAttendees: '1',
-      maxAttendees: '10',
 
-      selectedType: null,
+      startDateTime: '',
+      endDateTime: '',
 
-      checkbox: false,
+      minAttendees: "1",
+      maxAttendees: "10",
+
     };
   },
 
@@ -275,27 +289,34 @@ export default {
           this.listOfAktivityTypes = response.data;
         });
     },
-    
+
     incrementMIN() {
-      this.minAttendees++
+      this.minAttendees++;
     },
     decrementMIN() {
-    if(this.minAttendees >0){
-      this.minAttendees--
+      if (this.minAttendees > 0) {
+        this.minAttendees--;
       }
     },
-    
+
     incrementMAX() {
-      this.maxAttendees++
+      this.maxAttendees++;
     },
     decrementMAX() {
-      if(this.maxAttendees >0){
-      this.maxAttendees--
+      if (this.maxAttendees > 0) {
+        this.maxAttendees--;
       }
     },
 
     validate() {
       this.$refs.form.validate();
+      if (this.valid){
+        console.log(this.startDate + ' ' + this.startTime);
+
+
+        alert("Form odeslan");
+      }
+      this.reset();
     },
     reset() {
       this.$refs.form.reset();
@@ -310,5 +331,8 @@ export default {
 
 
 
-<style>
+<style scoped>
+v-input input #maxMinOsob {
+  text-align: center;
+}
 </style>

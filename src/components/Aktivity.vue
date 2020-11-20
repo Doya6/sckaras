@@ -102,8 +102,8 @@
             outlined
             min-height="200px"
           >
-          <v-row no-gutters align="end"><v-icon v-on:click="showAktivityCard(index)" small>mdi-close</v-icon></v-row>
-            <v-row no-gutters class="pa-3">
+          <v-row no-gutters id="closeIcon"  ><v-icon v-on:click="showAktivityCard(index)" small>mdi-close</v-icon></v-row>
+            <v-row no-gutters class="px-3 pb-3">
               <v-col class="pr-3" xs="7" sm="8">
                 <div class="mb-2">
                   {{ listOfActivities[selectedAktivityCard].eventStartDate.slice(0, -3) }} - 
@@ -300,7 +300,7 @@ export default {
 
 
 
-<style>
+<style scoped>
 .scroll {
    overflow-y: scroll
 }
@@ -323,5 +323,10 @@ border-left: 1px solid gray;
 #kontaktText{
   color: #64B5F6;
 }
+ #closeIcon{ 
+    position: absolute;
+    right: 1%;
+    top: 2%;
+  }
 
 </style>
