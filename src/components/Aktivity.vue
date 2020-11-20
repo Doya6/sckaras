@@ -102,6 +102,7 @@
             outlined
             min-height="200px"
           >
+          <v-row no-gutters><v-icon v-on:click="showAktivityCard(index)" right small>mdi-close</v-icon></v-row>
             <v-row no-gutters class="pa-3">
               <v-col class="pr-3" xs="7" sm="8">
                 <div class="mb-2">
@@ -136,7 +137,7 @@
           
                   <v-img height="100%" width="100%" v-bind:src="`https://mytestwww.tode.cz/SCKaras/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"></v-img>
             
-               </v-list-item-avatar><span><v-icon v-on:click="showAktivityCard(index)" right small>mdi-close</v-icon></span>
+               </v-list-item-avatar>
                 <div class="mr-4 font-weight-light">
                   Organizátor:
                 </div>
