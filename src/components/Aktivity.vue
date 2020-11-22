@@ -319,8 +319,8 @@ export default {
     },
 
     btnPopis(myEventID) {
-      let { byloZruseno } = this.listOfActivities[myEventID].eventCancelDate != '0000-00-00 00:00:00';
-      return byloZruseno ? 'Zruseno' : 'Rezervovat';
+      let byloZruseno = this.listOfActivities[myEventID].eventCancelDate != '0000-00-00 00:00:00';
+      return byloZruseno ? 'Zrušeno' : 'Rezervovat';
     },
   }
 }
