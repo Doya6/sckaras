@@ -85,9 +85,9 @@
           <v-col  cols="4" xs="5" sm="2" md="2" lg="2" class = "pr-2" align="end">
             <v-btn
               depressed v-on:click=rezervovat(activity.myEventID)
-              v-bind:disabled="(activity.mySUM == activity.maxSumOfAttendees) || (userID =='') || (Date.parse(activity.eventStartDate) < datum)"
+              v-bind:disabled="(activity.mySUM == activity.maxSumOfAttendees) || (userID =='') || (Date.parse(activity.eventStartDate) < datum) || activity.eventCancelDate != '0000-00-00 00:00:00'"
              >
-              Rezervovat
+              {{ btnPopis(index) }}
             </v-btn>
           </v-col>
         </v-row>
@@ -118,13 +118,17 @@
                   obsazeno {{ listOfActivities[selectedAktivityCard].mySUM == null ? 0 :  listOfActivities[selectedAktivityCard].mySUM }} míst z {{ listOfActivities[selectedAktivityCard].maxSumOfAttendees }}
                 <span >
                   <v-btn depressed v-on:click=rezervovat(listOfActivities[selectedAktivityCard].myEventID)
-                  align="end" v-bind:disabled="(listOfActivities[selectedAktivityCard].mySUM == listOfActivities[selectedAktivityCard].maxSumOfAttendees) || (userID =='') || (Date.parse(listOfActivities[selectedAktivityCard].eventStartDate) < datum)"
+                  align="end" v-bind:disabled="(listOfActivities[selectedAktivityCard].mySUM == listOfActivities[selectedAktivityCard].maxSumOfAttendees) || (userID =='') || (Date.parse(listOfActivities[selectedAktivityCard].eventStartDate) < datum) || listOfActivities[selectedAktivityCard].eventCancelDate != '0000-00-00 00:00:00'"
                   class="ml-2">              
-                  Rezervovat
+                  {{ btnPopis(selectedAktivityCard) }}
                   </v-btn>
-                  <!-- <v-input>
-                  počet míst
-                  </v-input> -->
+                  <div v-if="userID == listOfActivities[selectedAktivityCard].initializator_id || this.actUserLevel == 1" >
+                    <v-btn depressed v-on:click=zrusit(listOfActivities[selectedAktivityCard].myEventID)
+                    align="end" v-bind:disabled="(listOfActivities[selectedAktivityCard].mySUM == listOfActivities[selectedAktivityCard].maxSumOfAttendees) || (userID =='') || (Date.parse(listOfActivities[selectedAktivityCard].eventStartDate) < datum)  || listOfActivities[selectedAktivityCard].eventCancelDate != '0000-00-00 00:00:00' "
+                    class="ml-2 mt-2">              
+                     Zrušit
+                    </v-btn>
+                  </div>
                 </span>  
                 </div> 
               </v-col>
@@ -175,6 +179,7 @@ export default {
   
   created() {
     this.userID = this.$store.getters.getUserID;
+    this.actUserLevel = this.$store.getters.getUserLevel;
     this.getAktivityTypeList(); 
     this.getMyAktivityList();
     this.getAktivityList();
@@ -193,6 +198,7 @@ export default {
   
   data: () => ({
     userID: '',
+    actUserLevel: '',
     aktivityCard: false,
     selectedAktivityCard: undefined,
     dialog: false,
@@ -201,7 +207,8 @@ export default {
     selectedActivityTypes: [],
     listOfActivities: [],
     listOfMyActivities: [],
-    datum: Date.now()
+    datum: Date.now(),
+    //datum: new Date().toISOString().substr(0, 16),
     
   }),
   
@@ -264,6 +271,7 @@ export default {
           this.getAktivityList();
           this.getMyAktivityList();
           alert("Rezervace byla provedena");
+          this.aktivityCard = false;
         });      
       }     
     },
@@ -290,7 +298,30 @@ export default {
     showAktivityCard(index){
       this.aktivityCard = !this.aktivityCard;
       this.selectedAktivityCard = index;
-    }
+    },
+    
+    zrusit(myEventID){
+      if (confirm("Aktivita bude označena jako zrušená")) {
+        let datum = new Date().toISOString().substr(0, 16);
+        axios
+        .post("https://mytestwww.tode.cz/SCKaras/cancelEvent.php", {
+          event: myEventID,
+          date: datum
+        })
+        .then((response) => { 
+          console.log(this.datum);
+          console.log(response.data);
+          this.getMyAktivityList();
+          this.getAktivityList();  
+          alert("Aktivita byla zrušena");
+        });
+      }
+    },
+
+    btnPopis(myEventID) {
+      let { byloZruseno } = this.listOfActivities[myEventID].eventCancelDate != '0000-00-00 00:00:00';
+      return byloZruseno ? 'Zruseno' : 'Rezervovat';
+    },
   }
 }
 </script>

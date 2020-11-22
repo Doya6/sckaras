@@ -72,7 +72,6 @@
                 v-model="menu1"
                 :close-on-content-click="false"
                 :nudge-right="40"
-                :return-value.sync="time"
                 transition="scale-transition"
                 offset-y
                 max-width="290px"
@@ -94,7 +93,7 @@
                   v-model="startTime"
                   full-width
                   format="24hr"
-                  @click:minute="$refs.menu8.save(time)"
+                  @click:minute="$refs.menu8.save()"
                 ></v-time-picker>
               </v-menu>
             </v-col>
@@ -136,7 +135,6 @@
                 :rules="[(v) => !!v || 'Položka je povinná']"
                 :close-on-content-click="false"
                 :nudge-right="40"
-                :return-value.sync="time"
                 transition="scale-transition"
                 offset-y
                 max-width="290px"
@@ -158,7 +156,7 @@
                   v-model="endTime"
                   full-width
                   format="24hr"
-                  @click:minute="$refs.menu9.save(time)"
+                  @click:minute="$refs.menu9.save()"
                 ></v-time-picker>
               </v-menu>
             </v-col>
@@ -174,7 +172,7 @@
                 @click:append-outer="incrementMIN"
                 prepend-icon="mdi-minus-box"
                 @click:prepend="decrementMIN"
-                :rules="[(v) => v>0 || 'Položka je povinná']"
+                :rules="[(v) => v > 0 || 'Položka je povinná']"
               >
               </v-text-field>
             </v-col>
@@ -188,23 +186,19 @@
                 @click:append-outer="incrementMAX"
                 prepend-icon="mdi-minus-box"
                 @click:prepend="decrementMAX"
-                :rules="[(v) => v>0 || 'Položka je povinná']"
+                :rules="[(v) => v > 0 || 'Položka je povinná']"
               >
               </v-text-field>
             </v-col>
           </v-row>
           <v-row justify="space-around">
-          <v-btn color="warning" @click="resetValidation">
-            Vymazat ověření
-          </v-btn>
-          <v-btn color="error" @click="reset"> Vymazat </v-btn>
-          <v-btn
-            :disabled="!valid"
-            color="success"
-            @click="validate"
-          >
-            Odeslat
-          </v-btn>
+            <v-btn color="warning" @click="resetValidation">
+              Vymazat ověření
+            </v-btn>
+            <v-btn color="error" @click="reset"> Vymazat </v-btn>
+            <v-btn :disabled="!valid" color="success" @click="validate">
+              Odeslat
+            </v-btn>
           </v-row>
         </v-form>
       </v-card>
@@ -219,28 +213,22 @@ import axios from "axios";
 export default {
   mounted() {
     this.actUserLevel = this.$store.getters.getUserLevel;
+    this.actUserID = this.$store.getters.getUserID;
   },
   created() {
     this.getAktivityTypeList();
   },
 
-  // computed: {
-  //   startDateTime(){
-  //     return this.startDate + ' ' + this.startTime;
-  //   },
-  //   endDateTime(){
-  //     return this.endtDate + ' ' + this.endTime;
-  //   }
-  // },
-
   data() {
     return {
       actUserLevel: "",
+      actUserID: "",
       listOfAktivityTypes: [],
 
       valid: true,
 
-      selectedType: '',
+      selectedType: "",
+      selectedTypeID: "",
 
       nazev: "",
       nazevRules: [
@@ -272,12 +260,11 @@ export default {
       modal: false,
       menu4: false,
 
-      startDateTime: '',
-      endDateTime: '',
+      startDateTime: "",
+      endDateTime: "",
 
       minAttendees: "1",
       maxAttendees: "10",
-
     };
   },
 
@@ -291,33 +278,59 @@ export default {
     },
 
     incrementMIN() {
+      if (this.minAttendees === undefined) {
+        this.minAttendees = 0;
+      }
       this.minAttendees++;
     },
     decrementMIN() {
       if (this.minAttendees > 0) {
         this.minAttendees--;
       }
+      if (this.minAttendees === undefined) {
+        this.minAttendees = 1;
+      }
     },
-
     incrementMAX() {
+      if (this.maxAttendees === undefined) {
+        this.maxAttendees = 0;
+      }
       this.maxAttendees++;
     },
     decrementMAX() {
       if (this.maxAttendees > 0) {
         this.maxAttendees--;
       }
+      if (this.maxAttendees === undefined) {
+        this.maxAttendees = 1;
+      }
     },
 
     validate() {
       this.$refs.form.validate();
-      if (this.valid){
-        console.log(this.startDate + ' ' + this.startTime);
-
-
-        alert("Form odeslan");
+      if (this.valid) {
+        this.startDateTime = this.startDate + " " + this.startTime;
+        this.endDateTime = this.endDate + " " + this.endTime;
+        this.selectedTypeID = this.listOfAktivityTypes[
+          this.listOfAktivityTypes.findIndex(
+            (x) => x.eventTypeDesc == this.selectedType
+          )
+        ].eventType_id;
+        axios
+          .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
+            insertIntoTable: "Events",
+            insertIntoColumns:
+              "eventType_id, eventName, eventDesc, eventStartDate, eventEndDate, minSumOfAttendees, maxSumOfAttendees, initializator_id",
+            insertValues: `'${this.selectedTypeID}', '${this.nazev}', '${this.popis}', '${this.startDateTime}', '${this.endDateTime}', '${this.minAttendees}', '${this.maxAttendees}', '${this.actUserID}'`,
+          })
+          .then((response) => {
+            console.log(response.data);
+            alert("Nová aktivita byla založna");
+            this.reset();
+          });
       }
-      this.reset();
     },
+
     reset() {
       this.$refs.form.reset();
     },
