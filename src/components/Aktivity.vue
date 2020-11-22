@@ -29,8 +29,12 @@
             {{ myActivity.eventEndDate.slice(11, -3) }} hod
           </h5>
           <p class="mb-0">{{ myActivity.eventName }}</p>
+          <div v-if="myActivity.eventCancelDate != '0000-00-00 00:00:00'">
+            <h3 class="red--text">Tato aktivita byla zrušena pořadatelem</h3>
+          </div>
         </v-col>
         <v-col
+          v-on:click="obsazenostUserNameShow(myActivity.event_id)"
           cols="2"
           xs="2"
           sm="2"
@@ -174,7 +178,7 @@
           min-height="200px"
         >
           <v-row no-gutters id="closeIcon"
-            ><v-icon v-on:click="showAktivityCard(index)" small
+            ><v-icon v-on:click="showAktivityCard()" small
               >mdi-close</v-icon
             ></v-row
           >
@@ -200,7 +204,15 @@
                 {{ listOfActivities[selectedAktivityCard].eventName }}
               </div>
               <div>{{ listOfActivities[selectedAktivityCard].eventDesc }}</div>
-              <div align="end" class="mt-4">
+              <div
+                align="end"
+                class="mt-4"
+                v-on:click="
+                  obsazenostUserNameShow(
+                    listOfActivities[selectedAktivityCard].event_id
+                  )
+                "
+              >
                 obsazeno
                 {{
                   listOfActivities[selectedAktivityCard].mySUM == null
@@ -292,17 +304,26 @@
       </div>
     </v-dialog>
     <!-- obsazenostUserName Card -------------------------------------------------->
-    <v-dialog v-model="obsazenostUserName" max-width="320px" min-width="250px">
-      <v-list class="pa-0">
-        <h4 class="ml-2" >Na tuto aktivitu jsou přihlášeni uživatelé:</h4>
-        <v-list-item
-          v-for="(obsName, index) in obsazenostNames"
-          v-bind:key="index"
-          class="ml-4"
-        > 
-          <div v-text="obsName.userName"></div>
-        </v-list-item>
-      </v-list>
+    <v-dialog v-model="obsazenostUserName" max-width="330px" min-width="250px">
+      <v-card>
+        <v-row no-gutters id="closeIcon"
+          ><v-icon v-on:click="obsazenostShow()" small>mdi-close</v-icon></v-row
+        >
+        <v-row no-gutters>
+          <v-list class="pa-0">
+            <h4 class="ml-2 mt-2">
+              Na tuto aktivitu jsou přihlášeni uživatelé:
+            </h4>
+            <v-list-item
+              v-for="(obsName, index) in obsazenostNames"
+              v-bind:key="index"
+              class="ml-4"
+            >
+              <div v-text="obsName.userName"></div>
+            </v-list-item>
+          </v-list>
+        </v-row>
+      </v-card>
     </v-dialog>
   </div>
 </template>
@@ -446,8 +467,6 @@ export default {
             date: datum,
           })
           .then((response) => {
-            console.log(this.datum);
-            console.log(response.data);
             this.getMyAktivityList();
             this.getAktivityList();
             alert("Aktivita byla zrušena");
@@ -468,11 +487,13 @@ export default {
         })
         .then((response) => {
           this.obsazenostNames = response.data;
-          if (this.obsazenostNames.length != 0){
-          this.obsazenostUserName = !this.obsazenostUserName;
+          if (this.obsazenostNames.length != 0) {
+            this.obsazenostShow();
           }
-          console.log(this.obsazenostNames);
         });
+    },
+    obsazenostShow() {
+      this.obsazenostUserName = !this.obsazenostUserName;
     },
   },
 };
