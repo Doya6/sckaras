@@ -1,0 +1,15 @@
+
+- Emails when action canceled
+- Emails 2dny pred udalosti
+- Emails info o novinkach
+
+- form pro samospravu uctu
+	- Level 1 - upload Home page obrazku
+	- Level 2 - upload avatar picture
+	- Level 3 - zmena hesla - user name
+
+- format datumu - dny v tydnu - svatky - hranice tydne, mesice (barvy)
+
+- nacitani jen aktualnich aktivit
+
+- footer 
