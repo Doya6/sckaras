@@ -283,9 +283,6 @@
                   "
                   align="end"
                   v-bind:disabled="
-                    listOfActivities[selectedAktivityCard].mySUM ==
-                      listOfActivities[selectedAktivityCard]
-                        .maxSumOfAttendees ||
                     userID == '' ||
                     Date.parse(
                       listOfActivities[selectedAktivityCard].eventStartDate
