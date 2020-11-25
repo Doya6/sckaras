@@ -365,7 +365,7 @@ export default {
   methods: {
     getAktivityTypeList() {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {})
+        .post("https://mytestwww.tode.cz/SCKaras.dev/selectEventTypeList.php", {})
         .then((response) => {
           this.listOfAktivityTypes = response.data;
         });
@@ -373,7 +373,7 @@ export default {
 
     getAktivityList() {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php", {
+        .post("https://mytestwww.tode.cz/SCKaras.dev/selectEvents.php", {
           sqlStringWhere: this.selectedActivityTypes,
         })
         .then((response) => {
@@ -384,7 +384,7 @@ export default {
     getMyAktivityList() {
       if (this.userID != '') {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras/selectMyEvents.php", {
+        .post("https://mytestwww.tode.cz/SCKaras.dev/selectMyEvents.php", {
           sqlStringUserID: this.userID,
         })
         .then((response) => {
@@ -413,7 +413,7 @@ export default {
         this.email = "";
       } else {
         axios
-          .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
+          .post("https://mytestwww.tode.cz/SCKaras.dev/insertIntoSQL.php", {
             insertIntoTable: "Rezrvs",
             insertIntoColumns: "event_id, User_id",
             insertValues: `'${eventId}', '${this.userID}'`,
@@ -431,7 +431,7 @@ export default {
       console.log(eventId);
       console.log(this.userID);
       axios
-        .post("https://mytestwww.tode.cz/SCKaras/cancelRezrvs.php", {
+        .post("https://mytestwww.tode.cz/SCKaras.dev/cancelRezrvs.php", {
           eventID: eventId,
           userID: this.userID,
         })
@@ -455,7 +455,7 @@ export default {
       if (confirm("Událost bude označena jako zrušená")) {
         let datum = new Date().toISOString().substr(0, 16);
         axios
-          .post("https://mytestwww.tode.cz/SCKaras/cancelEvent.php", {
+          .post("https://mytestwww.tode.cz/SCKaras.dev/cancelEvent.php", {
             event: myEventID,
             date: datum,
           })
@@ -475,7 +475,7 @@ export default {
     },
     obsazenostUserNameShow(eventID) {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras/selectObsNames.php", {
+        .post("https://mytestwww.tode.cz/SCKaras.dev/selectObsNames.php", {
           event: eventID,
         })
         .then((response) => {

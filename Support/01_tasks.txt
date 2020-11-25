@@ -30,6 +30,10 @@ Issues:
 - neloadovat * ale jednotlivy polozky ??
 
 -------------------
+WWW:
+
+http://mytestwww.tode.cz/SCKaras
+
 FTP sckaras:
 
 Host: medvidek.endora.cz

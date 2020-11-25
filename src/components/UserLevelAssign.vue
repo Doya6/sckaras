@@ -80,7 +80,7 @@ export default {
   methods: {
     save() {
     axios
-      .post("https://mytestwww.tode.cz/SCKaras/updateLevel.php", {
+      .post("https://mytestwww.tode.cz/SCKaras.dev/updateLevel.php", {
          email: this.selectedUser,
          level: this.selectedLevel
       })
@@ -91,7 +91,7 @@ export default {
 
     getUserList() {
     axios
-      .post("https://mytestwww.tode.cz/SCKaras/selectAllUsers.php", {
+      .post("https://mytestwww.tode.cz/SCKaras.dev/selectAllUsers.php", {
       })
       .then((response) => {
         this.allUsers = (response.data);
