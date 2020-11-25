@@ -31,6 +31,6 @@ export default {
 }
 .karta{
   position: relative;
-  top: 10%;
+  top: 18%;
 }
 </style>

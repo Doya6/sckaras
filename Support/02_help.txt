@@ -2,3 +2,13 @@ reCAPTCHA
 
 Format datumu:
  - date-fns/format
+
+Send file to FTP:
+https://www.npmjs.com/package/ftp-deploy
+https://phpfashion.com/ftp-deployment-nahravejte-pres-ftp-chytre
+
+https://git-ftp.github.io/
+
+List computed:
+https://jsfiddle.net/jamesbrndwgn/gkxq5rLs/16/
+

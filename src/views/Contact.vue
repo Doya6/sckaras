@@ -4,7 +4,7 @@
     <v-card   class='pa-5 mx-auto mt-5 text-center'
         width='350px'>
     <a href="https://www.zidenice.eu/zivot_v_mc/kultura/spolecenske-centrum-karas" target="_blank">
-    <img src="/ZideniceLogo.png">Zřizovatel - městská část Brno-Židenice</a>
+    <img src="../assets/ZideniceLOGO.png">Zřizovatel - městská část Brno-Židenice</a>
     
     </v-card>
     <v-card 
@@ -21,7 +21,7 @@
         </div>
     </v-card>
     <v-card
-    class='mx-auto mt-5 text-center'
+    class='mx-auto my-5 text-center'
         width='400px'>
         <div id="m" class="mapa">
             mapa

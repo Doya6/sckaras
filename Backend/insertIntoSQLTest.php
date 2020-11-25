@@ -9,7 +9,7 @@ $phpInput = json_decode(file_get_contents("php://input"), true);
 
 //$insertIntoTable = $phpInput['insertIntoTable'];
 //$insertIntoColumns = $phpInput['insertIntoColumns'];
-//$insertValues = $phpInput['insertValues']; 
+//$insertValues = $phpInput['insertValues'];
 
 //-------------
  $insertIntoTable = "Events";

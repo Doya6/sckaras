@@ -8,8 +8,38 @@
 	- Level 2 - upload avatar picture
 	- Level 3 - zmena hesla - user name
 
-- format datumu - dny v tydnu - svatky - hranice tydne, mesice (barvy)
+- format datumu - dny v tydnu - hranice mesice (barvy) //--- HOTOVO
 
-- nacitani jen aktualnich aktivit
+- nacitani jen aktualnich aktivit //--- HOTOVO 
 
-- footer 
+- footer //--- HOTOVO
+
+- tisk mesicniho kalendare aktivit PDF
+
+- btn zruseno red
+
+- omezení data - drivejsi-pozdejsi
+
+- navyseni obsazenosti?
+
+-------------------
+Issues:
+
+- loaduje MyActivity i kdyz je userID = 0 //--- HOTOVO
+- iOs - nahradit LET -> VAR
+- neloadovat * ale jednotlivy polozky ??
+
+-------------------
+FTP sckaras:
+
+Host: medvidek.endora.cz
+User: adminavatar //jen obrazky avataru
+User: sckarasadmin  //obrazky avataru a home page obrazek
+Pswd: adminPSW
+
+(uzivatel 'TestMP' ma ID '115', avatar obrazek ulozi na FTP po prihlaseni jako adminavatar, jmeno souboru - '115.jpg')
+(pro ulozeni HomePage obrazku musi byt prihlasen jako 'sckarasadmin', obrazek se ulozi do adresare 'HomePagePic' pod jmenem 'HPPic.jpg')  
+
+
+
+ 

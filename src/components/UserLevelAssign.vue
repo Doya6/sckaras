@@ -38,14 +38,14 @@
 
         <v-row no-gutters>
           <v-col cols="9" left>
-            <h4>Level 1</h4>
-            - Admin - zadává/spravuje všechny aktivity a edituje přístupová
+            <p>Level 1 - Admin - zadává/spravuje všechny aktivity a edituje přístupová
             práva (level)
-            <h4>Level 2</h4>
-            - Správce svých aktivit - zadáva a spravuje pouze své aktivity
-            <h4>Level 3</h4>
-            - Uživatel - výchozí nastavení pro každého nově zaregistrovaného
+            </p>
+            <p>Level 2 - Správce svých aktivit - zadáva a spravuje pouze své aktivity
+            </p>
+            <p>Level 3 - Uživatel - výchozí nastavení pro každého nově zaregistrovaného
             uživatele
+            </p>
           </v-col>
           <v-col cols="3" class="text-right">
             <v-btn v-on:click="save">SAVE</v-btn>

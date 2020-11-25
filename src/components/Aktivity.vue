@@ -9,7 +9,7 @@
         </h3>
       </v-col>
     </v-row>
-    <div>
+    <div v-if="userID != ''">
       <v-row
         v-for="(myActivity, index) in listOfMyActivities"
         v-bind:key="index"
@@ -25,8 +25,9 @@
           align="start"
         >
           <h5 class="mb-0">
-            {{ myActivity.eventStartDate.slice(0, -3) }} -
-            {{ myActivity.eventEndDate.slice(11, -3) }} hod
+            {{ wkDay(myActivity.eventStartDate) }} |
+            {{ dateShort(myActivity.eventStartDate)}} -
+            {{ timeShort(myActivity.eventEndDate) }} hod
           </h5>
           <p class="mb-0">{{ myActivity.eventName }}</p>
           <div v-if="myActivity.eventCancelDate != '0000-00-00 00:00:00'">
@@ -106,7 +107,7 @@
       </v-list>
     </v-dialog>
     <!-- VYBER TYPU ^^^^ ---------------------------------------------------------------------->
-    <v-card height="450px" class="px-3 mx-auto scroll">
+    <v-card height="690px" class="px-3 mx-auto scroll">
       <v-row
         v-for="(activity, index) in listOfActivities"
         v-bind:key="index"
@@ -122,9 +123,14 @@
           class="pl-2 pr-0"
           align="start"
         >
+        <v-row no-gutters>
+            <div id="novyMesicLine" v-if="novyMesic(index)">{{ monthYear(activity.eventStartDate) }}</div>
+        </v-row>
+
           <h5 class="mb-0">
-            {{ activity.eventStartDate.slice(0, -3) }} -
-            {{ activity.eventEndDate.slice(11, -3) }} hod
+            {{ wkDay(activity.eventStartDate) }} |
+            {{ dateShort(activity.eventStartDate)}} -
+            {{ timeShort(activity.eventEndDate) }} hod
           </h5>
           <p class="mb-0">{{ activity.eventName }}</p>
         </v-col>
@@ -180,25 +186,14 @@
           <v-row no-gutters id="closeIcon"
             ><v-icon v-on:click="showAktivityCard()" small
               >mdi-close</v-icon
-            ></v-row
-          >
+            >
+          </v-row>
           <v-row no-gutters class="px-3 pb-3">
             <v-col class="pr-3" xs="7" sm="8">
               <div class="mb-2">
-                {{
-                  listOfActivities[selectedAktivityCard].eventStartDate.slice(
-                    0,
-                    -3
-                  )
-                }}
-                -
-                {{
-                  listOfActivities[selectedAktivityCard].eventEndDate.slice(
-                    11,
-                    -3
-                  )
-                }}
-                hod
+                {{ wkDay(listOfActivities[selectedAktivityCard].eventStartDate) }} |
+                {{ dateShort(listOfActivities[selectedAktivityCard].eventStartDate)}} -
+                {{ timeShort(listOfActivities[selectedAktivityCard].eventEndDate) }} hod
               </div>
               <div class="headline mb-1 pl-2">
                 {{ listOfActivities[selectedAktivityCard].eventName }}
@@ -254,7 +249,7 @@
                 <v-img
                   height="100%"
                   width="100%"
-                  v-bind:src="`https://mytestwww.tode.cz/SCKaras/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"
+                  v-bind:src="`https://mytestwww.tode.cz/SCKaras/HomePagePic/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"
                 ></v-img>
               </v-list-item-avatar>
               <div class="mr-4 font-weight-light">Organizátor:</div>
@@ -283,9 +278,6 @@
                   "
                   align="end"
                   v-bind:disabled="
-                    listOfActivities[selectedAktivityCard].mySUM ==
-                      listOfActivities[selectedAktivityCard]
-                        .maxSumOfAttendees ||
                     userID == '' ||
                     Date.parse(
                       listOfActivities[selectedAktivityCard].eventStartDate
@@ -306,14 +298,14 @@
     <!-- obsazenostUserName Card -------------------------------------------------->
     <v-dialog v-model="obsazenostUserName" max-width="330px" min-width="250px">
       <v-card>
-        <v-row no-gutters id="closeIcon"
-          ><v-icon v-on:click="obsazenostShow()" small>mdi-close</v-icon></v-row
-        >
-        <v-row no-gutters>
-          <v-list class="pa-0">
-            <h4 class="ml-2 mt-2">
+        <v-col cols="1" id="closeIconSeznam"
+          ><v-icon v-on:click="obsazenostShow()" small>mdi-close</v-icon>
+        </v-col>
+        <v-col cols="11">
+            <h4 class="ml-2">
               Na tuto aktivitu jsou přihlášeni uživatelé:
             </h4>
+          <v-list class="pa-0">
             <v-list-item
               v-for="(obsName, index) in obsazenostNames"
               v-bind:key="index"
@@ -322,7 +314,7 @@
               <div v-text="obsName.userName"></div>
             </v-list-item>
           </v-list>
-        </v-row>
+        </v-col>
       </v-card>
     </v-dialog>
   </div>
@@ -390,14 +382,15 @@ export default {
     },
 
     getMyAktivityList() {
+      if (this.userID != '') {
       axios
         .post("https://mytestwww.tode.cz/SCKaras/selectMyEvents.php", {
           sqlStringUserID: this.userID,
         })
         .then((response) => {
           this.listOfMyActivities = response.data;
-          console.log(this.listOfMyActivities);
         });
+      }
     },
 
     addToSelectedActivityTypes(TypeId) {
@@ -475,7 +468,7 @@ export default {
     },
 
     btnPopis(myEventID) {
-      let byloZruseno =
+      var byloZruseno =
         this.listOfActivities[myEventID].eventCancelDate !=
         "0000-00-00 00:00:00";
       return byloZruseno ? "Zrušeno" : "Rezervovat";
@@ -495,6 +488,46 @@ export default {
     obsazenostShow() {
       this.obsazenostUserName = !this.obsazenostUserName;
     },
+
+    monthYear(datum){
+		var options = {
+  			month: 'long', year: 'numeric'
+		};
+		return (new Intl.DateTimeFormat('cz-CZ', options).format(new Date(datum))).toUpperCase();  
+	  },
+
+    wkDay(datum){
+		return (new Intl.DateTimeFormat('cz-CZ', { weekday: 'short'}).format(new Date(datum))).toUpperCase();
+    },
+
+    dateShort(datum){
+		var options = {
+  			month: 'numeric', day: 'numeric',
+  			hour: 'numeric', minute: 'numeric'
+		};
+		return (new Intl.DateTimeFormat('cz-CZ', options).format(new Date(datum))).toUpperCase();	 
+    },
+    
+    timeShort(datum){
+		var options = {
+  			hour: 'numeric', minute: 'numeric'
+		};
+		return (new Intl.DateTimeFormat('cz-CZ', options).format(new Date(datum))).toUpperCase(); 	 
+    },
+
+    novyMesic(index){  
+      var prevIndex = index - 1;
+      if(index > 0){
+        var mesic2 = new Date(this.listOfActivities[index].eventStartDate).getMonth();
+        var mesic1 = new Date(this.listOfActivities[prevIndex].eventStartDate).getMonth();
+          if (mesic2 != mesic1){
+          return true;
+        } 
+      } else {
+        var mesic2 = new Date(this.listOfActivities[index].eventStartDate).getMonth();
+        return true;
+      }
+    }
   },
 };
 </script>
@@ -531,5 +564,12 @@ export default {
   position: absolute;
   right: 1%;
   top: 2%;
+}
+#closeIconSeznam {
+  position: absolute;
+  right: 4%;
+}
+#novyMesicLine{
+  color: red;
 }
 </style>

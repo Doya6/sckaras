@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Obousměrný data-binding</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+<p style="background-color: lightgray "> {{ month }} {{ year }} </p>
+<p> {{ wkDay }} | {{ formatedDateShort }} - {{ formatedTimeShort }} hod </p>
+
+<p> Za X dny: {{ zaXDny }} </p>
+
+<p> Datum: {{ datum }} </p>
+<p> Mesic: {{ month }} </p>
+<p> Rok: {{ year }} </p>
+<p> Formated Date: {{ formatedDate }} </p>
+<p> Formated Date Short: {{ formatedDateShort }} </p>
+<p> Datum toLocaleString: {{ wkDay }} | {{ localDate }} </p>
+
+
+<input type="text" v-model="jmeno">
+
+<button v-on:click="prejmenujSe">Prejmenuj se</button>
+<hr>
+
+<textarea name="" id="" cols="30" rows="10" v-model="komentar"></textarea>
+
+<p>{{ pocetZnaku }}</p>
+<hr>
+
+<input type="text" v-model.number="cislo">
+
+<p>{{cislo + 10}}</p>
+<hr>
+
+<select v-model="mesto">
+	<option value="pha">Praha</option>
+	<option value="brn">Brno</option>
+	<option value="osk">Osek</option>
+</select>
+
+<p>Vybrane mesto: {{mesto}}</p>
+<button v-on:click="jdiDoBrna">jdi do Brna</button>
+<hr>
+
+<input type="checkbox" v-model="souhlas">Souhlasim se vsim
+<p>Souhlasi? {{souhlas}}</p>
+<hr>
+
+<input type="radio" v-model="ovoce" value="kokes">
+<input type="radio" v-model="ovoce" value="baban">
+<input type="radio" v-model="ovoce" value="anaras">
+<p>{{ovoce}}</p>
+<hr>
+
+
+</div>
+
+	<script src="index.js"></script>
+
+</body>
+</html>

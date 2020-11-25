@@ -10,7 +10,7 @@ $userID = $received_data['sqlStringUserID'];
 
 $data = [];
 
-$query =  "SELECT * , Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM Events LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id WHERE Events.event_id IN (SELECT event_id FROM Rezrvs WHERE user_id = $userID) GROUP BY Events.event_id";
+$query =  "SELECT * , Events.event_id AS myEventID, SUM(sumOfAttendees) AS mySUM FROM Events LEFT JOIN Rezrvs ON Events.event_id=Rezrvs.event_id WHERE Events.event_id IN (SELECT event_id FROM Rezrvs WHERE user_id = $userID) AND DateDiff(Now(), Events.eventStartDate) <= 1 GROUP BY Events.event_id";
 
 	$statement = $connect->prepare($query);
 	$statement->execute();

@@ -1,0 +1,17 @@
+html { box-sizing: border-box; }
+*, ::before, ::after { box-sizing: inherit; }
+
+body {
+	margin: 2em;
+	font: 16px sans-serif;
+}
+
+
+.green {
+	color: green;
+}
+
+.blue {
+	color: blue;
+}
+
