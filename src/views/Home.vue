@@ -2,9 +2,11 @@
 <div>
   <div mx-auto class="bckg" :style="bgImage">
     
-    <v-card class="pa-3 mx-auto text-center karta" width="500px" position="fixed" top='100px'>
+    <v-card class="pa-3 mx-auto text-center karta" width="500px" height="350px">
       <!-- <h1 class='text-center justify="center" light-blue lighten-3 white--text'>Home Page</h1> -->
-      <v-img height="100%" width="100%" src="https://mytestwww.tode.cz/SCKaras/HomePagePic/HPPic.jpg"></v-img>
+      
+      <img src="https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/HPPic.jpg">
+      
     </v-card>
     
   </div>  
@@ -23,7 +25,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bckg {
   width: 100%;
   height: 600px;
@@ -32,5 +34,9 @@ export default {
 .karta{
   position: relative;
   top: 18%;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
 </style>

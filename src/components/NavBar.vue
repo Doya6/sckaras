@@ -99,7 +99,7 @@
     <v-card v-if="userDetailEditShow" 
       class='pa-5 mx-auto mt-5 text-center'
       width='80%'
-    >User Details 
+    >Under Constraction 
     </v-card>
 
     <!-- Login Form -->

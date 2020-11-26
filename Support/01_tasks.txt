@@ -8,12 +8,6 @@
 	- Level 2 - upload avatar picture
 	- Level 3 - zmena hesla - user name
 
-- format datumu - dny v tydnu - hranice mesice (barvy) //--- HOTOVO
-
-- nacitani jen aktualnich aktivit //--- HOTOVO 
-
-- footer //--- HOTOVO
-
 - tisk mesicniho kalendare aktivit PDF
 
 - btn zruseno red
@@ -25,9 +19,11 @@
 -------------------
 Issues:
 
-- loaduje MyActivity i kdyz je userID = 0 //--- HOTOVO
-- iOs - nahradit LET -> VAR
-- neloadovat * ale jednotlivy polozky ??
+- historie HP obrázku a ořezání
+
+- avatar - název obrazku - email bez @
+
+- iOs - ???
 
 -------------------
 WWW:

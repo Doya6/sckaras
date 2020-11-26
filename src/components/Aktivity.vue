@@ -24,11 +24,11 @@
           class="pl-2 pr-0"
           align="start"
         >
-          <h5 class="mb-0">
+          <!-- <h5 class="mb-0">
             {{ wkDay(myActivity.eventStartDate) }} |
-            {{ dateShort(myActivity.eventStartDate)}} -
+            {{ dateShort(myActivity.eventStartDate) }} -
             {{ timeShort(myActivity.eventEndDate) }} hod
-          </h5>
+          </h5> -->
           <p class="mb-0">{{ myActivity.eventName }}</p>
           <div v-if="myActivity.eventCancelDate != '0000-00-00 00:00:00'">
             <h3 class="red--text">Tato aktivita byla zrušena pořadatelem</h3>
@@ -123,15 +123,18 @@
           class="pl-2 pr-0"
           align="start"
         >
-        <v-row no-gutters>
-            <div id="novyMesicLine" v-if="novyMesic(index)">{{ monthYear(activity.eventStartDate) }}</div>
-        </v-row>
+          <v-row no-gutters>
+            <div id="novyMesicLine" v-if="novyMesic(index)">
+              {{ monthYear(activity.eventStartDate) }}
+            </div>
+          </v-row>
 
           <h5 class="mb-0">
             {{ wkDay(activity.eventStartDate) }} |
-            {{ dateShort(activity.eventStartDate)}} -
+            {{ dateShort(activity.eventStartDate) }} -
             {{ timeShort(activity.eventEndDate) }} hod
           </h5>
+
           <p class="mb-0">{{ activity.eventName }}</p>
         </v-col>
         <v-col
@@ -184,16 +187,25 @@
           min-height="200px"
         >
           <v-row no-gutters id="closeIcon"
-            ><v-icon v-on:click="showAktivityCard()" small
-              >mdi-close</v-icon
-            >
+            ><v-icon v-on:click="showAktivityCard()" small>mdi-close</v-icon>
           </v-row>
           <v-row no-gutters class="px-3 pb-3">
             <v-col class="pr-3" xs="7" sm="8">
               <div class="mb-2">
-                {{ wkDay(listOfActivities[selectedAktivityCard].eventStartDate) }} |
-                {{ dateShort(listOfActivities[selectedAktivityCard].eventStartDate)}} -
-                {{ timeShort(listOfActivities[selectedAktivityCard].eventEndDate) }} hod
+                {{
+                  wkDay(listOfActivities[selectedAktivityCard].eventStartDate)
+                }}
+                |
+                {{
+                  dateShort(
+                    listOfActivities[selectedAktivityCard].eventStartDate
+                  )
+                }}
+                -
+                {{
+                  timeShort(listOfActivities[selectedAktivityCard].eventEndDate)
+                }}
+                hod
               </div>
               <div class="headline mb-1 pl-2">
                 {{ listOfActivities[selectedAktivityCard].eventName }}
@@ -249,7 +261,7 @@
                 <v-img
                   height="100%"
                   width="100%"
-                  v-bind:src="`https://mytestwww.tode.cz/SCKaras/HomePagePic/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"
+                  v-bind:src="`https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/AvatarPics/${avatarStrMod(listOfActivities[selectedAktivityCard].userEmail)}.jpg`"
                 ></v-img>
               </v-list-item-avatar>
               <div class="mr-4 font-weight-light">Organizátor:</div>
@@ -302,9 +314,7 @@
           ><v-icon v-on:click="obsazenostShow()" small>mdi-close</v-icon>
         </v-col>
         <v-col cols="11">
-            <h4 class="ml-2">
-              Na tuto aktivitu jsou přihlášeni uživatelé:
-            </h4>
+          <h4 class="ml-2">Na tuto aktivitu jsou přihlášeni uživatelé:</h4>
           <v-list class="pa-0">
             <v-list-item
               v-for="(obsName, index) in obsazenostNames"
@@ -358,14 +368,16 @@ export default {
     selectedActivityTypes: [],
     listOfActivities: [],
     listOfMyActivities: [],
-    datum: Date.now(),
-    //datum: new Date().toISOString().substr(0, 16),
+    datum: Date.now()
   }),
 
   methods: {
     getAktivityTypeList() {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/selectEventTypeList.php", {})
+        .post(
+          "https://mytestwww.tode.cz/SCKaras.dev/selectEventTypeList.php",
+          {}
+        )
         .then((response) => {
           this.listOfAktivityTypes = response.data;
         });
@@ -382,14 +394,14 @@ export default {
     },
 
     getMyAktivityList() {
-      if (this.userID != '') {
-      axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/selectMyEvents.php", {
-          sqlStringUserID: this.userID,
-        })
-        .then((response) => {
-          this.listOfMyActivities = response.data;
-        });
+      if (this.userID != "") {
+        axios
+          .post("https://mytestwww.tode.cz/SCKaras.dev/selectMyEvents.php", {
+            sqlStringUserID: this.userID,
+          })
+          .then((response) => {
+            this.listOfMyActivities = response.data;
+          });
       }
     },
 
@@ -489,45 +501,69 @@ export default {
       this.obsazenostUserName = !this.obsazenostUserName;
     },
 
-    monthYear(datum){
-		var options = {
-  			month: 'long', year: 'numeric'
-		};
-		return (new Intl.DateTimeFormat('cz-CZ', options).format(new Date(datum))).toUpperCase();  
-	  },
-
-    wkDay(datum){
-		return (new Intl.DateTimeFormat('cz-CZ', { weekday: 'short'}).format(new Date(datum))).toUpperCase();
+    monthYear(datum) {
+      var options = {
+        month: "long",
+        year: "numeric",
+      };
+      return new Intl.DateTimeFormat("cz-CZ", options)
+        .format(new Date(datum.replace(' ', 'T')))
+        .toUpperCase();
     },
 
-    dateShort(datum){
-		var options = {
-  			month: 'numeric', day: 'numeric',
-  			hour: 'numeric', minute: 'numeric'
-		};
-		return (new Intl.DateTimeFormat('cz-CZ', options).format(new Date(datum))).toUpperCase();	 
-    },
-    
-    timeShort(datum){
-		var options = {
-  			hour: 'numeric', minute: 'numeric'
-		};
-		return (new Intl.DateTimeFormat('cz-CZ', options).format(new Date(datum))).toUpperCase(); 	 
+    wkDay(datum) {
+      return new Intl.DateTimeFormat("cz-CZ", { weekday: "short" })
+        .format(new Date(datum.replace(' ', 'T')))
+        .toUpperCase();
     },
 
-    novyMesic(index){  
+    dateShort(datum) {
+      var options = {
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      };
+      return new Intl.DateTimeFormat("cz-CZ", options)
+        .format(new Date(datum.replace(' ', 'T')))
+        .toUpperCase();
+    },
+
+    timeShort(datum) {
+      var options = {
+        hour: "numeric",
+        minute: "numeric",
+      };
+      return new Intl.DateTimeFormat("cz-CZ", options)
+        .format(new Date(datum.replace(' ', 'T')))
+        .toUpperCase();
+    },
+
+    novyMesic(index) {
       var prevIndex = index - 1;
-      if(index > 0){
-        var mesic2 = new Date(this.listOfActivities[index].eventStartDate).getMonth();
-        var mesic1 = new Date(this.listOfActivities[prevIndex].eventStartDate).getMonth();
-          if (mesic2 != mesic1){
+      if (index > 0) {
+        var mesic2 = new Date(
+          this.listOfActivities[index].eventStartDate.replace(' ', 'T')
+        ).getMonth();
+        var mesic1 = new Date(
+          this.listOfActivities[prevIndex].eventStartDate.replace(' ', 'T')
+        ).getMonth();
+
+        if (mesic2 != mesic1) {
           return true;
-        } 
+        }
       } else {
-        var mesic2 = new Date(this.listOfActivities[index].eventStartDate).getMonth();
+        var mesic2 = new Date(
+          this.listOfActivities[index].eventStartDate.replace(' ', 'T')
+        ).getMonth();
         return true;
       }
-    }
+    },
+
+    avatarStrMod(str){
+	   return (str.replace("@", ""));
+	  }
+
   },
 };
 </script>
@@ -569,7 +605,7 @@ export default {
   position: absolute;
   right: 4%;
 }
-#novyMesicLine{
+#novyMesicLine {
   color: red;
 }
 </style>

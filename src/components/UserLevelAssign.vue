@@ -72,8 +72,6 @@ export default {
           if (this.selectedUser != ''){ 
         return (this.allUsers[(this.allUsers.findIndex(i => i.userEmail === this.selectedUser))].userLevel);
         }
-    
-   
     }
   },
   

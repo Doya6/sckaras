@@ -45,10 +45,10 @@ const routes = [
   
 
   //comment for build / uncoment for Netlify build
-  {
-  path: "/index.html",
-  redirect: "/" 
- }
+  //{
+  //path: "/index.html",
+  //redirect: "/" 
+ //}
   // comment for build / uncoment for Netlify build
 ]
 
