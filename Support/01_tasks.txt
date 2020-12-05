@@ -17,15 +17,6 @@
 - navyseni obsazenosti?
 
 -------------------
-Issues:
-
-- historie HP obrázku a ořezání
-
-- avatar - název obrazku - email bez @
-
-- iOs - ???
-
--------------------
 WWW:
 
 http://mytestwww.tode.cz/SCKaras
@@ -37,7 +28,7 @@ User: adminavatar //jen obrazky avataru
 User: sckarasadmin  //obrazky avataru a home page obrazek
 Pswd: adminPSW
 
-(uzivatel 'TestMP' ma ID '115', avatar obrazek ulozi na FTP po prihlaseni jako adminavatar, jmeno souboru - '115.jpg')
+(uzivatel level 2 ulozi avatar obrazek na FTP po prihlaseni jako adminavatar, jmeno souboru - email bez znaku '@' )
 (pro ulozeni HomePage obrazku musi byt prihlasen jako 'sckarasadmin', obrazek se ulozi do adresare 'HomePagePic' pod jmenem 'HPPic.jpg')  
 
 

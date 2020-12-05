@@ -271,7 +271,7 @@ export default {
   methods: {
     getAktivityTypeList() {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/selectEventTypeList.php", {})
+        .post("https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php", {})
         .then((response) => {
           this.listOfAktivityTypes = response.data;
         });
@@ -317,7 +317,7 @@ export default {
           )
         ].eventType_id;
         axios
-          .post("https://mytestwww.tode.cz/SCKaras.dev/insertIntoSQL.php", {
+          .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
             insertIntoTable: "Events",
             insertIntoColumns:
               "eventType_id, eventName, eventDesc, eventStartDate, eventEndDate, minSumOfAttendees, maxSumOfAttendees, initializator_id",

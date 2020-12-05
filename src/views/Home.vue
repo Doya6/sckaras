@@ -5,7 +5,7 @@
     <v-card class="pa-3 mx-auto text-center karta" width="500px" height="350px">
       <!-- <h1 class='text-center justify="center" light-blue lighten-3 white--text'>Home Page</h1> -->
       
-      <img src="https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/HPPic.jpg">
+      <img src="https://mytestwww.tode.cz/SCKaras/HomePagePic/HPPic.jpg">
       
     </v-card>
     
