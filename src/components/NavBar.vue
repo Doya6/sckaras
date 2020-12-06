@@ -320,7 +320,7 @@ export default {
     // SQL data exists check
     existsInSQL(table, column, value) {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/existsInSQL.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/existsInSQL.php", {
           lookAtTable: table,
           lookAtColumn: column,
           lookForValue: value,
@@ -337,7 +337,7 @@ export default {
         this.email = "";
       } else {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/insertIntoSQL.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
           insertIntoTable: "Users",
           insertIntoColumns: "userName, userPhoneNum, userPswd, userEmail, infoEmail",
           insertValues: `'${this.userName}', '${this.phoneNumber}', '${this.password}', '${this.email}', '${this.infoEmailOption}'` 
@@ -361,7 +361,7 @@ export default {
     // e-mail confirmation
     sendConfirmEmail(){
     axios
-      .post("https://mytestwww.tode.cz/SCKaras.dev/sendMailRegConfirm.php",{
+      .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php",{
         name: `${this.userName}`,
         email: `${this.email}`,
         pswd: `${this.password}`
@@ -377,7 +377,7 @@ export default {
         alert(`Uživatelský e-mail ${this.loginEmail} nebyl zaregistrován.`);
       } else {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/login.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/login.php", {
           loginEmail: this.loginEmail,
         })
         .then((response) => {
@@ -425,7 +425,7 @@ export default {
           this.loginEmail = "";
       } else {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/login.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/login.php", {
           loginEmail: this.loginEmail,
         })
         .then((response) => {
@@ -434,7 +434,7 @@ export default {
           let Email = response.data[0].userEmail;
           
             axios
-            .post("https://mytestwww.tode.cz/SCKaras.dev/sendMailRegConfirm.php",{
+            .post("https://mytestwww.tode.cz/SCKaras/sendMailRegConfirm.php",{
             name: `${Name}`,
             email: `${Email}`,
             pswd: `${Pswd}`

@@ -24,12 +24,14 @@
           class="pl-2 pr-0"
           align="start"
         >
+
           <h6 class="mb-0">
             {{ wkDay(myActivity.eventStartDate) }} |
             {{ dateShort(myActivity.eventStartDate) }} -
             {{ timeShort(myActivity.eventEndDate) }}
           </h6>
           <h4 class="mb-0">{{ myActivity.eventName }}</h4>
+
           <div v-if="myActivity.eventCancelDate != '0000-00-00 00:00:00'">
             <h3 class="red--text">Tato aktivita byla zrušena pořadatelem</h3>
           </div>
@@ -277,7 +279,7 @@
                 <v-img
                   height="100%"
                   width="100%"
-                  v-bind:src="`https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/AvatarPics/${avatarStrMod(listOfActivities[selectedAktivityCard].userEmail)}.jpg`"
+                  v-bind:src="`https://mytestwww.tode.cz/SCKaras/HomePagePic/AvatarPics/${avatarStrMod(listOfActivities[selectedAktivityCard].userEmail)}.jpg`"
                 ></v-img>
               </v-list-item-avatar>
               <div class="mr-4 font-weight-light">Organizátor:</div>
@@ -419,7 +421,7 @@ export default {
     getAktivityTypeList() {
       axios
         .post(
-          "https://mytestwww.tode.cz/SCKaras.dev/selectEventTypeList.php",
+          "https://mytestwww.tode.cz/SCKaras/selectEventTypeList.php",
           {}
         )
         .then((response) => {
@@ -429,7 +431,7 @@ export default {
 
     getAktivityList() {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/selectEvents.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/selectEvents.php", {
           sqlStringWhere: this.selectedActivityTypes,
         })
         .then((response) => {
@@ -440,7 +442,7 @@ export default {
     getMyAktivityList() {
       if (this.userID != "") {
         axios
-          .post("https://mytestwww.tode.cz/SCKaras.dev/selectMyEvents.php", {
+          .post("https://mytestwww.tode.cz/SCKaras/selectMyEvents.php", {
             sqlStringUserID: this.userID,
           })
           .then((response) => {
@@ -469,7 +471,7 @@ export default {
         this.email = "";
       } else {
         axios
-          .post("https://mytestwww.tode.cz/SCKaras.dev/insertIntoSQL.php", {
+          .post("https://mytestwww.tode.cz/SCKaras/insertIntoSQL.php", {
             insertIntoTable: "Rezrvs",
             insertIntoColumns: "eventCalendar_id, user_id",
             insertValues: `'${eventId}', '${this.userID}'`,
@@ -485,7 +487,7 @@ export default {
 
     zrusitRezervaci(eventId) {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/cancelRezrvs.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/cancelRezrvs.php", {
           eventID: eventId,
           userID: this.userID,
         })
@@ -515,7 +517,7 @@ export default {
       if (confirm("Událost bude označena jako zrušená")) {
         let datum = new Date().toISOString().substr(0, 16);
         axios
-          .post("https://mytestwww.tode.cz/SCKaras.dev/cancelEvent.php", {
+          .post("https://mytestwww.tode.cz/SCKaras/cancelEvent.php", {
             event: myEventID,
             date: datum,
           })
@@ -552,7 +554,7 @@ export default {
     },
     obsazenostUserNameShow(eventID) {
       axios
-        .post("https://mytestwww.tode.cz/SCKaras.dev/selectObsNames.php", {
+        .post("https://mytestwww.tode.cz/SCKaras/selectObsNames.php", {
           event: eventID,
         })
         .then((response) => {

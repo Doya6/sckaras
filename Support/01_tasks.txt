@@ -6,7 +6,8 @@
 - form pro samospravu uctu
 	- Level 1 - upload Home page obrazku
 	- Level 2 - upload avatar obrazku
-	- Level 3 - zmena hesla a user name
+	- Level 3 - zmena hesla a user name
+
 - omezení zadavani data - drivejsi-pozdejsi
 
 nasobne zadavani
@@ -49,6 +50,3 @@ Pswd: adminPSW
 (uzivatel 'sckarasadmin' zadava Home Page obrazek do adresare 'HomePagePic' pod jmenem 'HPPic.jpg')  
 
 --------------
-
-
- 

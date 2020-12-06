@@ -3,7 +3,7 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-  publicPath:'/SCKaras.dev/' //...uncomment for mytestwww server build
+  publicPath:'/SCKaras/' //...uncomment for mytestwww server build
   
 }
 
