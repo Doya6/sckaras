@@ -24,12 +24,12 @@
           class="pl-2 pr-0"
           align="start"
         >
-          <!-- <h5 class="mb-0">
+          <h6 class="mb-0">
             {{ wkDay(myActivity.eventStartDate) }} |
             {{ dateShort(myActivity.eventStartDate) }} -
-            {{ timeShort(myActivity.eventEndDate) }} hod
-          </h5> -->
-          <p class="mb-0">{{ myActivity.eventName }}</p>
+            {{ timeShort(myActivity.eventEndDate) }}
+          </h6>
+          <h4 class="mb-0">{{ myActivity.eventName }}</h4>
           <div v-if="myActivity.eventCancelDate != '0000-00-00 00:00:00'">
             <h3 class="red--text">Tato aktivita byla zrušena pořadatelem</h3>
           </div>
@@ -41,7 +41,7 @@
           sm="2"
           md="2"
           lg="1"
-          class="pl-2 pr-0"
+          class="pl-2 pr-0 click-enabled"
           align="center"
         >
           <p class="my-0 hidden-xs-only">obsazenost</p>
@@ -120,7 +120,7 @@
           sm="7"
           md="8"
           lg="9"
-          class="pl-2 pr-0"
+          class="pl-2 pr-0 click-enabled"
           align="start"
         >
           <v-row no-gutters>
@@ -129,13 +129,13 @@
             </div>
           </v-row>
 
-          <h5 class="mb-0">
+          <h6 class="mb-0">
             {{ wkDay(activity.eventStartDate) }} |
             {{ dateShort(activity.eventStartDate) }} -
-            {{ timeShort(activity.eventEndDate) }} hod
-          </h5>
+            {{ timeShort(activity.eventEndDate) }}
+          </h6>
 
-          <p class="mb-0">{{ activity.eventName }}</p>
+          <h4 class="mb-0">{{ activity.eventName }}</h4>
         </v-col>
         <v-col
           cols="2"
@@ -143,9 +143,9 @@
           sm="2"
           md="2"
           lg="1"
-          class="pl-2 pr-0"
+          class="pl-2 pr-0 click-enabled"
           align="center"
-          v-on:click="obsazenostUserNameShow(activity.event_id)"
+          v-on:click="obsazenostUserNameShow(activity.myEventID)"
         >
           <p class="my-0 hidden-xs-only">obsazenost</p>
           <p class="my-0 hidden-sm-and-up">obs.</p>
@@ -186,8 +186,16 @@
           outlined
           min-height="200px"
         >
-          <v-row no-gutters id="closeIcon"
-            ><v-icon v-on:click="showAktivityCard()" small>mdi-close</v-icon>
+          <div v-if="mediaShow" height="250px">
+            <v-img
+              max-width="100%"
+              max-height="100%"
+              v-bind:src="`https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/AktivityPics/${listOfActivities[selectedAktivityCard].event_id}.jpg`"
+            >
+            </v-img>
+          </div>
+          <v-row no-gutters id="closeIcon">
+            <v-icon v-on:click="showAktivityCard()" small>mdi-close</v-icon>
           </v-row>
           <v-row no-gutters class="px-3 pb-3">
             <v-col class="pr-3" xs="7" sm="8">
@@ -205,21 +213,28 @@
                 {{
                   timeShort(listOfActivities[selectedAktivityCard].eventEndDate)
                 }}
-                hod
               </div>
               <div class="headline mb-1 pl-2">
                 {{ listOfActivities[selectedAktivityCard].eventName }}
               </div>
-              <div>{{ listOfActivities[selectedAktivityCard].eventDesc }}</div>
+
+              <v-textarea 
+              v-if="(userID == listOfActivities[selectedAktivityCard].initializator_id || actUserLevel == 1) ? true : false"
+              v-model="listOfActivities[selectedAktivityCard].eventDesc"
+              counter="300"
+              >
+              {{ listOfActivities[selectedAktivityCard].eventDesc }}
+              </v-textarea>
+              <p v-else>{{ listOfActivities[selectedAktivityCard].eventDesc }}</p>  
+                            
               <div
                 align="end"
-                class="mt-4"
-                v-on:click="
-                  obsazenostUserNameShow(
-                    listOfActivities[selectedAktivityCard].event_id
-                  )
-                "
+                class="mt-4 click-enabled"  
               >
+                <span v-on:click="  
+                  obsazenostUserNameShow(
+                    listOfActivities[selectedAktivityCard].myEventID
+                  )">
                 obsazeno
                 {{
                   listOfActivities[selectedAktivityCard].mySUM == null
@@ -228,7 +243,9 @@
                 }}
                 míst z
                 {{ listOfActivities[selectedAktivityCard].maxSumOfAttendees }}
+                </span>
                 <span>
+                  <v-icon v-on:click="showMedia(selectedAktivityCard)" class="ma-2">mdi-camera</v-icon>
                   <v-btn
                     depressed
                     v-on:click="
@@ -255,7 +272,6 @@
                 </span>
               </div>
             </v-col>
-
             <v-col xs="5" sm="4" align="end" class="rightColumn">
               <v-list-item-avatar tile size="80" color="grey">
                 <v-img
@@ -301,7 +317,32 @@
                 >
                   Zrušit událost
                 </v-btn>
-              </div>
+                <v-btn
+                  depressed
+                  v-on:click="
+                    upravitPopis(listOfActivities[selectedAktivityCard].myEventID)
+                  "
+                  align="end"
+                  class="ml-2 mt-2"
+                >
+                  Upravit popis
+                </v-btn>
+
+                <div>
+                  <v-file-input
+                    v-model='file'
+                    class="mt-2"
+                    dense
+                    flat
+                    label="soubor .jpg"
+                    type="file"
+                    filled
+                  ></v-file-input>
+                    
+                  <v-btn v-on:click="uploadImage(listOfActivities[selectedAktivityCard].event_id)">Nahrát obrázek</v-btn>
+                </div>
+
+              </div>   
             </v-col>
           </v-row>
         </v-card>
@@ -331,6 +372,7 @@
 </template>
 
 <script>
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 import axios from "axios";
 
 export default {
@@ -363,12 +405,14 @@ export default {
     obsazenostNames: [],
     selectedAktivityCard: undefined,
     dialog: false,
+    mediaShow: false,
     aktFilter: false,
     listOfAktivityTypes: [],
     selectedActivityTypes: [],
     listOfActivities: [],
     listOfMyActivities: [],
-    datum: Date.now()
+    datum: Date.now(),
+    file: ''
   }),
 
   methods: {
@@ -427,7 +471,7 @@ export default {
         axios
           .post("https://mytestwww.tode.cz/SCKaras.dev/insertIntoSQL.php", {
             insertIntoTable: "Rezrvs",
-            insertIntoColumns: "event_id, User_id",
+            insertIntoColumns: "eventCalendar_id, user_id",
             insertValues: `'${eventId}', '${this.userID}'`,
           })
           .then(() => {
@@ -440,8 +484,6 @@ export default {
     },
 
     zrusitRezervaci(eventId) {
-      console.log(eventId);
-      console.log(this.userID);
       axios
         .post("https://mytestwww.tode.cz/SCKaras.dev/cancelRezrvs.php", {
           eventID: eventId,
@@ -461,6 +503,12 @@ export default {
     showAktivityCard(index) {
       this.aktivityCard = !this.aktivityCard;
       this.selectedAktivityCard = index;
+      if (this.mediaShow) {this.mediaShow = false}
+    },
+
+    showMedia(index) {
+      this.mediaShow = !this.mediaShow;
+      this.selectedAktivityCard = index;
     },
 
     zrusit(myEventID) {
@@ -475,6 +523,23 @@ export default {
             this.getMyAktivityList();
             this.getAktivityList();
             alert("Aktivita byla zrušena");
+          });
+      }
+    },
+
+    upravitPopis(myEventID) {
+      var myIndex = this.listOfActivities.findIndex(i => i.eventCalendar_id === myEventID)
+      var eventID = this.listOfActivities[myIndex].event_id;
+      if (confirm("Popis události bude změněn.")) {
+        let datum = new Date().toISOString().substr(0, 16);
+        axios
+          .post("https://mytestwww.tode.cz/SCKaras.dev/updateEventDesc.php", {
+            event: eventID,
+            eventDesc: this.listOfActivities[myIndex].eventDesc
+          })
+          .then((response) => {
+            this.getMyAktivityList();
+            this.getAktivityList();
           });
       }
     },
@@ -562,16 +627,28 @@ export default {
 
     avatarStrMod(str){
 	   return (str.replace("@", ""));
-	  }
+    },
+    
+    uploadImage(eventID){
+      //this.file = this.$refs.file.files[0];
+      let formData = new FormData();
+      console.log(this.listOfActivities);
+      formData.append('file', this.file);
+      formData.append('event', eventID);
+      console.log(this.file);
+      console.log(eventID);
+      axios
+        .post("https://mytestwww.tode.cz/SCKaras.dev/file_upload.php", formData, {
+        header:{'Content-Type' : 'multipart/form-data'}
+        })
+        .then((response) => {
+          console.log(response.data); 
+        });
+    }
 
   },
 };
 </script>
-
-
-
-
-
 
 <style scoped>
 .scroll {

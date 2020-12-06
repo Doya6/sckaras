@@ -1,29 +1,33 @@
 
-- Emails when action canceled
-- Emails 2dny pred udalosti
+- Emails kdyz akce zrusena
+- Emails 2dny pred rezervovanou udalosti
 - Emails info o novinkach
 
 - form pro samospravu uctu
 	- Level 1 - upload Home page obrazku
-	- Level 2 - upload avatar picture
-	- Level 3 - zmena hesla - user name
+	- Level 2 - upload avatar obrazku
+	- Level 3 - zmena hesla a user name
+- omezení zadavani data - drivejsi-pozdejsi
 
-- tisk mesicniho kalendare aktivit PDF
+nasobne zadavani
+kopirovani aktivit
 
-- btn zruseno red
+vkladani do fotogalerie uzivatelem
 
-- omezení data - drivejsi-pozdejsi
-
-- navyseni obsazenosti?
+prihlaseni click taky na label
 
 -------------------
 Issues:
 
-- historie HP obrázku a ořezání
+-------------------
+query:
 
-- avatar - název obrazku - email bez @
+SELECT * FROM EventsCalendar JOIN Events on Events.event_id=EventsCalendar.event_id
 
-- iOs - ???
+SELECT * FROM EventsCalendar JOIN Events on Events.event_id=EventsCalendar.event_id JOIN EventTypes on EventTypes.eventType_id=Events.eventType_id
+
+SELECT * FROM EventsCalendar JOIN Events on Events.event_id=EventsCalendar.event_id JOIN EventTypes on EventTypes.eventType_id=Events.eventType_id WHERE EventTypes.eventTypeDesc = "Jazykové kurzy"
+
 
 -------------------
 WWW:
@@ -33,13 +37,18 @@ http://mytestwww.tode.cz/SCKaras
 FTP sckaras:
 
 Host: medvidek.endora.cz
+
 User: adminavatar //jen obrazky avataru
+Pswd: avatarPSW
+
 User: sckarasadmin  //obrazky avataru a home page obrazek
 Pswd: adminPSW
 
-(uzivatel 'TestMP' ma ID '115', avatar obrazek ulozi na FTP po prihlaseni jako adminavatar, jmeno souboru - '115.jpg')
-(pro ulozeni HomePage obrazku musi byt prihlasen jako 'sckarasadmin', obrazek se ulozi do adresare 'HomePagePic' pod jmenem 'HPPic.jpg')  
+(uzivatel 'sckarasadmin' nebo 'adminavatar' zadava avatar obrazek ulozenim na FTP do adresare AvatarPics ve formatu e-mailu bez znaku '@' - priklad: 'dujkacentrum.cz.jpg')
 
+(uzivatel 'sckarasadmin' zadava Home Page obrazek do adresare 'HomePagePic' pod jmenem 'HPPic.jpg')  
+
+--------------
 
 
  

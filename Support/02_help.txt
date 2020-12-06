@@ -12,69 +12,7 @@ https://git-ftp.github.io/
 List computed:
 https://jsfiddle.net/jamesbrndwgn/gkxq5rLs/16/
 ---------------
-Img reload:
-
-v-bind:src="`campics/${actPics[0]}`"
-+ PHP + data: actPics[]
----
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		$('img').each(function(){
-			var img=this,src=img.src
-			setInterval(function(){img.src=src+'?'+(new Date())}, 60000 )
-		})
-	})
-	</script>
-	<title>webcamramdisk</title>
-</head>
-<body>
-<img src="http://icons.wunderground.com/webcamramdisk/g/l/Gluepack/1/current.jpg" />
-</body>
-</html>
 ----------
-Img size:
-
-              <v-list-item-avatar tile size="80" color="grey">
-                <v-img
-                  height="100%"
-                  width="100%"
-                  v-bind:src="`https://mytestwww.tode.cz/SCKaras/HomePagePic/AvatarPics/${listOfActivities[selectedAktivityCard].initializator_id}.jpg`"
-                ></v-img>
-              </v-list-item-avatar>
-
-    <v-card class="pa-3 mx-auto text-center karta" width="500px" position="fixed" top='100px'>
-      <!-- <h1 class='text-center justify="center" light-blue lighten-3 white--text'>Home Page</h1> -->
-      <v-img height="100%" width="100%" src="https://mytestwww.tode.cz/SCKaras/HomePagePic/HPPic.jpg"></v-img>
-    </v-card>
-
----------
-avatar soubor name:
- - zmenit email address
-
-	strMod(){
-	   this.strModified = (this.str.replace("@", ""));
-	}
-
-----
-Color:
-
-onst app = new Vue({
-  data: () => ({ color: 'blue' }),
-  // Initially, will show "blue text" in blue font.
-  template: `
-    <div v-bind:style="{ color }">{{color}} text</div>
-  `
-});
-// Now, it will show "green text" in green font.
-app.$data.color = 'green';
-
-----
 cool v-bind tricks:
 
 https://michaelnthiessen.com/conditional-class-binding-vue/
@@ -87,6 +25,13 @@ https://levelup.gitconnected.com/6-techniques-to-write-better-vuejs-v-for-loops-
 Don’t use v-if in loops
 
 ----
+upload image:
+
+https://www.webslesson.info/2020/04/vue-js-file-upload-with-php-axios.html
+
+https://makitweb.com/how-to-upload-file-with-vue-js-and-php/
+
+
 
 
 

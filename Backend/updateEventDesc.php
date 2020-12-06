@@ -8,11 +8,9 @@ include 'config.php';
 $received_data = json_decode(file_get_contents("php://input"), true);
 
 $eventID = $received_data['event'];
-$datum = $received_data['date'];
+$updatedEventDesc = $received_data['eventDesc'];
 
-
-
-$query = "UPDATE EventsCalendar SET eventCancelDate = '$datum' WHERE eventCalendar_id = '$eventID'";
+$query = "UPDATE Events SET eventDesc = '$updatedEventDesc' WHERE event_id = '$eventID'";
 
 $statement = $connect->prepare($query);
 $statement->execute();

@@ -3,7 +3,7 @@
 $username="testrezervace";
 $password="rezervacePSW1";
 $host="localhost";
-$database="rezervace";
+$database="karas2";
 
 $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);
 // if (!$connect) {

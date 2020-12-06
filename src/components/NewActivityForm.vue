@@ -192,11 +192,11 @@
             </v-col>
           </v-row>
           <v-row justify="space-around">
-            <v-btn color="warning" @click="resetValidation">
+            <v-btn color="warning" v-on:click="resetValidation" class="my-1">
               Vymazat ověření
             </v-btn>
-            <v-btn color="error" @click="reset"> Vymazat </v-btn>
-            <v-btn :disabled="!valid" color="success" @click="validate">
+            <v-btn color="error" v-on:click="reset" class="my-1"> Vymazat </v-btn>
+            <v-btn :disabled="!valid" color="success" v-on:click="validate" class="my-1">
               Odeslat
             </v-btn>
           </v-row>

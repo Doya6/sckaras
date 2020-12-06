@@ -5,7 +5,7 @@
     <v-card class="pa-3 mx-auto text-center karta" width="500px" height="350px">
       <!-- <h1 class='text-center justify="center" light-blue lighten-3 white--text'>Home Page</h1> -->
       
-      <img src="https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/HPPic.jpg">
+      <img v-bind:src="`https://mytestwww.tode.cz/SCKaras.dev/HomePagePic/${HPImage}`">
       
     </v-card>
     
@@ -14,13 +14,32 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+
+  created() {
+    this.setHPPic(); 
+  },
+
   data() {
     return {
       bgImage: {
         backgroundImage: `url(${require("../assets/bckg.jpg")})`,
       },
+      HPImage: ''
     };
+  },
+
+  methods: {
+    setHPPic(){
+     axios
+      .post("https://mytestwww.tode.cz/SCKaras.dev/HPPic.php", {
+      })
+      .then((response) => {
+        this.HPImage = response.data;
+      });
+    }
   },
 };
 </script>

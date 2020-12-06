@@ -10,9 +10,7 @@ $eventID = $received_data['event'];
 
 $data = [];
 
-$query =  "SELECT Users.userName FROM Users LEFT JOIN Rezrvs ON Rezrvs.user_id=Users.userID WHERE event_id = '$eventID'";
-
-
+$query =  "SELECT Users.userName FROM Users LEFT JOIN Rezrvs ON Rezrvs.user_id=Users.userID WHERE Rezrvs.eventCalendar_id = '$eventID'";
 
 	$statement = $connect->prepare($query);
 	$statement->execute();

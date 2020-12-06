@@ -30,7 +30,7 @@
 
       <v-card
         class="mx-auto"
-        max-width="344"
+        max-width="340"
         disabled
         flat
         color="light-blue lighten-3"
@@ -458,6 +458,7 @@ export default {
         this.loggedUser.userLevel = "";
         
         this.$store.commit('setUserID', this.loggedUser.id);
+        this.$store.commit('setUserLevel', this.loggedUser.userLevel);
         
         this.$router.push({ name: 'Home' });
         
